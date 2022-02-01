@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/objects/Paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/objects/Field.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/AIController.gd" type="Script" id=4]
+[ext_resource path="res://scripts/PlayerInputComponent.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=6]
+[ext_resource path="res://scenes/HUD/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/HUD/FinalScreen.tscn" type="PackedScene" id=8]
+
+[node name="Game" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Field" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 50, 256 )
+
+[node name="PlayerInputComponent2" type="Node" parent="Player"]
+script = ExtResource( 5 )
+
+[node name="AI" parent="." instance=ExtResource( 1 )]
+position = Vector2( 974, 256 )
+
+[node name="AIController" type="Node" parent="AI"]
+script = ExtResource( 4 )
+ball_path = NodePath("../../Ball")
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, 256 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="FinalScreen" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[connection signal="goal_left" from="Field" to="." method="_on_Field_goal_left"]
+[connection signal="goal_right" from="Field" to="." method="_on_Field_goal_right"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="exit" from="FinalScreen" to="." method="_on_FinalScreen_exit"]
+[connection signal="new_round" from="FinalScreen" to="." method="_on_FinalScreen_new_round"]

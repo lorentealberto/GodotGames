@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/fonts/windows_command_prompt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/themes/HUD.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/FinalScreen.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 125
+font_data = ExtResource( 1 )
+
+[node name="FinalScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -416.0
+margin_top = -129.0
+margin_right = 416.0
+margin_bottom = 129.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResultMsg" type="Label" parent="VBoxContainer"]
+margin_right = 832.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 1 )
+text = "You win"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WantAnotherMsg" type="Label" parent="VBoxContainer"]
+margin_top = 114.0
+margin_right = 832.0
+margin_bottom = 181.0
+text = "Do you want another round?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 185.0
+margin_right = 832.0
+margin_bottom = 258.0
+custom_constants/separation = 75
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewRoundBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 144.0
+margin_right = 459.0
+margin_bottom = 73.0
+text = "New round"
+
+[node name="ExitBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 534.0
+margin_right = 688.0
+margin_bottom = 73.0
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewRoundBtn" to="." method="_on_NewRoundBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ExitBtn" to="." method="_on_ExitBtn_pressed"]
