@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/graphics/bck@2x.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/lik-right.png" type="Texture" id=2]
+[ext_resource path="res://scripts/PlatformsManager.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://scenes/objects/Platform.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.5, 20 )
+
+[node name="Game" type="Node"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 0, -100000 )
+scale = Vector2( 1, 1.01023 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, -100000, 640, 100000 )
+
+[node name="PlatformsManager" type="Node2D" parent="."]
+position = Vector2( 0, 34 )
+script = ExtResource( 3 )
+camera_path = NodePath("../Player/Camera2D")
+
+[node name="Platform" parent="." instance=ExtResource( 5 )]
+position = Vector2( 319, 797 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 317, 737 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 1.5, 10 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+limit_left = 0
+limit_right = 640
+limit_bottom = 1024
+drag_margin_v_enabled = true
+drag_margin_bottom = 1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
