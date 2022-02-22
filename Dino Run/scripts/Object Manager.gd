@@ -19,7 +19,6 @@ func generate_obstacle():
 		obstacle.position.y -= 35
 	
 	obstacle.connect("body_entered", self, "reset")
-	obstacle.position.y += rand_range(-5, 5)
 	obstacle.set_script(load("res://scripts/Obstacle.gd"))
 	
 	add_child(obstacle)
