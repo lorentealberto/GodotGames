@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/objects/pou/Pou.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/objects/UI/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/UI/Banners.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=4]
+[ext_resource path="res://scenes/objects/UI/Fridge.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/objects/UI/Location.tscn" type="PackedScene" id=6]
+
+[node name="Kitchen" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Pou" parent="." instance=ExtResource( 1 )]
+position = Vector2( 386, 847 )
+scale = Vector2( 0.421875, 0.421875 )
+
+[node name="Banners" parent="." instance=ExtResource( 3 )]
+
+[node name="Fridge" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="Location" parent="." instance=ExtResource( 6 )]
+
+[connection signal="open_fridge" from="Banners" to="." method="_on_Banners_open_fridge"]

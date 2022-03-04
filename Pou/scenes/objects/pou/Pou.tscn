@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/graphics/pou/pou_body.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Pou.gd" type="Script" id=2]
+[ext_resource path="res://scenes/objects/pou/Eye.tscn" type="PackedScene" id=3]
+
+[node name="Pou" type="Sprite"]
+position = Vector2( 367, 796 )
+scale = Vector2( 0.180743, 0.180743 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Eye" parent="." instance=ExtResource( 3 )]
+position = Vector2( 226.841, -94.0562 )
+
+[node name="Eye2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -232.374, -121.72 )
+
+[node name="Body" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body"]
+polygon = PoolVector2Array( 27.6636, -287.701, -154.916, -237.907, -287.701, -110.654, -414.954, 27.6636, -437.085, 88.5239, -481.346, 171.515, -392.823, 237.907, -71.9253, 293.234, 177.047, 276.636, 409.421, 276.636, 509.01, 237.907, 509.01, 204.711, 481.346, 177.047, 365.159, -60.8599, 204.711, -237.907 )
+
+[connection signal="area_entered" from="Body" to="." method="_on_Body_area_entered"]
