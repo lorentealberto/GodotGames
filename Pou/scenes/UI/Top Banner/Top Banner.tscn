@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/UI/Top Banner/graphics/buttons/add coin/normal.png" type="Texture" id=1]
+[ext_resource path="res://scenes/UI/Top Banner/graphics/buttons/add coin/hover.png" type="Texture" id=2]
+[ext_resource path="res://scenes/UI/Top Banner/graphics/buttons/add coin/pressed.png" type="Texture" id=3]
+[ext_resource path="res://scenes/UI/Panels/Hungry Panel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/UI/Panels/Health Panel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/UI/Panels/Tiredness Panel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/UI/Top Banner/graphics/buttons/settings/hover.png" type="Texture" id=7]
+[ext_resource path="res://scenes/UI/Top Banner/graphics/buttons/settings/pressed.png" type="Texture" id=8]
+[ext_resource path="res://scenes/UI/Top Banner/graphics/buttons/settings/normal.png" type="Texture" id=9]
+
+[node name="Top Banner" type="HBoxContainer"]
+anchor_left = 0.052
+anchor_top = 0.023
+anchor_right = 0.948
+anchor_bottom = 0.08
+margin_left = 0.039999
+margin_top = 0.357996
+margin_right = -0.0400696
+margin_bottom = -68.32
+custom_constants/separation = 70
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Add coin" type="TextureButton" parent="."]
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+
+[node name="Panels" type="HBoxContainer" parent="."]
+margin_left = 118.0
+margin_right = 302.0
+margin_bottom = 48.0
+custom_constants/separation = 20
+
+[node name="Hungry" parent="Panels" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 48.0
+margin_bottom = 48.0
+
+[node name="Health" parent="Panels" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 68.0
+margin_right = 116.0
+margin_bottom = 48.0
+
+[node name="Tiredness" parent="Panels" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 136.0
+margin_right = 184.0
+margin_bottom = 48.0
+
+[node name="Settings" type="TextureButton" parent="."]
+margin_left = 372.0
+margin_right = 420.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )

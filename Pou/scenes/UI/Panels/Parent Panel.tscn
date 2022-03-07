@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/UI/Panels/graphics/frame.png" type="Texture" id=1]
+[ext_resource path="res://scenes/UI/Panels/graphics/progress.png" type="Texture" id=2]
+
+[node name="Parent Panel" type="TextureProgress"]
+anchor_right = 0.1
+anchor_bottom = 0.056
+margin_right = -16.0
+margin_bottom = -15.824
+value = 50.0
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+tint_progress = Color( 0.647059, 0.968627, 0.466667, 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0 ],
+"_edit_use_anchors_": true
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+anchor_left = 0.167
+anchor_top = 0.167
+anchor_right = 0.833
+anchor_bottom = 0.833
+margin_left = -0.0160007
+margin_top = -0.0160007
+margin_right = 0.0159988
+margin_bottom = 0.0159988
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
