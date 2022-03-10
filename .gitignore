@@ -1,6 +1,12 @@
-assets
-default_env.tres
-icon.png
-icon.png.import
-project.godot
-scenes
+# Import cache
+.import/
+*.import
+addons/
+
+# Binaries
+bin/
+build/
+lib/
+
+*.translation
+export_presets.cfg
