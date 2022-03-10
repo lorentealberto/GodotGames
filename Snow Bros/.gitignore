@@ -1,0 +1,12 @@
+# Import cache
+.import/
+*.import
+addons/
+
+# Binaries
+bin/
+build/
+lib/
+
+*.translation
+export_presets.cfg
