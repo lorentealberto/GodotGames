@@ -9,27 +9,27 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="Panel" type="PanelContainer" parent="."]
-margin_left = 125.0
-margin_top = 324.0
-margin_right = 475.0
-margin_bottom = 699.0
+margin_left = 129.0
+margin_top = 308.0
+margin_right = 470.0
+margin_bottom = 715.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 343.0
-margin_bottom = 368.0
+margin_right = 334.0
+margin_bottom = 400.0
 size_flags_horizontal = 0
 
 [node name="Left" type="CenterContainer" parent="Panel/HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 361.0
+margin_bottom = 393.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="VBox" type="VBoxContainer" parent="Panel/HBoxContainer/Left"]
 margin_left = 31.0
 margin_right = 169.0
-margin_bottom = 361.0
+margin_bottom = 393.0
 custom_constants/separation = 20
 
 [node name="Statistics" type="GridContainer" parent="Panel/HBoxContainer/Left/VBox"]
@@ -164,32 +164,73 @@ margin_right = 138.0
 margin_bottom = 281.0
 text = "Pause"
 
-[node name="Music" type="Button" parent="Panel/HBoxContainer/Left/VBox"]
+[node name="HBox" type="HBoxContainer" parent="Panel/HBoxContainer/Left/VBox"]
 margin_top = 301.0
 margin_right = 138.0
-margin_bottom = 321.0
-text = "Music On/Off"
+margin_bottom = 317.0
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Left/VBox/HBox"]
+margin_top = 1.0
+margin_right = 38.0
+margin_bottom = 15.0
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Panel/HBoxContainer/Left/VBox/HBox"]
+margin_left = 42.0
+margin_right = 138.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -24.0
+max_value = 0.0
+
+[node name="HBox2" type="HBoxContainer" parent="Panel/HBoxContainer/Left/VBox"]
+margin_top = 337.0
+margin_right = 138.0
+margin_bottom = 353.0
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Left/VBox/HBox2"]
+margin_top = 1.0
+margin_right = 39.0
+margin_bottom = 15.0
+text = "Sound"
+
+[node name="Sound" type="HSlider" parent="Panel/HBoxContainer/Left/VBox/HBox2"]
+margin_left = 43.0
+margin_right = 138.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -24.0
+max_value = 0.0
 
 [node name="About" type="Button" parent="Panel/HBoxContainer/Left/VBox"]
-margin_top = 341.0
+margin_top = 373.0
 margin_right = 138.0
-margin_bottom = 361.0
+margin_bottom = 393.0
 text = "About"
 
 [node name="Right" type="MarginContainer" parent="Panel/HBoxContainer"]
 margin_left = 204.0
-margin_right = 336.0
-margin_bottom = 361.0
+margin_right = 327.0
+margin_bottom = 393.0
 custom_constants/margin_right = 8
 custom_constants/margin_top = 8
 custom_constants/margin_left = 8
 custom_constants/margin_bottom = 8
 
+[node name="ColorRect" type="ColorRect" parent="Panel/HBoxContainer/Right"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 115.0
+margin_bottom = 385.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="Grid" type="GridContainer" parent="Panel/HBoxContainer/Right"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 124.0
-margin_bottom = 353.0
+margin_right = 115.0
+margin_bottom = 385.0
+custom_constants/vseparation = 1
+custom_constants/hseparation = 1
 columns = 10
 
 [node name="Cell" type="TextureRect" parent="Panel/HBoxContainer/Right/Grid"]
@@ -198,20 +239,20 @@ margin_bottom = 26.0
 texture = ExtResource( 1 )
 
 [node name="Cell2" type="TextureRect" parent="Panel/HBoxContainer/Right/Grid"]
-margin_left = 30.0
-margin_right = 56.0
+margin_left = 27.0
+margin_right = 53.0
 margin_bottom = 26.0
 texture = ExtResource( 1 )
 
 [node name="Cell3" type="TextureRect" parent="Panel/HBoxContainer/Right/Grid"]
-margin_left = 60.0
-margin_right = 86.0
+margin_left = 54.0
+margin_right = 80.0
 margin_bottom = 26.0
 texture = ExtResource( 1 )
 
 [node name="Cell4" type="TextureRect" parent="Panel/HBoxContainer/Right/Grid"]
-margin_left = 90.0
-margin_right = 116.0
+margin_left = 81.0
+margin_right = 107.0
 margin_bottom = 26.0
 texture = ExtResource( 1 )
 
@@ -231,5 +272,7 @@ Page Up - Increase level on each press"
 
 [connection signal="button_down" from="Panel/HBoxContainer/Left/VBox/NewGame" to="." method="_on_NewGame_button_down"]
 [connection signal="button_down" from="Panel/HBoxContainer/Left/VBox/Pause" to="." method="_on_Pause_button_down"]
-[connection signal="button_down" from="Panel/HBoxContainer/Left/VBox/Music" to="." method="_on_Music_button_down"]
+[connection signal="value_changed" from="Panel/HBoxContainer/Left/VBox/HBox/Music" to="." method="_on_Music_value_changed"]
+[connection signal="value_changed" from="Panel/HBoxContainer/Left/VBox/HBox2/Sound" to="." method="_on_Sound_value_changed"]
 [connection signal="button_down" from="Panel/HBoxContainer/Left/VBox/About" to="." method="_on_About_button_down"]
+[connection signal="popup_hide" from="AboutBox" to="." method="_on_AboutBox_popup_hide"]
