@@ -1,9 +1,8 @@
 extends Area2D
-
-const VELOCITY = 300
+class_name Obstacle
 
 func _process(delta):
-	position.x -= VELOCITY * delta
+	position.x -= Settings.FLOOR_VELOCITY * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

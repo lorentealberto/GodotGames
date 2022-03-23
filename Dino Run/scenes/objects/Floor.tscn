@@ -1,29 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/graphics/floor.png" type="Texture" id=1]
-[ext_resource path="res://scripts/Background.gd" type="Script" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40.5, 10 )
+[ext_resource path="res://scripts/Floor.gd" type="Script" id=2]
 
 [node name="Floor" type="Node2D"]
-
-[node name="Part 1" type="Sprite" parent="."]
-position = Vector2( 0, 561 )
-scale = Vector2( 0.853333, 1 )
-texture = ExtResource( 1 )
-centered = false
 script = ExtResource( 2 )
 
-[node name="Part 2" type="Sprite" parent="."]
-position = Vector2( 1024, 561 )
-scale = Vector2( 0.853333, 1 )
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false
-script = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 88.5, 586 )
-shape = SubResource( 1 )
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 4800, 0 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+centered = false
