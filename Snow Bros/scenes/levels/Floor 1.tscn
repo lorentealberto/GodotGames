@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/enemies/Base Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/Base Level.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 128, 31 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 128, 30 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 128, 30 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 320, 34 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 224, 32 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 224, 32 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 64.5, 29.75 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 253.5, 34 )
+
+[node name="Level 1" instance=ExtResource( 2 )]
+
+[node name="Player" parent="." index="1"]
+position = Vector2( 512, 796 )
+
+[node name="Platforms" type="Node" parent="." index="2"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms" index="0"]
+position = Vector2( 10, 842 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D" index="0"]
+position = Vector2( 502, 22 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Platforms" index="1"]
+position = Vector2( 152, 720 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D2" index="0"]
+position = Vector2( -24, 15 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Platforms" index="2"]
+position = Vector2( 436, 732 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D3" index="0"]
+position = Vector2( 76, 2 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Platforms" index="3"]
+position = Vector2( 818, 738 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D4" index="0"]
+position = Vector2( 78, -4 )
+shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Platforms" index="4"]
+position = Vector2( 478, 600 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D5" index="0"]
+position = Vector2( 34, 10 )
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Platforms" index="5"]
+position = Vector2( 783, 486 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D6" index="0"]
+position = Vector2( 17, -6 )
+shape = SubResource( 6 )
+one_way_collision = true
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Platforms" index="6"]
+position = Vector2( 354, 468 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D7" index="0"]
+position = Vector2( -130, 12 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Platforms" index="7"]
+position = Vector2( 137, 330 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D8" index="0"]
+position = Vector2( 56, 20 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Platforms" index="8"]
+position = Vector2( 137, 330 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D10" index="0"]
+position = Vector2( 694, 20.25 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Platforms" index="9"]
+position = Vector2( 259, 258 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D9" index="0"]
+position = Vector2( 251.5, 32 )
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="Base Enemy" parent="." index="3" instance=ExtResource( 1 )]
+position = Vector2( 465, 660 )
