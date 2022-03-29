@@ -98,22 +98,23 @@ func manage_states() -> void:
 		if not is_on_floor():
 			current_state = States.JUMPING #Saltando
 
-"""Gestiona las animaciones del personaje en base al estado en el que esté el objeto"""
+"""Gestiona las animaciones del personaje en base al estado en el que esté el objeto. Las animaciones
+		deben estar ordenadas según su prioridad, de menor a mayor."""
 func manage_animations() -> void:
 	match current_state:
-		States.APPEARING:
+		States.APPEARING: #Apareciendo
 			animated_sprite.play("appears")
-		States.IDLE:
+		States.IDLE: #Parado
 			animated_sprite.play("idle")
-		States.WALKING:
+		States.WALKING: #Andando
 			animated_sprite.play("walk")
-		States.JUMPING:
+		States.JUMPING: #Saltando
 			animated_sprite.play("jump")
-		States.PUSHING:
+		States.PUSHING: #Empujando una bola de nieve
 			animated_sprite.play("push")
 			if velocity.x == 0:
 				animated_sprite.stop()
-		States.SHOOTING:
+		States.SHOOTING: #Disparando
 			animated_sprite.play("shoot")
 
 """Lanza un copo de nieve hacia la dirección a la que esté mirando el jugador"""
