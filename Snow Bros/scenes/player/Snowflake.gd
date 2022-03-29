@@ -1,8 +1,8 @@
 extends Area2D
 class_name Snowflake
-const FRICTION:int = 10
+const FRICTION:float = 3.5
 
-var hspeed:float = 400.0
+var hspeed:float = 150.0
 var apply_gravity:bool
 
 func _ready():

@@ -1,3 +1,3 @@
 extends Node
 
-const WORLD_GRAVITY:float = 1500.0
+const WORLD_GRAVITY:float = 500.0

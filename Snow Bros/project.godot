@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/enemies/Base Enemy.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
-}, {
 "base": "Area2D",
 "class": "Snowflake",
 "language": "GDScript",
@@ -26,7 +21,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Enemy": "",
-"GitAPI": "",
 "Snowflake": ""
 }
 
@@ -42,13 +36,17 @@ Settings="*res://Settings.gd"
 
 [display]
 
-window/size/height=960
+window/size/width=256
+window/size/height=240
+window/size/resizable=false
+window/size/test_width=512
+window/size/test_height=480
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [gdnative]
 
-singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+singletons=[  ]
 
 [input]
 

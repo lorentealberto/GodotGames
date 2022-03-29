@@ -6,7 +6,6 @@
 [node name="Base Level" type="Node"]
 
 [node name="Floor" type="Sprite" parent="."]
-scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false
 __meta__ = {
@@ -14,5 +13,4 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 512, 797 )
-scale = Vector2( 3, 3 )
+position = Vector2( 129, 196 )
