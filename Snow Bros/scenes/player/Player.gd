@@ -138,10 +138,13 @@ func throw_snowflake() -> void:
 func push_snowball() -> void:
 	if raycast.is_colliding():
 		if raycast.get_collider() is Enemy:
-			snowball = raycast.get_collider()
-			if snowball.is_rolling():
-				current_state = States.PUSHING
-				snowball.push(velocity.x)
+			if not raycast.get_collider().kicked:
+				snowball = raycast.get_collider()
+				if snowball.is_rolling():
+					current_state = States.PUSHING
+					snowball.push(velocity.x)
+				else:
+					snowball = null
 	else:
 		if snowball != null:
 			snowball.drop()
@@ -149,6 +152,7 @@ func push_snowball() -> void:
 """Da una patada a la bola de nieve"""
 func kick() -> void:
 	snowball.kick(animated_sprite.flip_h)
+	snowball = null
 
 """Evento que se lanza cada vez que una animación haya terminado de reproducirse"""
 func _on_AnimatedSprite_animation_finished():

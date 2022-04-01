@@ -12,8 +12,14 @@ onready var animated_sprite:AnimatedSprite = $AnimatedSprite
 var velocity:Vector2
 
 const KICKED_SPEED:float = 10000.0
+const JUMP_POWER:float = 12000.0 #Potencia de salto
 var kicked:bool = false
 var direction:String
+var SWIDTH:float
+var can_jump:bool = false
+
+func _ready():
+	SWIDTH = get_viewport_rect().size.x
 
 """Método que se ejecuta todos los frames del juego
 	_delta: Tiempo en MS que ha transcurrido desde que se llamó a esta función por última vez"""
@@ -22,22 +28,46 @@ func _process(_delta):
 	
 """Función que se llama todos los frames del juego
 	_delta: Tiempo en MS que ha transcurrido desde que se llamó a esta función por última vez"""
-func _physics_process(_delta):
-	apply_gravity(_delta)
+func _physics_process(delta):
+	apply_gravity(delta)
 	manage_states()
-	
-	if kicked:
-		velocity.x = 0
-		if direction == "left":
-			velocity.x -= KICKED_SPEED * _delta
-		elif direction == "right":
-			velocity.x += KICKED_SPEED * _delta
-			
+	update_when_kicked(delta)
+	jump(delta)
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+
+func jump(delta:float) -> void:
+	if can_jump and is_on_floor():
+		velocity.y -= JUMP_POWER * delta
+		can_jump = false
+
+"""Actualiza la posición y la dirección a la que se dirige el objeto cuando éste
+	es pateado
+	delta: Tiempo en MS desde que se llamó a este método por última vez"""
+func update_when_kicked(delta:float) -> void:
+	if kicked:
+		change_direction()
+		velocity.x = 0
+		move(delta)
+
+"""Mueve el objeto hacia la dirección indicada
+	delta: Tiempo en MS desde es llamó a este método por última vez"""
+func move(delta:float) -> void:
+	if direction == "left":
+		velocity.x -= KICKED_SPEED * delta
+	elif direction == "right":
+		velocity.x += KICKED_SPEED * delta
+
+"""Cambia la dirección hacia la que acelera el objeto si éste choca con los
+	bordes de la pantalla"""
+func change_direction() -> void:
+		if position.x <= 0:
+			direction = "right"
+		elif position.x >= SWIDTH:
+			direction = "left"
 
 """Gestiona los estados del objeto"""
 func manage_states() -> void:
-	if current_state != States.COVERED and current_state != States.ROLLING:
+	if current_state != States.COVERED and current_state != States.ROLLING and current_state != States.DEFEATED:
 		if is_on_floor():
 			current_state = States.IDLE
 
@@ -48,6 +78,8 @@ func manage_animations() -> void:
 			animated_sprite.play("idle")
 		States.COVERED:
 			animated_sprite.animation = "covered"
+		States.DEFEATED:
+			animated_sprite.play("defeated")
 
 """Aplica gravedad al objeto
 	delta: Tiempo en MS que ha transcurrido desde que se llamó a este método por última vez"""
@@ -71,6 +103,7 @@ func drop() -> void:
 func kick(flip_h:bool) -> void:
 	animated_sprite.play("rolling")
 	kicked = true
+	#Marcar dirección
 	if flip_h:
 		direction = "right"
 	else:
@@ -94,4 +127,14 @@ func is_rolling() -> bool:
 
 """Evento que se dispara cada vez que se acaba de reproducir una animación"""
 func _on_AnimatedSprite_animation_finished():
-	pass
+	if animated_sprite.animation == "defeated":
+		queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	if is_rolling():
+		if area.name == "EBody":
+			area.get_parent().current_state = States.DEFEATED
+			area.get_parent().can_jump = true
+		elif area.name == "DeadZone":
+			queue_free()
