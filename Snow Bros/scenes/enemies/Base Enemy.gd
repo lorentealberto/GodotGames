@@ -11,6 +11,10 @@ onready var animated_sprite:AnimatedSprite = $AnimatedSprite
 #Velocidad del objeto
 var velocity:Vector2
 
+const KICKED_SPEED:float = 10000.0
+var kicked:bool = false
+var direction:String
+
 """Método que se ejecuta todos los frames del juego
 	_delta: Tiempo en MS que ha transcurrido desde que se llamó a esta función por última vez"""
 func _process(_delta):
@@ -21,6 +25,14 @@ func _process(_delta):
 func _physics_process(_delta):
 	apply_gravity(_delta)
 	manage_states()
+	
+	if kicked:
+		velocity.x = 0
+		if direction == "left":
+			velocity.x -= KICKED_SPEED * _delta
+		elif direction == "right":
+			velocity.x += KICKED_SPEED * _delta
+			
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 
 """Gestiona los estados del objeto"""
@@ -45,10 +57,25 @@ func apply_gravity(delta:float) -> void:
 """Aplica una fuerza de empuje al objeto
 	vel: Fuerza de empuje que se aplicará a este objeto"""
 func push(vel:float) -> void:
-	velocity.x = vel
+	if not kicked:
+		velocity.x = vel
 
+"""El objeto ya no se moverá a la misma velocidad que el objeto que le esté
+	empujando"""
 func drop() -> void:
-	velocity.x = 0
+	if not kicked:
+		velocity.x = 0
+
+"""Acelera el objeto en la dirección indicada por parámetro
+	flip_h: Dirección hacía la que se acelerará el objeto"""
+func kick(flip_h:bool) -> void:
+	animated_sprite.play("rolling")
+	kicked = true
+	if flip_h:
+		direction = "right"
+	else:
+		direction = "left"
+	
 
 """Cambia el estado y la animación del objeto dependiendo del estado actual"""
 func cover() -> void:

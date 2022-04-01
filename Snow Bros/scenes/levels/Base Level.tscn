@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/graphics/floors/floor 1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SegmentShape2D" id=1]
+b = Vector2( 0, 18 )
 
 [node name="Base Level" type="Node"]
 
@@ -14,3 +17,13 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 129, 196 )
+
+[node name="DeadZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+position = Vector2( -1, 191 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeadZone"]
+position = Vector2( 257, 191 )
+shape = SubResource( 1 )

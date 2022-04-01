@@ -14,6 +14,7 @@ var current_state:int = States.APPEARING
 #Constantes
 const HSPEED:float = 6000.0 #Velocidad horizontal
 const JUMP_POWER:float = 12000.0 #Potencia de salto
+const RAY_LENGTH:int = 18
 
 #Variables de movimiento
 var velocity:Vector2
@@ -60,9 +61,13 @@ func horizontal_controls(delta:float) -> void:
 	if Input.is_action_pressed("left"):
 		velocity.x -= HSPEED * delta
 		look_at_right(false)
+		if current_state == States.PUSHING:
+			velocity.x /= 2
 	elif Input.is_action_pressed("right"):
 		velocity.x += HSPEED * delta
 		look_at_right(true)
+		if current_state == States.PUSHING:
+			velocity.x /= 2
 
 """Voltea el sprite y el raycast en base al valor del parámetro flip
 	flip: Si se volteará el sprite o el raycast o no"""
@@ -71,9 +76,9 @@ func look_at_right(flip:bool) -> void:
 	animated_sprite.flip_h = flip
 	#Voltear raycast
 	if flip:
-		raycast.cast_to = Vector2(9, 0)
+		raycast.cast_to = Vector2(RAY_LENGTH, 0)
 	else:
-		raycast.cast_to = Vector2(-9, 0)
+		raycast.cast_to = Vector2(-RAY_LENGTH, 0)
 
 """Gestiona los controles de salto
 	delta: Tiempo en MS desde que se llamó esta función por última vez"""
@@ -84,7 +89,10 @@ func jump_controls(delta:float) -> void:
 """Gestiona los controles de disparo"""
 func shooting_controls() -> void:
 	if Input.is_action_just_pressed("shoot"):
-		current_state = States.SHOOTING
+		if current_state == States.PUSHING:
+			kick()
+		else:
+			current_state = States.SHOOTING
 
 """Gestiona los estados del objetos"""
 func manage_states() -> void:
@@ -137,6 +145,10 @@ func push_snowball() -> void:
 	else:
 		if snowball != null:
 			snowball.drop()
+
+"""Da una patada a la bola de nieve"""
+func kick() -> void:
+	snowball.kick(animated_sprite.flip_h)
 
 """Evento que se lanza cada vez que una animación haya terminado de reproducirse"""
 func _on_AnimatedSprite_animation_finished():
