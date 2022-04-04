@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Enemy #Nombre de la clase
 
+signal on_floor
+
 #Estados del objeto
 enum States { COVERED, DEAD, DEFEATED, DOWN, IDLE, JUMP, ROLLING, SHAKING_SNOW, WALK }
 var current_state = States.IDLE
@@ -11,6 +13,7 @@ onready var animated_sprite:AnimatedSprite = $AnimatedSprite
 #Velocidad del objeto
 var velocity:Vector2
 
+const HSPEED:float = 3000.0
 const KICKED_SPEED:float = 10000.0
 const JUMP_POWER:float = 12000.0 #Potencia de salto
 var kicked:bool = false
@@ -39,6 +42,7 @@ func jump(delta:float) -> void:
 	if can_jump and is_on_floor():
 		velocity.y -= JUMP_POWER * delta
 		can_jump = false
+		emit_signal("on_floor")
 
 """Actualiza la posición y la dirección a la que se dirige el objeto cuando éste
 	es pateado
@@ -48,6 +52,14 @@ func update_when_kicked(delta:float) -> void:
 		change_direction()
 		velocity.x = 0
 		move(delta)
+
+func go_to(direction:String, delta:float) -> void:
+	velocity.x = 0
+	match direction:
+		"left":
+			velocity.x -= HSPEED * delta
+		"right":
+			velocity.x += HSPEED * delta
 
 """Mueve el objeto hacia la dirección indicada
 	delta: Tiempo en MS desde es llamó a este método por última vez"""
@@ -70,12 +82,26 @@ func manage_states() -> void:
 	if current_state != States.COVERED and current_state != States.ROLLING and current_state != States.DEFEATED:
 		if is_on_floor():
 			current_state = States.IDLE
+		
+		if velocity.x != 0:
+			current_state = States.WALK
+		
+		if not is_on_floor():
+			current_state = States.JUMP
 
 """Gestiona la animación que se reproduce en base al estado del objeto"""
 func manage_animations() -> void:
 	match current_state:
 		States.IDLE:
 			animated_sprite.play("idle")
+		States.WALK:
+			animated_sprite.play("walk")
+			if velocity.x > 0:
+				animated_sprite.flip_h = true
+			else:
+				animated_sprite.flip_h = false
+		States.JUMP:
+			animated_sprite.play("jump")
 		States.COVERED:
 			animated_sprite.animation = "covered"
 		States.DEFEATED:

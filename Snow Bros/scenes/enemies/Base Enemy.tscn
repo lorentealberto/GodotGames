@@ -23,14 +23,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "shaking snow",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 10 ) ],
@@ -38,19 +38,9 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "defeated",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "rolling",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
@@ -58,14 +48,24 @@ animations = [ {
 "name": "dead",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "defeated",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "covered",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "shaking snow",
+"name": "rolling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
 "speed": 5.0
 } ]
 

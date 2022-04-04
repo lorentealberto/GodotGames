@@ -1,5 +1,25 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/enemies/Base Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/enemies/Red Demon.gd" type="Script" id=2]
 
 [node name="Red Demon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Top" type="RayCast2D" parent="." index="3"]
+enabled = true
+cast_to = Vector2( 0, -25 )
+
+[node name="Right" type="RayCast2D" parent="." index="4"]
+enabled = true
+cast_to = Vector2( 15, 0 )
+
+[node name="Left" type="RayCast2D" parent="." index="5"]
+enabled = true
+cast_to = Vector2( -15, 0 )
+
+[node name="ActionTimer" type="Timer" parent="." index="6"]
+autostart = true
+
+[connection signal="on_floor" from="." to="." method="_on_Red_Demon_on_floor"]
+[connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]

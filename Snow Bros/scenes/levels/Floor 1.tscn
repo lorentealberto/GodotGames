@@ -103,13 +103,4 @@ one_way_collision = true
 [node name="Enemies" type="Node" parent="." index="4"]
 
 [node name="Red Demon" parent="Enemies" index="0" instance=ExtResource( 1 )]
-position = Vector2( 129, 132 )
-
-[node name="Red Demon2" parent="Enemies" index="1" instance=ExtResource( 1 )]
-position = Vector2( 201, 102 )
-
-[node name="Red Demon4" parent="Enemies" index="2" instance=ExtResource( 1 )]
-position = Vector2( 129, 52 )
-
-[node name="Red Demon3" parent="Enemies" index="3" instance=ExtResource( 1 )]
-position = Vector2( 49, 101 )
+position = Vector2( 209, 101 )
