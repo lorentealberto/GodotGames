@@ -25,6 +25,11 @@ func _physics_process(delta):
 	if not current_state in [States.COVERED, States.ROLLING]:
 		choose_action(delta)
 		manage_stopped_timer(delta)
+	else:
+		if left_sensor.is_colliding():
+			direction = "right"
+		elif right_sensor.is_colliding():
+			direction = "left"
 
 func choose_action(delta:float) -> void:
 	if not block_action:
@@ -33,7 +38,6 @@ func choose_action(delta:float) -> void:
 			platform_mode = true
 		else:
 			platform_mode = false
-
 	match action:
 		0, 1: #Jump
 			if head_sensor.is_colliding():

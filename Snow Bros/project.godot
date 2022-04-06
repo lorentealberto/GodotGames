@@ -27,7 +27,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Snow Bros"
-run/main_scene="res://scenes/levels/Floor 1.tscn"
 config/icon="res://icon.png"
 
 [autoload]

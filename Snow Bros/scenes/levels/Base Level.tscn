@@ -27,3 +27,11 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeadZone"]
 position = Vector2( 257, 191 )
 shape = SubResource( 1 )
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Whole" type="StaticBody2D" parent="Platforms"]
+
+[node name="One Way" type="StaticBody2D" parent="Platforms"]
+
+[node name="Enemies" type="Node" parent="."]

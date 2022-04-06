@@ -1,107 +1,109 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/enemies/Red Demon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/Base Level.tscn" type="PackedScene" id=2]
 
-[sub_resource type="SegmentShape2D" id=1]
-b = Vector2( 262, 0 )
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 128, 2.5 )
 
-[sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -3, 0 )
-b = Vector2( 64, 0 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 2.5 )
 
-[sub_resource type="SegmentShape2D" id=3]
-b = Vector2( 70, 0 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.5, 3 )
 
-[sub_resource type="SegmentShape2D" id=4]
-b = Vector2( 159, 0 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8.5, 3 )
 
-[sub_resource type="SegmentShape2D" id=5]
-b = Vector2( 116, 0 )
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 67.5, 2.5 )
 
-[sub_resource type="SegmentShape2D" id=6]
-b = Vector2( 33, 0 )
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 67, 2.5 )
 
-[sub_resource type="SegmentShape2D" id=7]
-b = Vector2( -16, 0 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 80, 2.5 )
 
-[sub_resource type="SegmentShape2D" id=8]
-a = Vector2( 0, -1 )
-b = Vector2( 125, -1 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 46.5, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 32, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 46, 3 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 16.5, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 16.5, 2 )
 
 [node name="Level 1" instance=ExtResource( 2 )]
 
 [node name="Player" parent="." index="1"]
 position = Vector2( 129, 197 )
 
-[node name="Platforms" type="Node" parent="." index="3"]
-
-[node name="Whole" type="StaticBody2D" parent="Platforms" index="0"]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Whole" index="0"]
-position = Vector2( -3, 210 )
-shape = SubResource( 1 )
-
-[node name="One Way" type="StaticBody2D" parent="Platforms" index="1"]
+position = Vector2( 128, 211.5 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/One Way" index="0"]
-position = Vector2( 0, 178 )
+position = Vector2( 128, 67.5 )
 shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/One Way" index="1"]
-position = Vector2( 96, 178 )
+position = Vector2( 189, 72.5 )
+rotation = 1.5708
 shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Platforms/One Way" index="2"]
-position = Vector2( 192, 178 )
-shape = SubResource( 3 )
-one_way_collision = true
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/One Way" index="3"]
-position = Vector2( 49, 146 )
+position = Vector2( 67, 72.5 )
+rotation = -1.5708
 shape = SubResource( 4 )
 one_way_collision = true
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/One Way" index="4"]
-position = Vector2( -4, 114 )
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platforms/One Way" index="3"]
+position = Vector2( 44.5, 115.5 )
 shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/One Way" index="4"]
+position = Vector2( 211, 115.5 )
+shape = SubResource( 6 )
 one_way_collision = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Platforms/One Way" index="5"]
-position = Vector2( 144, 114 )
-shape = SubResource( 5 )
-one_way_collision = true
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/One Way" index="6"]
-position = Vector2( 32, 82 )
-shape = SubResource( 6 )
-one_way_collision = true
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/One Way" index="7"]
-position = Vector2( 191, 82 )
-shape = SubResource( 6 )
-one_way_collision = true
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/One Way" index="8"]
-position = Vector2( 66, 65 )
-rotation = 4.71239
+position = Vector2( 128, 147.5 )
 shape = SubResource( 7 )
 one_way_collision = true
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/One Way" index="9"]
-position = Vector2( 190, 81 )
-rotation = 1.5708
-shape = SubResource( 7 )
-one_way_collision = true
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Platforms/One Way" index="10"]
-position = Vector2( 66, 67 )
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Platforms/One Way" index="6"]
+position = Vector2( 17.5, 179.5 )
 shape = SubResource( 8 )
 one_way_collision = true
 
-[node name="Enemies" type="Node" parent="." index="4"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Platforms/One Way" index="7"]
+position = Vector2( 128, 179.5 )
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Platforms/One Way" index="8"]
+position = Vector2( 238, 180 )
+shape = SubResource( 10 )
+one_way_collision = true
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Platforms/One Way" index="9"]
+position = Vector2( 207.5, 83.5 )
+shape = SubResource( 11 )
+one_way_collision = true
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Platforms/One Way" index="10"]
+position = Vector2( 48.5, 83 )
+shape = SubResource( 12 )
+one_way_collision = true
 
 [node name="Red Demon" parent="Enemies" index="0" instance=ExtResource( 1 )]
 position = Vector2( 224, 100 )

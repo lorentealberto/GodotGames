@@ -17,6 +17,7 @@ const JUMP_POWER:float = 12000.0 #Potencia de salto
 var kicked:bool = false
 var direction:String
 var SWIDTH:float
+var disabled:bool = false
 
 func _ready():
 	SWIDTH = get_viewport_rect().size.x
@@ -152,6 +153,7 @@ func disable() -> void:
 	position.x = -100
 	set_process(false)
 	set_physics_process(false)
+	disabled = true
 
 """Evento que se dispara cada vez que se acaba de reproducir una animación"""
 func _on_AnimatedSprite_animation_finished():
