@@ -1,8 +1,6 @@
 extends KinematicBody2D
 class_name Enemy #Nombre de la clase
 
-signal on_floor
-
 #Estados del objeto
 enum States { COVERED, DEAD, DEFEATED, DOWN, IDLE, JUMP, ROLLING, SHAKING_SNOW, WALK }
 var current_state = States.IDLE
@@ -19,7 +17,6 @@ const JUMP_POWER:float = 12000.0 #Potencia de salto
 var kicked:bool = false
 var direction:String
 var SWIDTH:float
-var can_jump:bool = false
 
 func _ready():
 	SWIDTH = get_viewport_rect().size.x
@@ -35,14 +32,11 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	manage_states()
 	update_when_kicked(delta)
-	jump(delta)
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 
 func jump(delta:float) -> void:
-	if can_jump and is_on_floor():
+	if is_on_floor():
 		velocity.y -= JUMP_POWER * delta
-		can_jump = false
-		emit_signal("on_floor")
 
 """Actualiza la posición y la dirección a la que se dirige el objeto cuando éste
 	es pateado
@@ -91,15 +85,17 @@ func manage_states() -> void:
 
 """Gestiona la animación que se reproduce en base al estado del objeto"""
 func manage_animations() -> void:
+	#Manage direction
+	if velocity.x > 0:
+		animated_sprite.flip_h = true
+	else:
+		animated_sprite.flip_h = false
 	match current_state:
 		States.IDLE:
 			animated_sprite.play("idle")
 		States.WALK:
 			animated_sprite.play("walk")
-			if velocity.x > 0:
-				animated_sprite.flip_h = true
-			else:
-				animated_sprite.flip_h = false
+			
 		States.JUMP:
 			animated_sprite.play("jump")
 		States.COVERED:
@@ -110,7 +106,8 @@ func manage_animations() -> void:
 """Aplica gravedad al objeto
 	delta: Tiempo en MS que ha transcurrido desde que se llamó a este método por última vez"""
 func apply_gravity(delta:float) -> void:
-	velocity.y += Settings.WORLD_GRAVITY * delta
+	if not is_on_floor():
+		velocity.y += Settings.WORLD_GRAVITY * delta
 
 """Aplica una fuerza de empuje al objeto
 	vel: Fuerza de empuje que se aplicará a este objeto"""
@@ -134,7 +131,6 @@ func kick(flip_h:bool) -> void:
 		direction = "right"
 	else:
 		direction = "left"
-	
 
 """Cambia el estado y la animación del objeto dependiendo del estado actual"""
 func cover() -> void:
@@ -142,6 +138,7 @@ func cover() -> void:
 		current_state = States.COVERED
 		animated_sprite.stop()
 		animated_sprite.frame = 0
+		velocity.x = 0
 	else:
 		animated_sprite.frame += 1
 		if animated_sprite.frame >= animated_sprite.frames.get_frame_count("covered") - 1:
@@ -151,16 +148,26 @@ func cover() -> void:
 func is_rolling() -> bool:
 	return current_state == States.ROLLING
 
+func disable() -> void:
+	position.x = -100
+	set_process(false)
+	set_physics_process(false)
+
 """Evento que se dispara cada vez que se acaba de reproducir una animación"""
 func _on_AnimatedSprite_animation_finished():
 	if animated_sprite.animation == "defeated":
 		queue_free()
 
-
 func _on_Area2D_area_entered(area):
-	if is_rolling():
+	if is_rolling() and velocity.x != 0:
 		if area.name == "EBody":
-			area.get_parent().current_state = States.DEFEATED
-			area.get_parent().can_jump = true
+			if area.get_parent().current_state == States.ROLLING:
+				area.get_parent().kick(animated_sprite.flip_h)
+			else:
+				area.get_parent().current_state = States.DEFEATED
+				area.get_parent().get_node("CollisionShape2D").set_deferred("disabled", true)
 		elif area.name == "DeadZone":
-			queue_free()
+			disable()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	disable()

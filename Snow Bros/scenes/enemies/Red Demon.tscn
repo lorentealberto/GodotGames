@@ -6,20 +6,23 @@
 [node name="Red Demon" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Top" type="RayCast2D" parent="." index="3"]
+[node name="LeftFoot" parent="." index="3"]
 enabled = true
-cast_to = Vector2( 0, -25 )
 
-[node name="Right" type="RayCast2D" parent="." index="4"]
+[node name="RightFoot" parent="." index="4"]
 enabled = true
-cast_to = Vector2( 15, 0 )
 
-[node name="Left" type="RayCast2D" parent="." index="5"]
+[node name="Right" parent="." index="5"]
 enabled = true
-cast_to = Vector2( -15, 0 )
 
-[node name="ActionTimer" type="Timer" parent="." index="6"]
-autostart = true
+[node name="Left" parent="." index="6"]
+enabled = true
 
-[connection signal="on_floor" from="." to="." method="_on_Red_Demon_on_floor"]
-[connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]
+[node name="Head" parent="." index="7"]
+enabled = true
+
+[node name="StoppedTimer" type="Timer" parent="." index="8"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="StoppedTimer" to="." method="_on_StoppedTimer_timeout"]

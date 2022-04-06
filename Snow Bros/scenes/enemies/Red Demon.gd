@@ -1,50 +1,103 @@
 extends "res://scenes/enemies/Base Enemy.gd"
 
-onready var top:RayCast2D = $Top
-onready var right:RayCast2D = $Right
-onready var left:RayCast2D = $Left
-onready var action_timer:Timer = $ActionTimer
+onready var head_sensor:RayCast2D = $Head
+onready var right_sensor:RayCast2D = $Right
+onready var left_sensor:RayCast2D = $Left
+onready var right_foot:RayCast2D = $RightFoot
+onready var left_foot:RayCast2D = $LeftFoot
 
-var can_go_right:bool = false
-var can_go_left:bool = false
-var can_go_up:bool = false
-var do:int = -1
+onready var stopped_timer:Timer = $StoppedTimer
 
-func _physics_process(delta):
+const MAX_DISTANCE:float = 256.0
+const MIN_DISTANCE:float = 50.0
+
+var old_pos:float = -1
+var block_action:bool = false
+var action:int
+var platform_mode:bool
+
+var distance:float
+
+func _ready():
 	randomize()
 	
+func _physics_process(delta):
+	if not current_state in [States.COVERED, States.ROLLING]:
+		choose_action(delta)
+		manage_stopped_timer(delta)
 
-	
-	match do:
-		0:
-			if not left.is_colliding():
-				go_to("left", delta)
-			else:
-				return
-		1:
-			if not right.is_colliding():
-				go_to("right", delta)
-			else:
-				return
-		2:
-			if not top.is_colliding():
-				can_jump = true
-			else:
-				return
-			
-	position.x = clamp(position.x, 0, get_viewport_rect().size.x)
-	if position.x == 0:
-		do = 1
-		action_timer.wait_time = rand_range(1, 2)
-	elif position.x == get_viewport_rect().size.x:
-		do = 0
-		action_timer.wait_time = rand_range(1, 2)
+func choose_action(delta:float) -> void:
+	if not block_action:
+		action = randi() % 4
+		if rand_range(0.0, 1.0) <= 0.5:
+			platform_mode = true
+		else:
+			platform_mode = false
 
-func _on_ActionTimer_timeout():
-	action_timer.wait_time = rand_range(1, 2)
-	do = randi() % 3
+	match action:
+		0, 1: #Jump
+			if head_sensor.is_colliding():
+				block_action = true
+				jump(delta)
+		2: #Right
+			if not right_sensor.is_colliding():
+				if not block_action:
+					distance = rand_range(MIN_DISTANCE, MAX_DISTANCE)
+					block_action = true
 
+				if platform_mode:
+					if right_foot.is_colliding():
+						move_distance(distance, "right", delta)
+					else:
+						stop()
+				else:
+					move_distance(distance, "right", delta)
+		3: #Left
+			if not left_sensor.is_colliding():
+				if not block_action:
+					distance = rand_range(MIN_DISTANCE, MAX_DISTANCE)
+					block_action = true
+				
+				if platform_mode:
+					if left_foot.is_colliding():
+						move_distance(distance, "left", delta)
+					else:
+						stop()
+				else:
+					move_distance(distance, "left", delta)
+	#Unlock action
+	if action in [0, 1] and is_on_floor():
+		block_action = false
 
-func _on_Red_Demon_on_floor():
-	can_jump = false
-	do = -1
+func move_distance(distance:float, direction:String, delta:float) -> void:
+	if old_pos == -1:
+		old_pos = position.x
+	if floor(abs(old_pos - position.x)) <= distance:
+		go_to(direction, delta)
+	else:
+		stop()
+	check_bounds(direction)
+
+func check_bounds(direction:String) -> void:
+	match direction:
+		"right":
+			if right_sensor.is_colliding() or position.x >= get_viewport_rect().size.x:
+				stop()
+		"left":
+			if left_sensor.is_colliding() or position.x <= 0:
+				stop()
+
+func manage_stopped_timer(delta:float) -> void:
+	if action in [2, 3]:
+		if velocity.x == 0:
+			stopped_timer.start()
+			jump(delta)
+			velocity.x += rand_range(-HSPEED, HSPEED) * delta
+
+func stop() -> void:
+	velocity.x = 0
+	action = -1
+	block_action = false
+
+func _on_StoppedTimer_timeout():
+	block_action = false

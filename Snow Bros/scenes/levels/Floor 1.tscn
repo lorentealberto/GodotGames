@@ -7,16 +7,17 @@
 b = Vector2( 262, 0 )
 
 [sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -3, 0 )
 b = Vector2( 64, 0 )
 
 [sub_resource type="SegmentShape2D" id=3]
-b = Vector2( 64, 0 )
+b = Vector2( 70, 0 )
 
 [sub_resource type="SegmentShape2D" id=4]
 b = Vector2( 159, 0 )
 
 [sub_resource type="SegmentShape2D" id=5]
-b = Vector2( 112, 0 )
+b = Vector2( 116, 0 )
 
 [sub_resource type="SegmentShape2D" id=6]
 b = Vector2( 33, 0 )
@@ -64,7 +65,7 @@ shape = SubResource( 4 )
 one_way_collision = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Platforms/One Way" index="4"]
-position = Vector2( 0, 114 )
+position = Vector2( -4, 114 )
 shape = SubResource( 5 )
 one_way_collision = true
 
@@ -103,4 +104,13 @@ one_way_collision = true
 [node name="Enemies" type="Node" parent="." index="4"]
 
 [node name="Red Demon" parent="Enemies" index="0" instance=ExtResource( 1 )]
-position = Vector2( 209, 101 )
+position = Vector2( 224, 100 )
+
+[node name="Red Demon3" parent="Enemies" index="1" instance=ExtResource( 1 )]
+position = Vector2( 130, 52 )
+
+[node name="Red Demon4" parent="Enemies" index="2" instance=ExtResource( 1 )]
+position = Vector2( 127, 129 )
+
+[node name="Red Demon2" parent="Enemies" index="3" instance=ExtResource( 1 )]
+position = Vector2( 54, 101 )
