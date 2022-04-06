@@ -1,12 +1,6 @@
 extends "res://scenes/enemies/Base Enemy.gd"
 
-onready var head_sensor:RayCast2D = $Head
-onready var right_sensor:RayCast2D = $Right
-onready var left_sensor:RayCast2D = $Left
-onready var right_foot:RayCast2D = $RightFoot
-onready var left_foot:RayCast2D = $LeftFoot
 
-onready var stopped_timer:Timer = $StoppedTimer
 
 const MAX_DISTANCE:float = 256.0
 const MIN_DISTANCE:float = 50.0

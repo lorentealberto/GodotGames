@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://scenes/enemies/Base Enemy.gd"
 }, {
 "base": "Area2D",
+"class": "Flame",
+"language": "GDScript",
+"path": "res://scenes/enemies/Flame.gd"
+}, {
+"base": "Area2D",
 "class": "Snowflake",
 "language": "GDScript",
 "path": "res://scenes/player/Snowflake.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
+"Flame": "",
 "Snowflake": ""
 }
 

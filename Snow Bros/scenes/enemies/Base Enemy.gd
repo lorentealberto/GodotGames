@@ -1,6 +1,14 @@
 extends KinematicBody2D
 class_name Enemy #Nombre de la clase
 
+onready var head_sensor:RayCast2D = $Head
+onready var right_sensor:RayCast2D = $Right
+onready var left_sensor:RayCast2D = $Left
+onready var right_foot:RayCast2D = $RightFoot
+onready var left_foot:RayCast2D = $LeftFoot
+
+onready var stopped_timer:Timer = $StoppedTimer
+
 #Estados del objeto
 enum States { COVERED, DEAD, DEFEATED, DOWN, IDLE, JUMP, ROLLING, SHAKING_SNOW, WALK }
 var current_state = States.IDLE

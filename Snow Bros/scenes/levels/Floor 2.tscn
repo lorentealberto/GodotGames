@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/levels/Base Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/floors/floor 2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/enemies/Yellow Troll.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/Frog.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 2.5 )
@@ -167,3 +168,9 @@ position = Vector2( 42, 67 )
 
 [node name="Yellow Troll3" parent="Enemies" index="2" instance=ExtResource( 3 )]
 position = Vector2( 183, 130 )
+
+[node name="Frog" parent="Enemies" index="3" instance=ExtResource( 4 )]
+position = Vector2( 76, 163 )
+
+[node name="Frog2" parent="Enemies" index="4" instance=ExtResource( 4 )]
+position = Vector2( 181, 68 )
