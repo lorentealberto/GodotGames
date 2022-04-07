@@ -34,4 +34,4 @@ shape = SubResource( 1 )
 
 [node name="One Way" type="StaticBody2D" parent="Platforms"]
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node2D" parent="."]

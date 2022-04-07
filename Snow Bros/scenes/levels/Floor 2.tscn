@@ -173,4 +173,4 @@ position = Vector2( 183, 130 )
 position = Vector2( 76, 163 )
 
 [node name="Frog2" parent="Enemies" index="4" instance=ExtResource( 4 )]
-position = Vector2( 181, 68 )
+position = Vector2( 186, 69 )

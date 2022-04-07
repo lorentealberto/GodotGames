@@ -18,9 +18,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func _on_Flame_area_entered(area):
-	if area.name != "Frog":
-		queue_free()
-
-func _on_Flame_body_entered(body):
-	if body.name != "Frog":
+	if area.get_parent().name == "Player":
 		queue_free()

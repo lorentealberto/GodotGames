@@ -157,11 +157,17 @@ func cover() -> void:
 func is_rolling() -> bool:
 	return current_state == States.ROLLING
 
+func is_covered() -> bool:
+	return current_state == States.COVERED
+
 func disable() -> void:
 	position.x = -100
 	set_process(false)
 	set_physics_process(false)
 	disabled = true
+
+func stop() -> void:
+	velocity.x = 0
 
 """Evento que se dispara cada vez que se acaba de reproducir una animación"""
 func _on_AnimatedSprite_animation_finished():
