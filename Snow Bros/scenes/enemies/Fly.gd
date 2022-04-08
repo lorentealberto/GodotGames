@@ -1,7 +1,5 @@
 extends "res://scenes/enemies/Base Enemy.gd"
 
-
-
 const MAX_DISTANCE:float = 256.0
 const MIN_DISTANCE:float = 50.0
 

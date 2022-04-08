@@ -19,4 +19,4 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Flame_area_entered(area):
 	if area.get_parent().name == "Player":
-		queue_free()
+		get_tree().change_scene("res://scenes/levels/Floor 1.tscn")

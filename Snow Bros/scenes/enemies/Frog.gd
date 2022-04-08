@@ -36,4 +36,4 @@ func shoot() -> void:
 	var flame:Flame = pl_flame.instance()
 	flame.position = global_position
 	flame.direction = current_direction
-	get_parent().add_child(flame)
+	get_parent().get_parent().add_child(flame)

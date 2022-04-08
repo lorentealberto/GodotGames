@@ -173,9 +173,11 @@ func stop() -> void:
 """Evento que se dispara cada vez que se acaba de reproducir una animación"""
 func _on_AnimatedSprite_animation_finished():
 	if animated_sprite.animation == "defeated":
-		queue_free()
+		disable()
 
 func _on_Area2D_area_entered(area):
+	if area.get_parent().name == "Player":
+		get_tree().change_scene("res://scenes/levels/Floor 1.tscn")
 	if is_rolling() and velocity.x != 0:
 		if area.name == "EBody":
 			if area.get_parent().current_state == States.ROLLING:
