@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/enemies/Base Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/enemies/red demon/jump/0.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/enemies/soon/1.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/enemies/red demon/defeated/3.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/enemies/red demon/shaking snow/1.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/enemies/soon/3.png" type="Texture" id=5]
@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/graphics/objects/snowball/rolling/3.png" type="Texture" id=9]
 [ext_resource path="res://assets/graphics/objects/snowball/melting/0.png" type="Texture" id=10]
 [ext_resource path="res://assets/graphics/objects/snowball/rolling/2.png" type="Texture" id=11]
-[ext_resource path="res://scenes/enemies/Fly.gd" type="Script" id=12]
+[ext_resource path="res://scenes/enemies/bosses/scripts/Boss 1 Minion.gd" type="Script" id=12]
 [ext_resource path="res://assets/graphics/objects/snowball/melting/1.png" type="Texture" id=13]
 [ext_resource path="res://assets/graphics/enemies/red demon/defeated/0.png" type="Texture" id=14]
 [ext_resource path="res://assets/graphics/enemies/red demon/defeated/1.png" type="Texture" id=15]
@@ -20,37 +20,13 @@
 [ext_resource path="res://assets/graphics/objects/snowball/rolling/0.png" type="Texture" id=18]
 [ext_resource path="res://assets/graphics/enemies/soon/2.png" type="Texture" id=19]
 [ext_resource path="res://assets/graphics/enemies/red demon/dead/0.png" type="Texture" id=20]
+[ext_resource path="res://assets/graphics/enemies/soon/0.png" type="Texture" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": true,
-"name": "dead",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 13 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "covered",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
@@ -63,10 +39,35 @@ animations = [ {
 "name": "rolling",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "defeated",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 13 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "covered",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
 } ]
 
 [node name="Boss 1 Minion" instance=ExtResource( 1 )]
@@ -75,3 +76,8 @@ script = ExtResource( 12 )
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 1 )
 animation = "walk"
+
+[node name="StoppedTimer" parent="." index="9"]
+wait_time = 0.25
+
+[connection signal="timeout" from="StoppedTimer" to="." method="_on_StoppedTimer_timeout"]

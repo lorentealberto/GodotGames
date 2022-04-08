@@ -5,3 +5,7 @@ func _on_Timer_timeout():
 		disabled = true
 	else:
 		disabled = false
+
+
+func _on_Boss_1_defeated():
+	disabled = true

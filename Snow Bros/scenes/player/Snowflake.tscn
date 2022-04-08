@@ -16,6 +16,7 @@ animations = [ {
 extents = Vector2( 4, 8 )
 
 [node name="Snowflake" type="Area2D"]
+collision_mask = 2
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

@@ -42,7 +42,9 @@ func _physics_process(delta):
 	manage_states()
 	update_when_kicked(delta)
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
-	position.x = clamp(position.x, 0, get_viewport_rect().size.x)
+	
+	if not current_state in [States.COVERED, States.ROLLING]:
+		position.x = clamp(position.x, 0, get_viewport_rect().size.x)
 
 func jump(delta:float) -> void:
 	if is_on_floor():
@@ -153,6 +155,8 @@ func cover() -> void:
 		animated_sprite.frame += 1
 		if animated_sprite.frame >= animated_sprite.frames.get_frame_count("covered") - 1:
 			current_state = States.ROLLING
+			$EBody.set_collision_layer_bit(1, false)
+			$EBody.set_collision_layer_bit(3, true)
 
 """Devuelve true o false en función de si el objeto se encuentra en el estado rolling"""
 func is_rolling() -> bool:
@@ -176,12 +180,13 @@ func _on_AnimatedSprite_animation_finished():
 		disable()
 
 func _on_Area2D_area_entered(area):
-	if area.get_parent().name == "Player":
+	if not current_state in [States.COVERED, States.ROLLING] and area.get_parent().name == "Player":
 		get_tree().change_scene("res://scenes/levels/Floor 1.tscn")
 	if is_rolling() and velocity.x != 0:
 		if area.name == "EBody":
 			if area.get_parent().current_state == States.ROLLING:
 				area.get_parent().kick(animated_sprite.flip_h)
+				print("oh")
 			else:
 				area.get_parent().current_state = States.DEFEATED
 				area.get_parent().get_node("CollisionShape2D").set_deferred("disabled", true)

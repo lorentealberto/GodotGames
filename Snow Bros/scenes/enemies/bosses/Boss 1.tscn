@@ -6,38 +6,38 @@
 [ext_resource path="res://assets/graphics/enemies/bosses/boss 1/defeated/0.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/enemies/bosses/boss 1/jump/0.png" type="Texture" id=5]
 [ext_resource path="res://scenes/enemies/bosses/scripts/Boss 1.gd" type="Script" id=6]
+[ext_resource path="res://scenes/enemies/bosses/bodies/stand.tres" type="Shape2D" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "defeated",
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "defeated",
+"name": "idle",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 33 )
-
 [node name="Boss 1" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "defeated"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
-shape = SubResource( 2 )
+shape = ExtResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -46,5 +46,12 @@ autostart = true
 one_shot = true
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 1 )
+shape = ExtResource( 7 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="MinionTimer" to="." method="_on_MinionTimer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

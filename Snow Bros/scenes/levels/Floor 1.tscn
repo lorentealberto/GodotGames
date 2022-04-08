@@ -43,6 +43,12 @@ next_level = ExtResource( 3 )
 [node name="Player" parent="." index="1"]
 position = Vector2( 129, 197 )
 
+[node name="CollisionShape2D" parent="DeadZone" index="0"]
+position = Vector2( -1, 191 )
+
+[node name="CollisionShape2D2" parent="DeadZone" index="1"]
+position = Vector2( 256, 191 )
+
 [node name="Whole" parent="Platforms" index="0"]
 position = Vector2( -4, 210 )
 
@@ -108,12 +114,16 @@ one_way_collision = true
 
 [node name="Red Demon" parent="Enemies" index="0" instance=ExtResource( 1 )]
 position = Vector2( 224, 100 )
+collision_mask = 5
 
 [node name="Red Demon3" parent="Enemies" index="1" instance=ExtResource( 1 )]
 position = Vector2( 130, 52 )
+collision_mask = 5
 
 [node name="Red Demon4" parent="Enemies" index="2" instance=ExtResource( 1 )]
 position = Vector2( 127, 129 )
+collision_mask = 5
 
 [node name="Red Demon2" parent="Enemies" index="3" instance=ExtResource( 1 )]
 position = Vector2( 54, 101 )
+collision_mask = 5
