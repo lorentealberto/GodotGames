@@ -76,6 +76,15 @@ right={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_render/layer_2="Enemies"
+2d_render/layer_3="Platforms"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Platforms"
+
 [physics]
 
 common/enable_pause_aware_picking=true
