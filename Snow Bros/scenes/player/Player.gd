@@ -12,7 +12,7 @@ enum States { APPEARING, IDLE, JUMPING, PUSHING, SHOOTING, WALKING }
 var current_state:int = States.APPEARING
 
 #Constantes
-const HSPEED:float = 6000.0 #Velocidad horizontal
+const HSPEED:float = 5000.0 #Velocidad horizontal
 const JUMP_POWER:float = 12000.0 #Potencia de salto
 const RAY_LENGTH:int = 18
 

@@ -19,7 +19,7 @@ onready var animated_sprite:AnimatedSprite = $AnimatedSprite
 #Velocidad del objeto
 var velocity:Vector2
 
-const HSPEED:float = 3000.0
+const HSPEED:float = 2500.0
 const KICKED_SPEED:float = 10000.0
 const JUMP_POWER:float = 12000.0 #Potencia de salto
 var kicked:bool = false
@@ -42,6 +42,7 @@ func _physics_process(delta):
 	manage_states()
 	update_when_kicked(delta)
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+	position.x = clamp(position.x, 0, get_viewport_rect().size.x)
 
 func jump(delta:float) -> void:
 	if is_on_floor():
