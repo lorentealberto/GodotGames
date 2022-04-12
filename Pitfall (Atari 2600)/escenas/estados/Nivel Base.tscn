@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://escenas/jugador/Jugador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://recursos/graficos/miscelenea/fondo.png" type="Texture" id=2]
+[ext_resource path="res://recursos/graficos/miscelenea/suelo.png" type="Texture" id=3]
+[ext_resource path="res://recursos/graficos/miscelenea/subsuelo.png" type="Texture" id=4]
+
+[node name="Nivel Base" type="Node2D"]
+
+[node name="Fondo" type="Sprite" parent="."]
+scale = Vector2( 0.248437, 0.1875 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Suelo" type="Sprite" parent="."]
+position = Vector2( 80, 131 )
+texture = ExtResource( 3 )
+
+[node name="Subsuelo" type="Sprite" parent="Suelo"]
+position = Vector2( 0, 58 )
+texture = ExtResource( 4 )
+
+[node name="Jugador" parent="." instance=ExtResource( 1 )]
+position = Vector2( 30, 118 )

@@ -1,0 +1,68 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://recursos/graficos/jugador/parado.png" type="Texture" id=1]
+[ext_resource path="res://recursos/graficos/jugador/corriendo_5.png" type="Texture" id=2]
+[ext_resource path="res://recursos/graficos/jugador/corriendo_3.png" type="Texture" id=3]
+[ext_resource path="res://recursos/graficos/jugador/corriendo_4.png" type="Texture" id=4]
+[ext_resource path="res://recursos/graficos/jugador/corriendo_1.png" type="Texture" id=5]
+[ext_resource path="res://recursos/graficos/jugador/corriendo_2.png" type="Texture" id=6]
+[ext_resource path="res://escenas/jugador/scripts/Jugador.gd" type="Script" id=7]
+[ext_resource path="res://recursos/graficos/jugador/saltando_1.png" type="Texture" id=8]
+[ext_resource path="res://recursos/graficos/jugador/saltando_2.png" type="Texture" id=9]
+[ext_resource path="res://recursos/graficos/jugador/escalando_1.png" type="Texture" id=10]
+[ext_resource path="res://recursos/graficos/jugador/escalando_2.png" type="Texture" id=11]
+[ext_resource path="res://recursos/graficos/jugador/en_cuerda.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "escalando",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "en_cuerda",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "saltando",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "corriendo",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3, 10 )
+
+[node name="Jugador" type="KinematicBody2D"]
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "parado"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10 )
+shape = SubResource( 2 )
+
+[node name="Cuerpo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo"]
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Cuerpo" to="." method="_on_Cuerpo_area_entered"]
+[connection signal="area_exited" from="Cuerpo" to="." method="_on_Cuerpo_area_exited"]
