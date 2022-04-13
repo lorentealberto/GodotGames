@@ -1,11 +1,17 @@
 extends Area2D
 
-export(bool) var estatico
+export(bool) var estatica
 
 const VELOCIDAD_HORIZONTAL:float = -25.0
 
+func _ready():
+	if not estatica:
+		$AnimatedSprite.play("encendida")
+	else:
+		$AnimatedSprite.play("apagada")
+
 func _physics_process(delta):
-	if not estatico:
+	if not estatica:
 		position.x += VELOCIDAD_HORIZONTAL * delta
 		reiniciar_posicion()
 
