@@ -22,7 +22,7 @@ extents = Vector2( 11, 3 )
 position = Vector2( 148, 115 )
 
 [node name="Sierra2" parent="Obstaculos" index="1" instance=ExtResource( 4 )]
-position = Vector2( 175, 115 )
+position = Vector2( 180, 115 )
 
 [node name="PlataformaSuelo" type="StaticBody2D" parent="." index="3"]
 
@@ -75,3 +75,6 @@ texture = ExtResource( 3 )
 
 [node name="Jugador" parent="." index="6"]
 position = Vector2( 17, 101 )
+
+[connection signal="vibracion" from="Obstaculos/Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
+[connection signal="vibracion" from="Obstaculos/Sierra2" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
