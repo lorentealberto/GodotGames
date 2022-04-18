@@ -11,10 +11,13 @@ var estado_actual:int
 const VELOCIDAD_HORIZONTAL:float = 2750.0
 const GRAVEDAD:float = 750.0
 const POTENCIA_DE_SALTO:float = -10050.0
+
 var velocidad:Vector2
-var escalera:Area2D = null
-var en_fondo_escalera:bool = false
 var velocidad_anterior:Vector2 = Vector2.ZERO
+
+"""var en_fondo_escalera:bool = false
+var escalera:Area2D = null"""
+var escalando:bool = false
 
 func _process(_delta):
 	gestionar_animaciones()
@@ -87,12 +90,13 @@ func actualizar_direccion() -> void:
 		animated_sprite.flip_h = false
 
 func gestionar_escalera() -> void:
-	if escalera != null and en_fondo_escalera:
+	if escalando:
 		if Input.is_action_pressed("saltar"):
 			estado_actual = Estados.ESCALANDO
+	else:
+		estado_actual = -1
 
 func crear_polvo() -> void:
-	
 	var posicion_polvo:Vector2 = Vector2(0, 20)
 	var instancia_polvo:Position2D = pl_polvo.instance()
 	instancia_polvo.position = global_position + posicion_polvo
@@ -111,16 +115,3 @@ func crear_polvo() -> void:
 	instancia_polvo.position = global_position + posicion_polvo
 	instancia_polvo.scale = Vector2(-0.5, 0.5)
 	add_child(instancia_polvo)
-	
-
-func _on_Cuerpo_area_entered(area):
-	if area.name == "Escalera":
-		escalera = area
-	if area.name == "Gatillo":
-		en_fondo_escalera = true
-
-func _on_Cuerpo_area_exited(area):
-	if area.name == "Escalera":
-		escalera = null
-		en_fondo_escalera = false
-		estado_actual = -1
