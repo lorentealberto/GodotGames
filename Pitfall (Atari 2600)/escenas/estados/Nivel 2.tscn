@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://escenas/escalera/Escalera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://escenas/estados/Nivel Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://recursos/graficos/miscelenea/hoyo.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.5, 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 19.25, 3 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10.5, 3 )
+
+[node name="Nivel 2" instance=ExtResource( 2 )]
+
+[node name="PlataformaSuelo" type="StaticBody2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaSuelo" index="0"]
+position = Vector2( 15.5, 119 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="PlataformaSuelo" index="1"]
+position = Vector2( 139.75, 119 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlataformaSuelo" index="2"]
+position = Vector2( 56.5, 119 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PlataformaSuelo" index="3"]
+position = Vector2( 94, 119 )
+shape = SubResource( 3 )
+
+[node name="Hoyos" type="Node2D" parent="." index="3"]
+
+[node name="Sprite2" type="Sprite" parent="Hoyos" index="0"]
+position = Vector2( 75, 132 )
+scale = Vector2( 0.888889, 4.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="Hoyos" index="1"]
+position = Vector2( 37.75, 131 )
+scale = Vector2( 0.916667, 4.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite5" type="Sprite" parent="Hoyos" index="2"]
+position = Vector2( 37.75, 131 )
+scale = Vector2( 0.916667, 4.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite6" type="Sprite" parent="Hoyos" index="3"]
+position = Vector2( 113.5, 131.75 )
+scale = Vector2( 0.833333, 4.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite7" type="Sprite" parent="Hoyos" index="4"]
+position = Vector2( 113.5, 131.75 )
+scale = Vector2( 0.833333, 4.5 )
+texture = ExtResource( 3 )
+
+[node name="Escalera" parent="." index="4" instance=ExtResource( 1 )]
+position = Vector2( 0, -9 )
+
+[node name="Jugador" parent="." index="5"]
+position = Vector2( 17, 101 )

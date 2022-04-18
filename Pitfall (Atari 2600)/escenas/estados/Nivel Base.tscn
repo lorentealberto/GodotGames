@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://escenas/jugador/Jugador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/graficos/miscelenea/fondo.png" type="Texture" id=2]
 [ext_resource path="res://recursos/graficos/miscelenea/suelo.png" type="Texture" id=3]
 [ext_resource path="res://recursos/graficos/miscelenea/subsuelo.png" type="Texture" id=4]
 [ext_resource path="res://escenas/estados/scripts/Camara.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 81, 5 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 58 )
@@ -21,9 +24,22 @@ centered = false
 position = Vector2( 80, 131 )
 texture = ExtResource( 3 )
 
+[node name="PlataformaSuelo" type="StaticBody2D" parent="Suelo"]
+position = Vector2( 0, 58 )
+scale = Vector2( 1.14286, 1 )
+
 [node name="Subsuelo" type="Sprite" parent="Suelo"]
 position = Vector2( 0, 58 )
+scale = Vector2( 1.14286, 1 )
 texture = ExtResource( 4 )
+
+[node name="PlataformaSubsuelo" type="StaticBody2D" parent="Suelo/Subsuelo"]
+position = Vector2( 0, -58 )
+scale = Vector2( 0.875, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo/Subsuelo/PlataformaSubsuelo"]
+position = Vector2( -1, 58 )
+shape = SubResource( 2 )
 
 [node name="Jugador" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 118 )

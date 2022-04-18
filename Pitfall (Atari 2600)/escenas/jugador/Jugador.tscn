@@ -104,6 +104,11 @@ animations = [ {
 "name": "parado",
 "speed": 20.0
 }, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "corriendo",
+"speed": 22.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": false,
 "name": "saltando",
@@ -113,11 +118,6 @@ animations = [ {
 "loop": true,
 "name": "escalando",
 "speed": 10.0
-}, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
-"loop": true,
-"name": "corriendo",
-"speed": 22.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
