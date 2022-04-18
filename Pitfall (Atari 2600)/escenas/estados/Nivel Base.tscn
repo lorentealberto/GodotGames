@@ -12,7 +12,8 @@ extents = Vector2( 4, 58 )
 [node name="Nivel Base" type="Node2D"]
 
 [node name="Fondo" type="Sprite" parent="."]
-scale = Vector2( 0.25, 0.1875 )
+position = Vector2( -72, -64 )
+scale = Vector2( 0.4875, 0.365625 )
 texture = ExtResource( 2 )
 centered = false
 
@@ -44,4 +45,9 @@ script = ExtResource( 5 )
 
 [node name="Frecuencia" type="Timer" parent="Camera2D/TemblorPantalla"]
 
+[node name="Duracion" type="Timer" parent="Camera2D/TemblorPantalla"]
+one_shot = true
+
+[connection signal="caida" from="Jugador" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.2, 15.0, 16.0, 1.0 ]]
 [connection signal="timeout" from="Camera2D/TemblorPantalla/Frecuencia" to="Camera2D/TemblorPantalla" method="_on_Frecuencia_timeout"]
+[connection signal="timeout" from="Camera2D/TemblorPantalla/Duracion" to="Camera2D/TemblorPantalla" method="_on_Duracion_timeout"]

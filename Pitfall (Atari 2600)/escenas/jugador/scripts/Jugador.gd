@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal caida
+
 onready var animated_sprite:AnimatedSprite = $AnimatedSprite
 onready var pl_polvo:PackedScene = preload("res://escenas/jugador/Polvo.tscn")
 
@@ -24,11 +26,14 @@ func _physics_process(delta):
 	gestionar_estados()
 	controles(delta)
 	velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
+	impacto_caida()
+	velocidad_anterior = velocidad
+
+func impacto_caida() -> void:
 	if velocidad.y == 0 and velocidad_anterior.y != 0:
 		if (sqrt(pow(velocidad_anterior.y - velocidad.y, 2))) > 160:
 			crear_polvo()
-	velocidad_anterior = velocidad
-
+			emit_signal("caida")
 
 func aplicar_gravedad(delta:float) -> void:
 	if not is_on_floor() and estado_actual != Estados.ESCALANDO:
