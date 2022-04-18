@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var animated_sprite:AnimatedSprite = $AnimatedSprite
+onready var pl_polvo:PackedScene = preload("res://escenas/jugador/Polvo.tscn")
 
 enum Estados { PARADO, CORRIENDO, SALTANDO, ESCALANDO, EN_CUERDA }
 var estado_actual:int
@@ -11,6 +12,7 @@ const POTENCIA_DE_SALTO:float = -10050.0
 var velocidad:Vector2
 var escalera:Area2D = null
 var en_fondo_escalera:bool = false
+var velocidad_anterior:Vector2 = Vector2.ZERO
 
 func _process(_delta):
 	gestionar_animaciones()
@@ -22,6 +24,11 @@ func _physics_process(delta):
 	gestionar_estados()
 	controles(delta)
 	velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
+	if velocidad.y == 0 and velocidad_anterior.y != 0:
+		if (sqrt(pow(velocidad_anterior.y - velocidad.y, 2))) > 160:
+			crear_polvo()
+	velocidad_anterior = velocidad
+
 
 func aplicar_gravedad(delta:float) -> void:
 	if not is_on_floor() and estado_actual != Estados.ESCALANDO:
@@ -42,6 +49,7 @@ func controles(delta:float) -> void:
 			velocidad.y += POTENCIA_DE_SALTO / 3 * delta
 	elif Input.is_action_just_pressed("saltar") and is_on_floor():
 		velocidad.y += POTENCIA_DE_SALTO * delta
+
 
 func gestionar_estados() -> void:
 	if not estado_actual == Estados.ESCALANDO:
@@ -77,6 +85,28 @@ func gestionar_escalera() -> void:
 	if escalera != null and en_fondo_escalera:
 		if Input.is_action_pressed("saltar"):
 			estado_actual = Estados.ESCALANDO
+
+func crear_polvo() -> void:
+	
+	var posicion_polvo:Vector2 = Vector2(0, 20)
+	var instancia_polvo:Position2D = pl_polvo.instance()
+	instancia_polvo.position = global_position + posicion_polvo
+	add_child(instancia_polvo)
+	
+	instancia_polvo = pl_polvo.instance()
+	instancia_polvo.scale.x = -1
+	instancia_polvo.position = global_position + posicion_polvo
+	add_child(instancia_polvo)
+	
+	instancia_polvo = pl_polvo.instance()
+	instancia_polvo.position = global_position + posicion_polvo
+	instancia_polvo.scale = Vector2(0.5, 0.5)
+	add_child(instancia_polvo)
+	instancia_polvo = pl_polvo.instance()
+	instancia_polvo.position = global_position + posicion_polvo
+	instancia_polvo.scale = Vector2(-0.5, 0.5)
+	add_child(instancia_polvo)
+	
 
 func _on_Cuerpo_area_entered(area):
 	if area.name == "Escalera":
