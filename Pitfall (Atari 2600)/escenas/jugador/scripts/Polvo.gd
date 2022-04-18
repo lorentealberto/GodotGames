@@ -6,5 +6,5 @@ func _ready():
 	$AnimationPlayer.play("impacto")
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	queue_free()

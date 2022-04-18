@@ -8,6 +8,9 @@ var prioridad:int = 0
 
 onready var camara:Camera2D = get_parent()
 
+
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
 func comenzar(duracion:float = 0.2, frecuencia:float = 15.0, amplitud:float = 16, prioridad:int = 0):
 	if prioridad >= self.prioridad:
 		self.prioridad = prioridad
