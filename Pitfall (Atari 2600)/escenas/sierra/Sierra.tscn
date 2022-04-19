@@ -39,15 +39,15 @@ region = Rect2( 266, 0, 38, 38 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "apagada",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "encendida",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "apagada",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=10]
@@ -73,7 +73,6 @@ spread = 52.43
 gravity = Vector2( 0, 47 )
 initial_velocity = 123.85
 initial_velocity_random = 0.06
-scale_amount = 0.01
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
