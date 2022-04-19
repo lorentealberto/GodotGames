@@ -17,7 +17,6 @@ func gestionar_animaciones() -> void:
 		Estados.SACANDO_ESPINAS:
 			$AnimatedSprite.play("sacando_espinas")
 
-
 func _on_AnimatedSprite_animation_finished():
 	match $AnimatedSprite.animation:
 		"sacando_espinas":
@@ -27,14 +26,12 @@ func _on_AnimatedSprite_animation_finished():
 		_:
 			$CPUParticles2D.emitting = true
 
-
 func _on_Timer_timeout():
 	match estado_actual:
 		Estados.PARADO_ESPINAS_DENTRO:
 			estado_actual = Estados.SACANDO_ESPINAS
 		Estados.PARADO_ESPINAS_FUERA:
 			estado_actual = Estados.ENTRANDO_ESPINAS
-
 
 func tiene_espinas_fuera() -> bool:
 	return estado_actual in [Estados.PARADO_ESPINAS_FUERA, Estados.SACANDO_ESPINAS]

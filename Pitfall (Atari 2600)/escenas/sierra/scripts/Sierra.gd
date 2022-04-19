@@ -23,5 +23,8 @@ func reiniciar_posicion() -> void:
 	if position.x < 0:
 		position.x = get_viewport_rect().size.x
 
+func esta_encendida() -> bool:
+	return $AnimatedSprite.animation == "encendida"
+
 func _on_Timer_timeout():
 	emit_signal("vibracion")
