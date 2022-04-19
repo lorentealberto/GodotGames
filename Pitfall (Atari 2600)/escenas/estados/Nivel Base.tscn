@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://escenas/jugador/Jugador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/graficos/miscelenea/fondo.png" type="Texture" id=2]
 [ext_resource path="res://recursos/graficos/miscelenea/suelo.png" type="Texture" id=3]
 [ext_resource path="res://recursos/graficos/miscelenea/subsuelo.png" type="Texture" id=4]
 [ext_resource path="res://escenas/estados/scripts/Camara.gd" type="Script" id=5]
+[ext_resource path="res://escenas/telon/Telon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://escenas/estados/scripts/Nivel Base.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 35.5, 5 )
@@ -16,6 +18,7 @@ extents = Vector2( 81, 5 )
 extents = Vector2( 4, 58 )
 
 [node name="Nivel Base" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Fondo" type="Sprite" parent="."]
 position = Vector2( -72, -64 )
@@ -76,6 +79,10 @@ script = ExtResource( 5 )
 [node name="Duracion" type="Timer" parent="Camera2D/TemblorPantalla"]
 one_shot = true
 
+[node name="Telon" parent="." instance=ExtResource( 6 )]
+
 [connection signal="caida" from="Jugador" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.2, 15.0, 16.0, 2.0 ]]
+[connection signal="area_entered" from="Meta" to="." method="_on_Meta_area_entered"]
 [connection signal="timeout" from="Camera2D/TemblorPantalla/Frecuencia" to="Camera2D/TemblorPantalla" method="_on_Frecuencia_timeout"]
 [connection signal="timeout" from="Camera2D/TemblorPantalla/Duracion" to="Camera2D/TemblorPantalla" method="_on_Duracion_timeout"]
+[connection signal="telon_cerrado" from="Telon" to="." method="_on_Telon_telon_cerrado"]

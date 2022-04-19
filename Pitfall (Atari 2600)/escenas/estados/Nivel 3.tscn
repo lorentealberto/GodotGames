@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://escenas/estados/Nivel Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://escenas/sierra/Sierra.tscn" type="PackedScene" id=2]
 [ext_resource path="res://escenas/arenas movedizas/ArenasMovedizas.tscn" type="PackedScene" id=3]
 [ext_resource path="res://escenas/cuerda/Cuerda.tscn" type="PackedScene" id=4]
 [ext_resource path="res://escenas/caracol/Caracol.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/estados/Nivel 4.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 81, 5 )
 
 [node name="Nivel 3" instance=ExtResource( 1 )]
+siguiente_nivel = ExtResource( 6 )
 
 [node name="Obstaculos" type="Node2D" parent="." index="1"]
 
@@ -24,6 +26,9 @@ shape = SubResource( 1 )
 
 [node name="ArenasMovedizas" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( 80, 120 )
+
+[node name="Camera2D" parent="." index="6"]
+current = false
 
 [node name="Cuerda" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 80, 57 )
