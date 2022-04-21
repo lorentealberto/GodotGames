@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://recursos/graficos/miscelenea/arenas_movedizas.png" type="Texture" id=1]
+[ext_resource path="res://escenas/arenas movedizas/scripts/ArenasMovedizas.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.64645
 height = 41.957
 
 [node name="ArenasMovedizas" type="Area2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
@@ -18,3 +20,10 @@ position = Vector2( 0, -2 )
 rotation = 1.5708
 scale = Vector2( 1, 1.14286 )
 shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
