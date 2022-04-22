@@ -22,8 +22,8 @@ CuentaAtras="*res://escenas/Cuenta Atras/Cuenta Atras.tscn"
 
 window/size/width=160
 window/size/height=192
-window/size/test_width=480
-window/size/test_height=576
+window/size/test_width=960
+window/size/test_height=1152
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -44,6 +44,13 @@ saltar={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Personaje"
+2d_physics/layer_2="Enemigos"
+2d_physics/layer_3="Suelo"
+2d_physics/layer_4="Objetos"
 
 [physics]
 

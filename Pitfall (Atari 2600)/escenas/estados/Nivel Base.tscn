@@ -31,6 +31,8 @@ position = Vector2( 80, 131 )
 texture = ExtResource( 3 )
 
 [node name="ColisionSuelo" type="StaticBody2D" parent="Suelo"]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo/ColisionSuelo"]
 position = Vector2( 0, -8 )

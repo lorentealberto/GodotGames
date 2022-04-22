@@ -8,6 +8,7 @@ radius = 2.64645
 height = 41.957
 
 [node name="ArenasMovedizas" type="Area2D"]
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
