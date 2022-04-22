@@ -27,9 +27,6 @@ shape = SubResource( 1 )
 [node name="ArenasMovedizas" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( 80, 120 )
 
-[node name="Camera2D" parent="." index="6"]
-current = false
-
 [node name="Cuerda" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 80, 57 )
 angulos_rotacion = 60

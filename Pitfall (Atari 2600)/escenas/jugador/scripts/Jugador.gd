@@ -41,7 +41,7 @@ func _physics_process(delta):
 func comprobar_espinas_tortuga() -> void:
 	if tortuga != null:
 		if tortuga.tiene_espinas_fuera():
-			queue_free()
+			get_tree().reload_current_scene()
 
 func gestionar_cuerda() -> void:
 	if cuerda != null:

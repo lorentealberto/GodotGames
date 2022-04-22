@@ -68,9 +68,6 @@ position = Vector2( 80, 144 )
 [node name="Jugador" parent="." index="5"]
 position = Vector2( 17, 101 )
 
-[node name="Camera2D" parent="." index="7"]
-current = false
-
 [connection signal="vibracion" from="Obstaculos/Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
 [connection signal="vibracion" from="Obstaculos/Sierra2" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
 [connection signal="vibracion" from="Obstaculos/Sierra3" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]

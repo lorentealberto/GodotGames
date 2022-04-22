@@ -25,9 +25,6 @@ scale = Vector2( 0.5, 0.5 )
 [node name="ArenasMovedizas" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 80, 120 )
 
-[node name="Camera2D" parent="." index="6"]
-current = false
-
 [node name="Cuerda" parent="." index="7" instance=ExtResource( 6 )]
 position = Vector2( 80, 57 )
 angulos_rotacion = 60

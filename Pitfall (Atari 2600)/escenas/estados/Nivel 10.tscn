@@ -22,15 +22,14 @@ shape = SubResource( 1 )
 [node name="Jugador" parent="." index="3"]
 position = Vector2( 28, 95 )
 
-[node name="Camera2D" parent="." index="5"]
-current = false
-
-[node name="ArenasMovedizas" parent="." index="6" instance=ExtResource( 4 )]
+[node name="ArenasMovedizas" parent="." index="5" instance=ExtResource( 4 )]
 position = Vector2( 80, 119 )
 dinamico = true
 
-[node name="Cuerda" parent="." index="7" instance=ExtResource( 3 )]
+[node name="Cuerda" parent="." index="6" instance=ExtResource( 3 )]
 position = Vector2( 80, 55 )
 
-[node name="Caracol" parent="." index="8" instance=ExtResource( 6 )]
+[node name="Caracol" parent="." index="7" instance=ExtResource( 6 )]
 position = Vector2( 108, 178 )
+
+[connection signal="vibracion" from="Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]

@@ -16,8 +16,5 @@ shape = SubResource( 1 )
 [node name="Jugador" parent="." index="2"]
 position = Vector2( 11, 109 )
 
-[node name="Camera2D" parent="." index="4"]
-current = false
-
 [node name="Foso Cocodrilos" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( 80, 119 )
