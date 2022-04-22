@@ -39,21 +39,21 @@ region = Rect2( 266, 0, 38, 38 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "encendida",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "apagada",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "encendida",
+"speed": 12.0
 } ]
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 16.0
 
-[node name="Sierra" type="Area2D"]
+[node name="Sierra" type="Area2D" groups=["sierras"]]
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
 

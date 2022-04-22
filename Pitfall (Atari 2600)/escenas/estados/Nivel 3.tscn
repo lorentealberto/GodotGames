@@ -15,7 +15,7 @@ siguiente_nivel = ExtResource( 6 )
 
 [node name="Obstaculos" type="Node2D" parent="." index="1"]
 
-[node name="Sierra" parent="Obstaculos" index="0" groups=["sierras"] instance=ExtResource( 2 )]
+[node name="Sierra" parent="Obstaculos" index="0" instance=ExtResource( 2 )]
 position = Vector2( 150, 115 )
 
 [node name="Sierra2" parent="Obstaculos" index="1" instance=ExtResource( 2 )]
@@ -37,8 +37,6 @@ velocidad_rotacion = 0.75
 
 [node name="Caracol" parent="." index="8" instance=ExtResource( 5 )]
 position = Vector2( 113, 178 )
-scale = Vector2( 0.5, 0.5 )
-velocidad_horizontal = -500.0
 
 [connection signal="vibracion" from="Obstaculos/Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.1, 1.0 ]]
 [connection signal="vibracion" from="Obstaculos/Sierra2" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.1, 1.0 ]]

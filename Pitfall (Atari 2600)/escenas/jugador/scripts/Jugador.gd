@@ -141,19 +141,18 @@ func limpiar_estado_actual() -> void:
 	estado_actual = 0
 
 func _on_Cuerpo_area_entered(area):
-	if area.name == "Foso Cocodrilos":
-		queue_free()
+	if area.name == "Foso Cocodrilos" or area.name == "ArenasMovedizas":
+		get_tree().reload_current_scene()
 
 	if area.name == "Cuerda":
 		cuerda = area
 		estado_actual = Estados.EN_CUERDA
 
 	if area.is_in_group("sierras"):
-		if area.esta_encendida():
-			queue_free()
+			get_tree().reload_current_scene()
 	
 	if area.is_in_group("enemigos"):
-		queue_free()
+		get_tree().reload_current_scene()
 
 func _on_Cuerpo_area_exited(area):
 	if area.name == "Cuerda":

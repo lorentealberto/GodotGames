@@ -14,12 +14,16 @@ config/name="Pitfall (Atari 2600)"
 run/main_scene="res://escenas/estados/Nivel 1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CuentaAtras="*res://escenas/Cuenta Atras/Cuenta Atras.tscn"
+
 [display]
 
 window/size/width=160
 window/size/height=192
-window/size/test_width=800
-window/size/test_height=960
+window/size/test_width=480
+window/size/test_height=576
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

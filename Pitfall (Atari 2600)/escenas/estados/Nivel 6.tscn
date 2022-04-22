@@ -35,5 +35,3 @@ velocidad_rotacion = 0.75
 
 [node name="Caracol" parent="." index="8" instance=ExtResource( 4 )]
 position = Vector2( 113, 178 )
-scale = Vector2( 0.5, 0.5 )
-velocidad_horizontal = -500.0
