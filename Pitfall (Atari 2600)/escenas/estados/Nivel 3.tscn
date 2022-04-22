@@ -35,5 +35,8 @@ velocidad_rotacion = 0.75
 [node name="Caracol" parent="." index="8" instance=ExtResource( 5 )]
 position = Vector2( 113, 178 )
 
+[node name="Telon" parent="." index="9"]
+visible = false
+
 [connection signal="vibracion" from="Obstaculos/Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.1, 1.0 ]]
 [connection signal="vibracion" from="Obstaculos/Sierra2" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.1, 1.0 ]]

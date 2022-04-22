@@ -18,6 +18,10 @@ var velocidad_anterior:Vector2 = Vector2.ZERO
 var cuerda:Area2D = null
 var tortuga:StaticBody2D = null
 
+const COYOTE_TIME:float = 0.125
+var tiempo_en_aire:float = 0.0
+var saltos:int = 0
+
 """var en_fondo_escalera:bool = false
 var escalera:Area2D = null"""
 var escalando:bool = false
@@ -65,6 +69,8 @@ func impacto_caida() -> void:
 func aplicar_gravedad(delta:float) -> void:
 	if not is_on_floor() and not estado_actual in [Estados.ESCALANDO, Estados.EN_CUERDA]:
 		velocidad.y += GRAVEDAD * delta
+	else:
+		saltos = 0
 
 func controles(delta:float) -> void:
 	#Movimiento horizontal
@@ -75,14 +81,28 @@ func controles(delta:float) -> void:
 		elif Input.is_action_pressed("ir_izquierda"):
 			velocidad.x -= VELOCIDAD_HORIZONTAL * delta
 	#Saltar
+	
+	if $RayCast2D.is_colliding():
+		tiempo_en_aire = 0.0
+	else:
+		tiempo_en_aire += delta
+		
 	if estado_actual in [Estados.ESCALANDO, Estados.EN_CUERDA]:
 		velocidad.y = 0
 		if Input.is_action_pressed("saltar"):
 			if estado_actual == Estados.EN_CUERDA:
 				$TemporizadorCuerda.start()
 			velocidad.y += POTENCIA_DE_SALTO / 3 * delta
-	elif Input.is_action_just_pressed("saltar") and is_on_floor():
-		velocidad.y += POTENCIA_DE_SALTO * delta
+	elif Input.is_action_just_pressed("saltar") and saltos < 1:
+		if $RayCast2D.is_colliding():
+			saltar(delta)
+		else:
+			if tiempo_en_aire < COYOTE_TIME:
+				saltar(delta)
+
+func saltar(delta:float) -> void:
+	velocidad.y += POTENCIA_DE_SALTO * delta
+	saltos += 1
 
 func gestionar_estados() -> void:
 	if not estado_actual in [Estados.ESCALANDO, Estados.EN_CUERDA]:

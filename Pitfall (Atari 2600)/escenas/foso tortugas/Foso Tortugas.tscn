@@ -8,6 +8,7 @@ radius = 2.0
 height = 76.0
 
 [node name="Foso Tortugas" type="Area2D"]
+collision_layer = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.376471, 0.654902, 0.92549, 1 )
