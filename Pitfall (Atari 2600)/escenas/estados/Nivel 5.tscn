@@ -62,11 +62,11 @@ position = Vector2( 43, 131 )
 scale = Vector2( 0.916667, 4.5 )
 texture = ExtResource( 5 )
 
-[node name="Escalera" parent="." index="4" instance=ExtResource( 4 )]
-position = Vector2( 80, 144 )
-
-[node name="Jugador" parent="." index="5"]
+[node name="Jugador" parent="." index="4"]
 position = Vector2( 17, 101 )
+
+[node name="Escalera" parent="." index="5" instance=ExtResource( 4 )]
+position = Vector2( 80, 144 )
 
 [connection signal="vibracion" from="Obstaculos/Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
 [connection signal="vibracion" from="Obstaculos/Sierra2" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]

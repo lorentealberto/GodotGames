@@ -41,6 +41,8 @@ func _physics_process(delta):
 	velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
 	impacto_caida()
 	velocidad_anterior = velocidad
+	
+	position.x = clamp(position.x, 5, get_viewport_rect().size.x + 5)
 
 func comprobar_espinas_tortuga() -> void:
 	if tortuga != null:
@@ -75,7 +77,7 @@ func aplicar_gravedad(delta:float) -> void:
 func controles(delta:float) -> void:
 	#Movimiento horizontal
 	velocidad.x = 0
-	if not estado_actual in [Estados.ESCALANDO, Estados.EN_CUERDA]:
+	if not estado_actual in [Estados.EN_CUERDA]:
 		if Input.is_action_pressed("ir_derecha"):
 			velocidad.x += VELOCIDAD_HORIZONTAL * delta
 		elif Input.is_action_pressed("ir_izquierda"):

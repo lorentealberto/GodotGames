@@ -44,6 +44,7 @@ tracks/0/keys = {
 }
 
 [node name="Telon" type="Node2D"]
+z_index = 10
 script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

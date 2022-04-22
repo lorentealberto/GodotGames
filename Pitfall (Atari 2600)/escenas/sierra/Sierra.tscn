@@ -55,6 +55,7 @@ radius = 16.0
 
 [node name="Sierra" type="Area2D" groups=["sierras"]]
 scale = Vector2( 0.25, 0.25 )
+z_index = -10
 collision_layer = 2
 script = ExtResource( 1 )
 

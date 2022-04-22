@@ -31,8 +31,8 @@ shape = SubResource( 2 )
 position = Vector2( 45.5, -8 )
 shape = SubResource( 1 )
 
-[node name="Escalera" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( 80, 144 )
-
-[node name="Jugador" parent="." index="4"]
+[node name="Jugador" parent="." index="3"]
 position = Vector2( 30, 107 )
+
+[node name="Escalera" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( 80, 144 )
