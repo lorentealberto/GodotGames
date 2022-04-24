@@ -80,4 +80,6 @@ initial_velocity_random = 0.06
 wait_time = 0.25
 autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_Sierra_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Sierra_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -5,6 +5,7 @@ signal vibracion
 export(bool) var estatica
 
 const VELOCIDAD_HORIZONTAL:float = -25.0
+var suelo:StaticBody2D = null
 
 func _ready():
 	if not estatica:
@@ -12,6 +13,12 @@ func _ready():
 		$CPUParticles2D.emitting = true
 	else:
 		$AnimatedSprite.play("apagada")
+		$CPUParticles2D.emitting = false
+
+func _process(delta):
+	if suelo != null and not estatica:
+		$CPUParticles2D.emitting = true
+	else:
 		$CPUParticles2D.emitting = false
 
 func _physics_process(delta):
@@ -28,3 +35,13 @@ func esta_encendida() -> bool:
 
 func _on_Timer_timeout():
 	emit_signal("vibracion")
+
+
+func _on_Sierra_body_entered(body):
+	if body.is_in_group("Suelo"):
+		suelo = body
+
+
+func _on_Sierra_body_exited(body):
+	if body.is_in_group("Suelo"):
+		suelo = null

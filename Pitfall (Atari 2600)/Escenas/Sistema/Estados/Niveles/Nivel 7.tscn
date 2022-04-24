@@ -21,7 +21,7 @@ position = Vector2( 102, 137 )
 [node name="Suelo4" parent="Suelo/Suelo" index="3" instance=ExtResource( 5 )]
 position = Vector2( 146, 137 )
 
-[node name="ArenasMovedizas" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Arenas Movedizas" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 80, 119 )
 dinamico = true
 

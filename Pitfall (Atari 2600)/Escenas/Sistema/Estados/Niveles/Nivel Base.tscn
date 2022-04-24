@@ -82,7 +82,6 @@ position = Vector2( 164, 97 )
 shape = SubResource( 4 )
 
 [node name="Telon" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [connection signal="caida" from="Jugador" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.2, 15.0, 16.0, 2.0 ]]
 [connection signal="timeout" from="Camera2D/TemblorPantalla/Frecuencia" to="Camera2D/TemblorPantalla" method="_on_Frecuencia_timeout"]

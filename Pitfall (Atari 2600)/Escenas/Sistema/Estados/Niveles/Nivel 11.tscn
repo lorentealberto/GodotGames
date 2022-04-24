@@ -18,5 +18,5 @@ position = Vector2( 104, 137 )
 [node name="Suelo4" parent="Suelo/Suelo" index="3" instance=ExtResource( 1 )]
 position = Vector2( 148, 137 )
 
-[node name="Foso Cocodrilos" parent="." index="5" instance=ExtResource( 2 )]
+[node name="Foso Tortugas" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( 80, 119 )

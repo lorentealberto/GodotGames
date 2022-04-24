@@ -29,7 +29,7 @@ position = Vector2( 146, 137 )
 position = Vector2( 137, 116 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="ArenasMovedizas" parent="." index="3" instance=ExtResource( 2 )]
+[node name="Arenas Movedizas" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 80, 119 )
 
 [node name="Cuerda" parent="." index="7" instance=ExtResource( 6 )]
