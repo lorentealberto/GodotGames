@@ -32,7 +32,4 @@ dinamico = true
 [node name="Caracol" parent="." index="7" instance=ExtResource( 5 )]
 position = Vector2( 108, 178 )
 
-[node name="Telon" parent="." index="8"]
-visible = false
-
 [connection signal="vibracion" from="Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]

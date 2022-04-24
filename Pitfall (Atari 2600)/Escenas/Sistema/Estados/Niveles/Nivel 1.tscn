@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Escenas/Sistema/Estados/Niveles/Nivel Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://escenas/Entorno/Escalera/Escalera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/Sistema/Estados/Niveles/Nivel 2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Obstaculos/Sierra/Sierra.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Escenas/Entorno/Suelo/Suelo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/Interfaz Usuario/Pantalla Principal/Pantalla Principal.tscn" type="PackedScene" id=6]
 
 [node name="Nivel 1" instance=ExtResource( 1 )]
 siguiente_nivel = ExtResource( 3 )
@@ -48,3 +49,12 @@ collision_mask = 1
 
 [node name="Escalera" parent="." index="4" instance=ExtResource( 2 )]
 position = Vector2( 80, 144 )
+
+[node name="Pantalla Principal" parent="." index="7" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 160.0
+margin_bottom = 192.0
+
+[node name="Telon" parent="." index="8"]
+visible = false

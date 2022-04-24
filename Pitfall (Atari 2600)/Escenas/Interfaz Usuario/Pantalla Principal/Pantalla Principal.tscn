@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Escenas/Interfaz Usuario/Pantalla Principal/Graficos/titulo.png" type="Texture" id=1]
+[ext_resource path="res://Escenas/Interfaz Usuario/Pantalla Principal/Scripts/Titulo.gd" type="Script" id=2]
+[ext_resource path="res://recursos/fuentes/JustBubble.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Control
+
+var comenzar:bool = false
+"
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -95.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "desaparecer"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -180.0 ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[node name="Pantalla Principal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 160, 192 )
+script = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Titulo" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_bottom = -38.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Titulo"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Titulo"]
+reset_on_save = false
+anims/RESET = SubResource( 2 )
+anims/desaparecer = SubResource( 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_top = 0.609
+anchor_right = 0.862
+anchor_bottom = 0.802
+margin_top = 0.071991
+margin_right = 0.0799866
+margin_bottom = 0.0159912
+theme = SubResource( 5 )
+text = "Press [SPACEBAR] to start"
+valign = 1
+autowrap = true
+
+[connection signal="tween_completed" from="CanvasLayer/Titulo/Tween" to="CanvasLayer/Titulo" method="_on_Tween_tween_completed"]
