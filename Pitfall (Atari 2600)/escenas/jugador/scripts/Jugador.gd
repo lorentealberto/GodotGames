@@ -35,15 +35,14 @@ func _process(_delta):
 	gestionar_escalera()
 
 func _physics_process(delta):
-	if Configuracion.comenzar:
-		aplicar_gravedad(delta)
-		gestionar_estados()
-		controles(delta)
-		velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
-		impacto_caida()
-		velocidad_anterior = velocidad
-		
-		position.x = clamp(position.x, 5, get_viewport_rect().size.x + 5)
+	aplicar_gravedad(delta)
+	gestionar_estados()
+	controles(delta)
+	velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
+	impacto_caida()
+	velocidad_anterior = velocidad
+	
+	position.x = clamp(position.x, 5, get_viewport_rect().size.x + 5)
 
 func comprobar_espinas_tortuga() -> void:
 	if tortuga != null:
