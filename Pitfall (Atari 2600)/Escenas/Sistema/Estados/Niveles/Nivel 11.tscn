@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Escenas/Entorno/Suelo/Suelo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Escenas/Obstaculos/Foso Tortugas/Foso Tortugas.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Sistema/Estados/Niveles/Nivel Base.tscn" type="PackedScene" id=3]
+
+[node name="Nivel 4" instance=ExtResource( 3 )]
+
+[node name="Suelo" parent="Suelo/Suelo" index="0" instance=ExtResource( 1 )]
+position = Vector2( 17, 137 )
+
+[node name="Suelo2" parent="Suelo/Suelo" index="1" instance=ExtResource( 1 )]
+position = Vector2( 60, 137 )
+
+[node name="Suelo3" parent="Suelo/Suelo" index="2" instance=ExtResource( 1 )]
+position = Vector2( 104, 137 )
+
+[node name="Suelo4" parent="Suelo/Suelo" index="3" instance=ExtResource( 1 )]
+position = Vector2( 148, 137 )
+
+[node name="Foso Cocodrilos" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 80, 119 )

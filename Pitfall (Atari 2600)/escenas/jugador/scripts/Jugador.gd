@@ -163,7 +163,7 @@ func limpiar_estado_actual() -> void:
 	estado_actual = 0
 
 func _on_Cuerpo_area_entered(area):
-	if area.name == "Foso Cocodrilos" or area.name == "ArenasMovedizas":
+	if area.name == "Foso Tortugas" or area.name == "Arenas Movedizas":
 		get_tree().reload_current_scene()
 
 	if area.name == "Cuerda":

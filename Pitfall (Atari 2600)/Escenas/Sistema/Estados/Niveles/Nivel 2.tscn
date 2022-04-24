@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://escenas/Entorno/Escalera/Escalera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Escenas/Sistema/Estados/Niveles/Nivel Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Obstaculos/Sierra/Sierra.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Escenas/Sistema/Estados/Niveles/Nivel 3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/Entorno/Suelo/Suelo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Escenas/Entorno/Suelo/Mitad Suelo.tscn" type="PackedScene" id=7]
+
+[node name="Nivel 2" instance=ExtResource( 2 )]
+siguiente_nivel = ExtResource( 5 )
+
+[node name="Obstaculos" type="Node2D" parent="." index="1"]
+
+[node name="Sierra" parent="Obstaculos" index="0" instance=ExtResource( 4 )]
+position = Vector2( 148, 115 )
+
+[node name="Sierra2" parent="Obstaculos" index="1" instance=ExtResource( 4 )]
+position = Vector2( 180, 115 )
+
+[node name="Suelo" parent="Suelo/Suelo" index="0" instance=ExtResource( 6 )]
+position = Vector2( 12, 137 )
+
+[node name="Suelo2" parent="Suelo/Suelo" index="1" instance=ExtResource( 6 )]
+position = Vector2( 148, 137 )
+
+[node name="Mitad Suelo" parent="Suelo/Suelo" index="2" instance=ExtResource( 7 )]
+position = Vector2( 62, 137 )
+
+[node name="Mitad Suelo2" parent="Suelo/Suelo" index="3" instance=ExtResource( 7 )]
+position = Vector2( 98, 137 )
+
+[node name="Escalera" parent="." index="4" instance=ExtResource( 1 )]
+position = Vector2( 80, 144 )
+
+[connection signal="vibracion" from="Obstaculos/Sierra" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
+[connection signal="vibracion" from="Obstaculos/Sierra2" to="Camera2D/TemblorPantalla" method="comenzar" binds= [ 0.1, 7.5, 0.2, 1.0 ]]
