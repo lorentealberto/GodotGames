@@ -16,12 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-<<<<<<< HEAD
-CuentaAtras="*res://Escenas/Sistema/Cuenta Atras/Cuenta Atras.tscn"
-=======
 Configuracion="*res://scripts/configuracion.gd"
 CuentaAtras="*res://autoloads/cuenta_atras.tscn"
->>>>>>> 31979eb6513709c93c2787eb7b1d2291642fb81d
 
 [display]
 

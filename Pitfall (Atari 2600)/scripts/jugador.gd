@@ -50,19 +50,6 @@ func gestionar_animaciones() -> void:
 		Estados.EN_CUERDA:
 			animated_sprite.play("saltando")
 
-<<<<<<< HEAD:Pitfall (Atari 2600)/escenas/jugador/scripts/Jugador.gd
-func _physics_process(delta):
-	aplicar_gravedad(delta)
-	gestionar_estados()
-	controles(delta)
-	velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
-	impacto_caida()
-	velocidad_anterior = velocidad
-	
-	position.x = clamp(position.x, 5, get_viewport_rect().size.x + 5)
-
-func comprobar_espinas_tortuga() -> void:
-=======
 func actualizar_direccion() -> void:
 	if velocidad.x < 0:
 		animated_sprite.flip_h = true
@@ -85,31 +72,10 @@ func gestionar_cuerda(delta:float) -> void:
 			saltar(delta)
 
 func comprobar_colision_tortuga() -> void:
->>>>>>> 31979eb6513709c93c2787eb7b1d2291642fb81d:Pitfall (Atari 2600)/scripts/jugador.gd
 	if tortuga != null:
 		if tortuga.tiene_espinas_fuera():
 			get_tree().reload_current_scene()
 
-<<<<<<< HEAD:Pitfall (Atari 2600)/escenas/jugador/scripts/Jugador.gd
-func gestionar_cuerda() -> void:
-	if cuerda != null:
-		position = cuerda.obtener_posicion_eslabon(10)
-		rotation_degrees = cuerda.rotation_degrees
-
-func gestionar_temporizador_cuerda() -> void:
-	if !$TemporizadorCuerda.is_stopped():
-		$Cuerpo.set_deferred("disabled", true)
-		cuerda = null
-		limpiar_estado_actual()
-	else:
-		$Cuerpo.set_deferred("disabled", false)
-
-func impacto_caida() -> void:
-	if velocidad.y == 0 and velocidad_anterior.y != 0:
-		if (sqrt(pow(velocidad_anterior.y - velocidad.y, 2))) > 160:
-			crear_polvo()
-			emit_signal("caida")
-=======
 func _physics_process(delta:float) -> void:
 	if Configuracion.comenzar:
 		aplicar_gravedad(delta)
@@ -118,7 +84,6 @@ func _physics_process(delta:float) -> void:
 		velocidad = move_and_slide_with_snap(velocidad, Vector2.DOWN, Vector2.UP)
 		impacto_caida()
 		velocidad_anterior = velocidad
->>>>>>> 31979eb6513709c93c2787eb7b1d2291642fb81d:Pitfall (Atari 2600)/scripts/jugador.gd
 
 func aplicar_gravedad(delta:float) -> void:
 	if not is_on_floor() and not estado_actual in [Estados.ESCALANDO, Estados.EN_CUERDA]:
