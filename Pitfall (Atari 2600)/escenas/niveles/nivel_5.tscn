@@ -1,0 +1,198 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://escenas/niveles/nivel_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/sierra.gd" type="Script" id=2]
+[ext_resource path="res://scripts/escalera.gd" type="Script" id=3]
+[ext_resource path="res://recursos/graficos/sombra.png" type="Texture" id=4]
+[ext_resource path="res://recursos/graficos/suelo.png" type="Texture" id=5]
+[ext_resource path="res://recursos/graficos/escalera.png" type="Texture" id=6]
+[ext_resource path="res://recursos/cuerpos/gatillo_escalera.tres" type="Shape2D" id=7]
+[ext_resource path="res://recursos/cuerpos/escalera.tres" type="Shape2D" id=8]
+[ext_resource path="res://recursos/spriteframes/sierra.tres" type="SpriteFrames" id=9]
+[ext_resource path="res://recursos/cuerpos/sierra.tres" type="Shape2D" id=10]
+[ext_resource path="res://recursos/cuerpos/medio_suelo.tres" type="Shape2D" id=11]
+[ext_resource path="res://recursos/cuerpos/tercio_de_suelo.tres" type="Shape2D" id=12]
+[ext_resource path="res://recursos/graficos/sierra/particula_tierra.jpg" type="Texture" id=13]
+[ext_resource path="res://escenas/niveles/nivel_6.tscn" type="PackedScene" id=14]
+
+[node name="Nivel5" instance=ExtResource( 1 )]
+siguiente_nivel = ExtResource( 14 )
+
+[node name="AnimatedSprite" parent="Jugador" index="0"]
+frame = 10
+
+[node name="Suelo" type="StaticBody2D" parent="." index="7" groups=["suelo"]]
+position = Vector2( 0, 117 )
+collision_layer = 4
+collision_mask = 11
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Suelo" index="0"]
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 34, 44 )
+
+[node name="Sprite2" type="Sprite" parent="Suelo" index="1"]
+position = Vector2( 50, 0 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 22, 44 )
+
+[node name="Sprite4" type="Sprite" parent="Suelo" index="2"]
+position = Vector2( 88, 0 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 22, 44 )
+
+[node name="Sprite3" type="Sprite" parent="Suelo" index="3"]
+position = Vector2( 126, 0 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 34, 44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" index="4"]
+position = Vector2( 17, 5 )
+shape = ExtResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Suelo" index="5"]
+position = Vector2( 143, 5 )
+shape = ExtResource( 12 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Suelo" index="6"]
+position = Vector2( 99, 5 )
+shape = ExtResource( 11 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Suelo" index="7"]
+position = Vector2( 61, 5 )
+shape = ExtResource( 11 )
+
+[node name="Escalera" type="Area2D" parent="." index="8"]
+position = Vector2( 80, 144 )
+collision_layer = 8
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Escalera" index="0"]
+z_index = -1
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 77 )
+
+[node name="Sprite2" type="Sprite" parent="Escalera" index="1"]
+position = Vector2( 0, 39 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalera" index="2"]
+shape = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="Escalera" index="3"]
+position = Vector2( 0, 39 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalera/Area2D" index="0"]
+shape = ExtResource( 7 )
+
+[node name="Sierra" type="Area2D" parent="." index="9"]
+position = Vector2( 139, 117 )
+scale = Vector2( 0.25, 0.25 )
+z_index = -1
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+dinamica = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sierra" index="0"]
+frames = ExtResource( 9 )
+animation = "encendida"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sierra" index="1"]
+shape = ExtResource( 10 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sierra" index="2"]
+amount = 25
+texture = ExtResource( 13 )
+direction = Vector2( 1, -0.8 )
+spread = 52.43
+gravity = Vector2( 0, 47 )
+initial_velocity = 123.85
+initial_velocity_random = 0.06
+
+[node name="Timer" type="Timer" parent="Sierra" index="3"]
+wait_time = 0.25
+
+[node name="Sierra2" type="Area2D" parent="." index="10"]
+position = Vector2( 166, 117 )
+scale = Vector2( 0.25, 0.25 )
+z_index = -1
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+dinamica = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sierra2" index="0"]
+frames = ExtResource( 9 )
+animation = "encendida"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sierra2" index="1"]
+shape = ExtResource( 10 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sierra2" index="2"]
+amount = 25
+texture = ExtResource( 13 )
+direction = Vector2( 1, -0.8 )
+spread = 52.43
+gravity = Vector2( 0, 47 )
+initial_velocity = 123.85
+initial_velocity_random = 0.06
+
+[node name="Timer" type="Timer" parent="Sierra2" index="3"]
+wait_time = 0.25
+
+[node name="Sierra3" type="Area2D" parent="." index="11"]
+position = Vector2( 196, 117 )
+scale = Vector2( 0.25, 0.25 )
+z_index = -1
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+dinamica = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sierra3" index="0"]
+frames = ExtResource( 9 )
+animation = "encendida"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sierra3" index="1"]
+shape = ExtResource( 10 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sierra3" index="2"]
+amount = 25
+texture = ExtResource( 13 )
+direction = Vector2( 1, -0.8 )
+spread = 52.43
+gravity = Vector2( 0, 47 )
+initial_velocity = 123.85
+initial_velocity_random = 0.06
+
+[node name="Timer" type="Timer" parent="Sierra3" index="3"]
+wait_time = 0.25
