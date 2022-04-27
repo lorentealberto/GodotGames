@@ -11,13 +11,13 @@ config_version=4
 [application]
 
 config/name="Pitfall (Atari 2600)"
-run/main_scene="res://Escenas/Sistema/Estados/Niveles/Nivel 1.tscn"
+run/main_scene="res://escenas/niveles/nivel_1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-CuentaAtras="*res://Escenas/Sistema/Cuenta Atras/Cuenta Atras.tscn"
-Configuracion="*res://Escenas/Sistema/Configuracion/Scripts/Configuracion.gd"
+Configuracion="*res://scripts/configuracion.gd"
+CuentaAtras="*res://autoloads/cuenta_atras.tscn"
 
 [display]
 

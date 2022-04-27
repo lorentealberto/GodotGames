@@ -1,0 +1,189 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://escenas/niveles/nivel_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://recursos/graficos/suelo.png" type="Texture" id=2]
+[ext_resource path="res://recursos/graficos/escalera.png" type="Texture" id=3]
+[ext_resource path="res://recursos/graficos/sombra.png" type="Texture" id=4]
+[ext_resource path="res://scripts/escalera.gd" type="Script" id=5]
+[ext_resource path="res://recursos/cuerpos/escalera.tres" type="Shape2D" id=6]
+[ext_resource path="res://recursos/cuerpos/gatillo_escalera.tres" type="Shape2D" id=7]
+[ext_resource path="res://escenas/niveles/nivel_2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://recursos/spriteframes/sierra.tres" type="SpriteFrames" id=9]
+[ext_resource path="res://recursos/cuerpos/sierra.tres" type="Shape2D" id=10]
+[ext_resource path="res://recursos/graficos/sierra/particula_tierra.jpg" type="Texture" id=11]
+[ext_resource path="res://scripts/sierra.gd" type="Script" id=12]
+[ext_resource path="res://recursos/graficos/titulo.png" type="Texture" id=13]
+[ext_resource path="res://scripts/titulo.gd" type="Script" id=14]
+[ext_resource path="res://recursos/fuentes/JustBubble.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://scripts/pantalla_principal.gd" type="Script" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.5, 1.5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -180.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "desaparecer"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -180.0 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 15 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[node name="Nivel1" instance=ExtResource( 1 )]
+siguiente_nivel = ExtResource( 8 )
+
+[node name="AnimatedSprite" parent="Jugador" index="0"]
+frame = 2
+
+[node name="Suelo" type="StaticBody2D" parent="." index="7" groups=["suelo"]]
+position = Vector2( 0, 117 )
+collision_layer = 4
+collision_mask = 11
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Suelo" index="0"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 73, 44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" index="1"]
+position = Vector2( 35, 5 )
+shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Suelo" index="2"]
+position = Vector2( 88, 0 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 73, 44 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Suelo" index="3"]
+position = Vector2( 125, 5 )
+shape = SubResource( 1 )
+
+[node name="PantallaPrincipal" type="Control" parent="." index="8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="PantallaPrincipal" index="0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 6.0
+margin_right = 154.0
+margin_bottom = 98.0
+texture = ExtResource( 13 )
+script = ExtResource( 14 )
+
+[node name="Tween" type="Tween" parent="PantallaPrincipal/TextureRect" index="0"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PantallaPrincipal/TextureRect" index="1"]
+reset_on_save = false
+anims/RESET = SubResource( 4 )
+anims/desaparecer = SubResource( 5 )
+
+[node name="Label" type="Label" parent="PantallaPrincipal" index="1"]
+margin_left = 6.0
+margin_top = 113.0
+margin_right = 153.0
+margin_bottom = 170.0
+theme = SubResource( 3 )
+text = "Press [SPACEBAR] to start"
+valign = 1
+autowrap = true
+
+[node name="Escalera" type="Area2D" parent="." index="9"]
+position = Vector2( 80, 144 )
+collision_layer = 8
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Escalera" index="0"]
+z_index = -1
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 77 )
+
+[node name="Sprite2" type="Sprite" parent="Escalera" index="1"]
+position = Vector2( 0, 39 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalera" index="2"]
+shape = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="Escalera" index="3"]
+position = Vector2( 0, 39 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalera/Area2D" index="0"]
+shape = ExtResource( 7 )
+
+[node name="Sierra" type="Area2D" parent="." index="10"]
+position = Vector2( 139, 117 )
+scale = Vector2( 0.25, 0.25 )
+z_index = -1
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sierra" index="0"]
+frames = ExtResource( 9 )
+animation = "encendida"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sierra" index="1"]
+shape = ExtResource( 10 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sierra" index="2"]
+amount = 25
+texture = ExtResource( 11 )
+direction = Vector2( 1, -0.8 )
+spread = 52.43
+gravity = Vector2( 0, 47 )
+initial_velocity = 123.85
+initial_velocity_random = 0.06
+
+[node name="Timer" type="Timer" parent="Sierra" index="3"]
+wait_time = 0.25
+
+[connection signal="tween_completed" from="PantallaPrincipal/TextureRect/Tween" to="PantallaPrincipal/TextureRect" method="_on_Tween_tween_completed"]
