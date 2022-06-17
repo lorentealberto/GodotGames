@@ -60,9 +60,6 @@ default_font = SubResource( 2 )
 [node name="Nivel1" instance=ExtResource( 1 )]
 siguiente_nivel = ExtResource( 8 )
 
-[node name="AnimatedSprite" parent="Jugador" index="0"]
-frame = 2
-
 [node name="Suelo" type="StaticBody2D" parent="." index="7" groups=["suelo"]]
 position = Vector2( 0, 117 )
 collision_layer = 4

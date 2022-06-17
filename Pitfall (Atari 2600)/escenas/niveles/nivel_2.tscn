@@ -18,9 +18,6 @@
 [node name="Nivel2" instance=ExtResource( 1 )]
 siguiente_nivel = ExtResource( 14 )
 
-[node name="AnimatedSprite" parent="Jugador" index="0"]
-frame = 7
-
 [node name="Camara" parent="." index="3"]
 visible = false
 

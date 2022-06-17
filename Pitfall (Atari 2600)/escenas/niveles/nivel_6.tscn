@@ -118,7 +118,7 @@ height = 0.0
 siguiente_nivel = ExtResource( 12 )
 
 [node name="AnimatedSprite" parent="Jugador" index="0"]
-frame = 3
+frame = 1
 
 [node name="Suelo" type="StaticBody2D" parent="." index="7"]
 position = Vector2( 0, 117 )
@@ -146,7 +146,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Caracol" index="0"]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 12 )
-frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caracol" index="1"]
@@ -262,7 +261,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CerdoFurioso" index="0"]
 frames = SubResource( 23 )
-frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CerdoFurioso" index="1"]

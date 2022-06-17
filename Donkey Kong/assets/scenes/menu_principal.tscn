@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/backgrounds/main_menu.png" type="Texture" id=1]
+[ext_resource path="res://assets/scripts/menu_principal.gd" type="Script" id=2]
+
+[node name="MenuPrincipal" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MainMenu" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Label" type="Label" parent="."]
+margin_left = 96.0
+margin_top = 152.0
+margin_right = 168.0
+margin_bottom = 166.0
+text = "Press Enter"

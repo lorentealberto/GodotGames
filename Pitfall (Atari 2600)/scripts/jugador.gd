@@ -12,7 +12,7 @@ enum Estados { PARADO, CORRIENDO, SALTANDO, ESCALANDO, EN_CUERDA }
 
 const VELOCIDAD_HORIZONTAL:float = 2750.0
 const GRAVEDAD:float = 750.0
-const POTENCIA_SALTO:float = -10050.0
+const POTENCIA_SALTO:float = -10055.0
 const COYOTE_TIME:float = 0.125
 
 var saltos:int

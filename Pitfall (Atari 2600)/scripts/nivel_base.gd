@@ -16,5 +16,6 @@ func _on_Telon_telon_cerrado():
 
 func _on_Meta_area_entered(area):
 	if area.name == "CuerpoJugador":
-		area.get_parent().get_node("CuerpoJugador/CollisionShape2D").set_deferred("disabled", true)
+		var player: KinematicBody2D = area.get_parent() as KinematicBody2D
+		player.set_collision_layer_bit(0, false)
 		telon_ap.play("cerrar")
