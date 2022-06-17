@@ -3,7 +3,9 @@
 [ext_resource path="res://assets/graphics/backgrounds/main_menu.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/menu_principal.gd" type="Script" id=2]
 
-[node name="MenuPrincipal" type="Node2D"]
+[node name="MenuPrincipal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="MainMenu" type="Sprite" parent="."]
@@ -11,8 +13,12 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Label" type="Label" parent="."]
-margin_left = 96.0
-margin_top = 152.0
-margin_right = 168.0
-margin_bottom = 166.0
+anchor_left = 0.359
+anchor_top = 0.679
+anchor_right = 0.641
+anchor_bottom = 0.737
+margin_left = 0.095993
+margin_top = 0.0399933
+margin_right = -0.095993
+margin_bottom = 0.119995
 text = "Press Enter"

@@ -89,14 +89,14 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "stairs",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "stairs",
 "speed": 5.0
 } ]
 
@@ -113,14 +113,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "enfadado",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "cogiendo_barril",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "enfadado",
 "speed": 5.0
 } ]
 
@@ -227,7 +227,7 @@ position = Vector2( 148, 47.5 )
 shape = SubResource( 25 )
 
 [node name="Mario" type="RigidBody2D" parent="."]
-position = Vector2( 79, 205 )
+position = Vector2( 65, 208 )
 collision_layer = 0
 collision_mask = 2
 mode = 2
@@ -250,7 +250,7 @@ collision_mask = 2
 
 [node name="Cuerpo" type="Area2D" parent="Mario"]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 14
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Mario/Cuerpo"]
 position = Vector2( -0.5, 1 )
@@ -284,11 +284,11 @@ one_shot = true
 
 [node name="Peach" type="Area2D" parent="."]
 position = Vector2( 123, 29 )
+collision_layer = 9
 script = ExtResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Peach"]
 frames = SubResource( 21 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peach"]

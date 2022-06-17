@@ -106,7 +106,7 @@ func _on_Cuerpo_area_entered(area):
 		"Escaleras":
 			tocando_escalera = true
 		"Peach":
-			get_tree().change_scene("res://assets/scenes/menu_principal.tscn")
+			get_tree().change_scene("res://assets/scenes/has_ganado.tscn")
 
 func _on_Cuerpo_area_exited(area):
 	if area.name == "Escaleras":
@@ -116,4 +116,4 @@ func _on_Cuerpo_area_exited(area):
 
 func _on_Cuerpo_body_entered(body):
 	if body is Barril:
-					get_tree().change_scene("res://assets/scenes/menu_principal.tscn")
+		get_tree().change_scene("res://assets/scenes/has_perdido.tscn")
