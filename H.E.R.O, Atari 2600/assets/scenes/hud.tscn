@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/graphics/bombas_hud.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/vidas_hud.png" type="Texture" id=3]
+[ext_resource path="res://assets/scripts/hud.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -242, -88 )
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_top = 0.578
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.0240021
+theme = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="Potencia" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 15.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer/Potencia"]
+margin_right = 48.0
+margin_bottom = 15.0
+text = "Potencia"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/VBoxContainer/Potencia"]
+margin_left = 52.0
+margin_right = 150.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+max_value = 250.0
+step = 1.0
+value = 100.0
+
+[node name="Vidas" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 19.0
+margin_right = 150.0
+margin_bottom = 32.0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/Vidas"]
+margin_left = 106.0
+margin_right = 118.0
+margin_bottom = 13.0
+texture = ExtResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/Vidas"]
+margin_left = 122.0
+margin_right = 134.0
+margin_bottom = 13.0
+texture = ExtResource( 3 )
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/Vidas"]
+margin_left = 138.0
+margin_right = 150.0
+margin_bottom = 13.0
+texture = ExtResource( 3 )
+
+[node name="Bombas" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 150.0
+margin_bottom = 55.0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/Bombas"]
+margin_left = 97.0
+margin_right = 112.0
+margin_bottom = 19.0
+texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/Bombas"]
+margin_left = 116.0
+margin_right = 131.0
+margin_bottom = 19.0
+texture = ExtResource( 2 )
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/Bombas"]
+margin_left = 135.0
+margin_right = 150.0
+margin_bottom = 19.0
+texture = ExtResource( 2 )
+
+[node name="Puntuacion" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 59.0
+margin_right = 150.0
+margin_bottom = 74.0
+text = "0000000000000"
+align = 2

@@ -1,0 +1,393 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://assets/graphics/Ninja Frog/Fall (32x32).png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/Ninja Frog/Run (32x32).png" type="Texture" id=2]
+[ext_resource path="res://assets/prefabs/pajaro_gordo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/graphics/Ninja Frog/Idle (32x32).png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/Ninja Frog/Jump (32x32).png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/bloque_construccion.png" type="Texture" id=6]
+[ext_resource path="res://assets/scripts/jugador.gd" type="Script" id=7]
+[ext_resource path="res://assets/graphics/Mask Dude/Idle (32x32).png" type="Texture" id=8]
+[ext_resource path="res://assets/scenes/hud.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/scripts/meta.gd" type="Script" id=10]
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 12, 5 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 6, 30.5 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 37.5, 29 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 18.5, 14.5 )
+
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 27.5, 29 )
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 12, 21 )
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 10.25, 21.5 )
+
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 9, 21.5 )
+
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 80, 9.5 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 7, 30 )
+
+[sub_resource type="PhysicsMaterial" id=29]
+friction = 0.0
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "idle",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "run",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 8 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 8 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 8 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 8 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 8 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 8 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 8 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=52]
+animations = [ {
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
+"loop": true,
+"name": "idle",
+"speed": 20.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=53]
+extents = Vector2( 10, 13 )
+
+[node name="EscenaPrincipal" type="Node2D"]
+
+[node name="Escenario" type="Node2D" parent="."]
+
+[node name="Suelo" type="StaticBody2D" parent="Escenario"]
+
+[node name="Sprite" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 6, 40.5 )
+scale = Vector2( 0.375, 1.90625 )
+texture = ExtResource( 6 )
+
+[node name="Sprite7" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 9.5, 159.75 )
+scale = Vector2( 0.59375, 1.92187 )
+texture = ExtResource( 6 )
+
+[node name="Sprite8" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 149.75, 158.875 )
+scale = Vector2( 0.640625, 1.99219 )
+texture = ExtResource( 6 )
+
+[node name="Sprite9" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 79.5, 181.375 )
+scale = Vector2( 3.78125, 0.585937 )
+texture = ExtResource( 6 )
+
+[node name="Sprite3" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 37.5, 100 )
+scale = Vector2( 2.34375, 1.8125 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 12, 5.00001 )
+scale = Vector2( 0.75, 0.3125 )
+texture = ExtResource( 6 )
+
+[node name="Sprite4" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 141.5, 14.5 )
+scale = Vector2( 1.15625, 0.90625 )
+texture = ExtResource( 6 )
+
+[node name="Sprite5" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 148, 50 )
+scale = Vector2( 0.75, 1.3125 )
+texture = ExtResource( 6 )
+
+[node name="Sprite6" type="Sprite" parent="Escenario/Suelo"]
+modulate = Color( 0.913725, 0.662745, 0.129412, 1 )
+position = Vector2( 132.5, 100 )
+scale = Vector2( 1.71875, 1.8125 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 12, 5 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 6, 40.5 )
+shape = SubResource( 33 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 37.5, 100 )
+shape = SubResource( 34 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 141.5, 14.5 )
+shape = SubResource( 35 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 132.5, 100 )
+shape = SubResource( 36 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 148, 50 )
+shape = SubResource( 37 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 149.75, 150.5 )
+shape = SubResource( 38 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 10, 150.5 )
+shape = SubResource( 39 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Escenario/Suelo"]
+position = Vector2( 80, 181.5 )
+shape = SubResource( 40 )
+
+[node name="Muro" type="StaticBody2D" parent="Escenario"]
+
+[node name="Sprite" type="Sprite" parent="Escenario/Muro"]
+modulate = Color( 0.937255, 0.792157, 0.490196, 1 )
+position = Vector2( 55, 11 )
+scale = Vector2( 0.4375, 1.875 )
+texture = ExtResource( 6 )
+centered = false
+region_rect = Rect2( 0, 0, 20, 60 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Muro"]
+position = Vector2( 62, 41 )
+shape = SubResource( 31 )
+
+[node name="Jugador" type="RigidBody2D" parent="."]
+position = Vector2( 37, 61 )
+mode = 2
+physics_material_override = SubResource( 29 )
+gravity_scale = 2.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 24 )
+animation = "idle"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2( 0, 7 )
+shape = SubResource( 27 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Jugador"]
+position = Vector2( 0, 8 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Jugador"]
+position = Vector2( 0, 7 )
+emitting = false
+amount = 20
+direction = Vector2( 0, 1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="Jugador"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 160
+offset_v = 0.5
+
+[node name="Meta" type="Area2D" parent="."]
+position = Vector2( 29, 164 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 10 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Meta"]
+frames = SubResource( 52 )
+animation = "idle"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meta"]
+position = Vector2( 0, 3 )
+shape = SubResource( 53 )
+
+[node name="PajaroGordo" parent="." instance=ExtResource( 3 )]
+position = Vector2( 112, 65 )
+
+[node name="HUD" parent="." instance=ExtResource( 9 )]
+
+[connection signal="bomba_puesta" from="Jugador" to="HUD" method="_on_Jugador_bomba_puesta"]
+[connection signal="vida_perdida" from="Jugador" to="HUD" method="_on_Jugador_vida_perdida"]
+[connection signal="body_entered" from="Meta" to="Meta" method="_on_Meta_body_entered"]
