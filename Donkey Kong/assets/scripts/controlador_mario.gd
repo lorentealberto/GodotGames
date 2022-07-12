@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-onready var pl_score := preload("res://assets/prefabs/score.tscn")
+onready var pl_score:PackedScene = preload("res://assets/prefabs/score.tscn")
 
 enum Estados {IDLE, SALTANDO, CORRIENDO, EN_ESCALERA}
 var estado_actual:int

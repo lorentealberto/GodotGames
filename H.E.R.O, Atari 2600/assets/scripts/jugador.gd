@@ -81,7 +81,7 @@ func _process(delta):
 		apply_central_impulse(Vector2.UP * POTENCIA_SALTO)
 
 	#Colocar bomba
-	if Input.is_action_just_pressed("colocar_bomba") and Global.bombas > 0:
+	if Input.is_action_just_pressed("colocar_bomba") and Global.bombas > 0 and not volando:
 		Global.bombas -= 1
 		var instancia_bomba := pl_bomba.instance()
 		get_parent().add_child(instancia_bomba)
