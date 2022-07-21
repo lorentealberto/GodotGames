@@ -1,9 +1,443 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://graficos/nivel/nivel_1.png" type="Texture" id=1]
+[ext_resource path="res://graficos/sprites/espinaca/espinaca.png" type="Texture" id=2]
+[ext_resource path="res://graficos/sprites/popeye/inactivo/inactivo.png" type="Texture" id=3]
+[ext_resource path="res://scripts/brutus.gd" type="Script" id=4]
+[ext_resource path="res://graficos/sprites/popeye/andar/andar_2.png" type="Texture" id=5]
+[ext_resource path="res://graficos/sprites/corazon/corazon_3.png" type="Texture" id=6]
+[ext_resource path="res://graficos/sprites/popeye/andar/andar_1.png" type="Texture" id=7]
+[ext_resource path="res://graficos/sprites/olivia/andar_2.png" type="Texture" id=8]
+[ext_resource path="res://graficos/sprites/olivia/andar_3.png" type="Texture" id=9]
+[ext_resource path="res://graficos/sprites/olivia/andar_1.png" type="Texture" id=10]
+[ext_resource path="res://graficos/sprites/brutus/andar_1.png" type="Texture" id=11]
+[ext_resource path="res://graficos/sprites/brutus/andar_2.png" type="Texture" id=12]
+[ext_resource path="res://graficos/sprites/brutus/andar_3.png" type="Texture" id=13]
+[ext_resource path="res://scripts/olivia.gd" type="Script" id=14]
+[ext_resource path="res://scripts/macetero.gd" type="Script" id=15]
+[ext_resource path="res://scripts/maceteros.gd" type="Script" id=16]
+[ext_resource path="res://scripts/popeye.gd" type="Script" id=17]
+[ext_resource path="res://scripts/panel_corazones.gd" type="Script" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28, 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 116, 2 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 120, 2 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 21 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1, 15 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="PhysicsMaterial" id=17]
+friction = 0.0
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "andar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "inactivo",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=18]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 7, 10 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "andar",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 8, 12 )
+
+[sub_resource type="PhysicsMaterial" id=19]
+friction = 0.0
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "andar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "inactivo",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 7, 12 )
 
 [node name="Nivel_1" type="Node2D"]
 
-[node name="Fondo" type="Sprite" parent="."]
+[node name="Escenario" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fondo" type="Sprite" parent="Escenario"]
 texture = ExtResource( 1 )
 centered = false
+
+[node name="Plataformas" type="StaticBody2D" parent="Escenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Plataformas"]
+position = Vector2( 36, 110 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Escenario/Plataformas"]
+position = Vector2( 224, 110 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Escenario/Plataformas"]
+position = Vector2( 128, 142 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Escenario/Plataformas"]
+position = Vector2( 128, 174 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Escenario/Plataformas"]
+position = Vector2( 128, 206 )
+shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="EscaleraVertical" type="Area2D" parent="Escenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/EscaleraVertical"]
+position = Vector2( 128, 151 )
+shape = SubResource( 5 )
+
+[node name="EscalerasHorizontales" type="StaticBody2D" parent="Escenario"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 0, 32 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 0, 64 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 120, 64 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 136, 64 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 256, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 256, 32 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
+position = Vector2( 256, 64 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+
+[node name="Tejado" type="Area2D" parent="Escenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Tejado"]
+position = Vector2( 65, 63 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Escenario/Tejado"]
+position = Vector2( 193, 63 )
+shape = SubResource( 6 )
+
+[node name="Maceteros" type="Node2D" parent="Escenario"]
+script = ExtResource( 16 )
+
+[node name="Macetero_1" type="Area2D" parent="Escenario/Maceteros"]
+position = Vector2( 12, 136 )
+script = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Maceteros/Macetero_1"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Escenario/Maceteros/Macetero_1"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+
+[node name="Macetero_2" type="Area2D" parent="Escenario/Maceteros"]
+position = Vector2( 12, 168 )
+script = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Maceteros/Macetero_2"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Escenario/Maceteros/Macetero_2"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="Escenario/Maceteros"]
+autostart = true
+
+[node name="PanelCorazones" type="Node2D" parent="Escenario"]
+script = ExtResource( 18 )
+
+[node name="Sprite" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 20, 52 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 28, 52 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite3" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 36, 52 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite4" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 44, 52 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite5" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 52, 52 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite6" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 60, 52 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite7" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 20, 60 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite8" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 28, 60 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite9" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 36, 60 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite10" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 44, 60 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite11" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 52, 60 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite12" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 60, 60 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite13" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 20, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite14" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 28, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite15" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 36, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite16" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 44, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite17" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 52, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite18" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 60, 68 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite19" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 20, 76 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite20" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 28, 76 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite21" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 36, 76 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite22" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 44, 76 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite23" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 52, 76 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Sprite24" type="Sprite" parent="Escenario/PanelCorazones"]
+visible = false
+position = Vector2( 60, 76 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Popeye" type="RigidBody2D" parent="."]
+position = Vector2( 59, 97 )
+mode = 2
+mass = 2.0
+physics_material_override = SubResource( 17 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Popeye"]
+frames = SubResource( 8 )
+animation = "inactivo"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popeye"]
+shape = SubResource( 18 )
+
+[node name="Area2D" type="Area2D" parent="Popeye"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popeye/Area2D"]
+shape = SubResource( 10 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Popeye"]
+enabled = true
+cast_to = Vector2( 0, 12 )
+
+[node name="Olivia" type="Area2D" parent="."]
+position = Vector2( 115, 65 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Olivia"]
+frames = SubResource( 11 )
+animation = "andar"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Olivia"]
+shape = SubResource( 12 )
+
+[node name="Timer" type="Timer" parent="Olivia"]
+autostart = true
+
+[node name="Brutus" type="RigidBody2D" parent="."]
+position = Vector2( 198, 95 )
+mode = 2
+physics_material_override = SubResource( 19 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Brutus"]
+frames = SubResource( 13 )
+animation = "inactivo"
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brutus"]
+shape = SubResource( 14 )
+
+[node name="CuerpoBrutus" type="Area2D" parent="Brutus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brutus/CuerpoBrutus"]
+shape = SubResource( 15 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Brutus"]
+enabled = true
+cast_to = Vector2( 0, 12 )
+
+[connection signal="timeout" from="Escenario/Maceteros/Timer" to="Escenario/Maceteros" method="_on_Timer_timeout"]
+[connection signal="corazon_cogido" from="Popeye" to="Escenario/PanelCorazones" method="_on_Popeye_corazon_cogido"]
+[connection signal="area_entered" from="Popeye/Area2D" to="Popeye" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Olivia" to="Olivia" method="_on_Olivia_area_entered"]
+[connection signal="timeout" from="Olivia/Timer" to="Olivia" method="_on_Timer_timeout"]
