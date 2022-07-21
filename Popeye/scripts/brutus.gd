@@ -44,17 +44,48 @@ func _process(delta: float) -> void:
 					apply_central_impulse(Vector2.UP * 75)
 	
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
-	state.set_linear_velocity(Vector2(horizontal * VELOCIDAD_HORIZONTAL, state.linear_velocity.y))
-	#Subir escaleras
+	#Reiniciar físicas
 	$CollisionShape2D.set_deferred("disabled", false)
 	gravity_scale = 1
+	
+	state.set_linear_velocity(Vector2(horizontal * VELOCIDAD_HORIZONTAL, state.linear_velocity.y))
+
+	#Subir / Bajar escalera vertical
 	for area in $CuerpoBrutus.get_overlapping_areas():
-		if area.name == "EscaleraVertical":
-			gravity_scale = 0
-			$CollisionShape2D.set_deferred("disabled", true)
-			if Input.is_action_pressed("brutus_bajar"):
-				state.linear_velocity.y = VELOCIDAD_ESCALERA
-			elif Input.is_action_pressed("brutus_subir"):
-				state.linear_velocity.y = -VELOCIDAD_ESCALERA
-			else:
-				state.linear_velocity.y = 0
+		match area.name:
+			"EscaleraVertical":
+				desactivar_fisicas()
+				if Input.is_action_pressed("brutus_bajar"):
+					state.linear_velocity.y = VELOCIDAD_ESCALERA
+				elif Input.is_action_pressed("brutus_subir"):
+					state.linear_velocity.y = -VELOCIDAD_ESCALERA
+				else:
+					state.linear_velocity.y = 0
+	
+	#Bajar / Bajar escaleras horizontales
+	for body in $CuerpoBrutus.get_overlapping_bodies():
+		match body.name:
+			"EscalerasDerechas":
+				desactivar_fisicas()
+				if Input.is_action_pressed("brutus_bajar"):
+					state.linear_velocity.y = VELOCIDAD_ESCALERA
+					state.linear_velocity.x = 25
+				elif Input.is_action_pressed("brutus_subir"):
+					state.linear_velocity.y = -VELOCIDAD_ESCALERA
+					state.linear_velocity.x = -25
+				else:
+					state.linear_velocity.y = 0
+			"EscalerasIzquierdas":
+				desactivar_fisicas()
+				if Input.is_action_pressed("brutus_bajar"):
+					state.linear_velocity.y = VELOCIDAD_ESCALERA
+					state.linear_velocity.x = -25
+				elif Input.is_action_pressed("brutus_subir"):
+					state.linear_velocity.y = -VELOCIDAD_ESCALERA
+					state.linear_velocity.x = 25
+				else:
+					state.linear_velocity.y = 0
+
+func desactivar_fisicas() -> void:
+	gravity_scale = 0
+	$CollisionShape2D.set_deferred("disabled", true)
