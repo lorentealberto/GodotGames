@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 const VELOCIDAD_HORIZONTAL: float = 40.0
+const VELOCIDAD_ESCALERA: float = 50.0
 
 var horizontal: int
 
@@ -44,3 +45,16 @@ func _process(delta: float) -> void:
 	
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	state.set_linear_velocity(Vector2(horizontal * VELOCIDAD_HORIZONTAL, state.linear_velocity.y))
+	#Subir escaleras
+	$CollisionShape2D.set_deferred("disabled", false)
+	gravity_scale = 1
+	for area in $CuerpoBrutus.get_overlapping_areas():
+		if area.name == "EscaleraVertical":
+			gravity_scale = 0
+			$CollisionShape2D.set_deferred("disabled", true)
+			if Input.is_action_pressed("brutus_bajar"):
+				state.linear_velocity.y = VELOCIDAD_ESCALERA
+			elif Input.is_action_pressed("brutus_subir"):
+				state.linear_velocity.y = -VELOCIDAD_ESCALERA
+			else:
+				state.linear_velocity.y = 0

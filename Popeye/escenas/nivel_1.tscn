@@ -32,7 +32,7 @@ extents = Vector2( 116, 2 )
 extents = Vector2( 120, 2 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 8, 21 )
+extents = Vector2( 8, 7.5 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1, 15 )
@@ -61,7 +61,7 @@ radius = 3.0
 height = 14.0
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 7, 10 )
+extents = Vector2( 8, 13 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
@@ -138,7 +138,7 @@ one_way_collision = true
 [node name="EscaleraVertical" type="Area2D" parent="Escenario"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/EscaleraVertical"]
-position = Vector2( 128, 151 )
+position = Vector2( 128, 146.5 )
 shape = SubResource( 5 )
 
 [node name="EscalerasHorizontales" type="StaticBody2D" parent="Escenario"]
@@ -156,12 +156,12 @@ polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
 position = Vector2( 120, 64 )
-polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+polygon = PoolVector2Array( 28, 108, 16, 108, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
 position = Vector2( 136, 64 )
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( 28, 110, 16, 110, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
+polygon = PoolVector2Array( 28, 108, 16, 108, 16, 140, 40, 140, 40, 132, 36, 132, 36, 124, 32, 124, 32, 116, 28, 116 )
 
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Escenario/EscalerasHorizontales"]
 position = Vector2( 256, 0 )
@@ -369,9 +369,6 @@ mode = 2
 mass = 2.0
 physics_material_override = SubResource( 17 )
 script = ExtResource( 17 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Popeye"]
 frames = SubResource( 8 )
@@ -381,14 +378,10 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Popeye"]
 shape = SubResource( 18 )
 
-[node name="Area2D" type="Area2D" parent="Popeye"]
+[node name="CuerpoPopeye" type="Area2D" parent="Popeye"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Popeye/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popeye/CuerpoPopeye"]
 shape = SubResource( 10 )
-
-[node name="RayCast2D" type="RayCast2D" parent="Popeye"]
-enabled = true
-cast_to = Vector2( 0, 12 )
 
 [node name="Olivia" type="Area2D" parent="."]
 position = Vector2( 115, 65 )
@@ -400,7 +393,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Olivia"]
 frames = SubResource( 11 )
 animation = "andar"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Olivia"]
@@ -438,6 +430,6 @@ cast_to = Vector2( 0, 12 )
 
 [connection signal="timeout" from="Escenario/Maceteros/Timer" to="Escenario/Maceteros" method="_on_Timer_timeout"]
 [connection signal="corazon_cogido" from="Popeye" to="Escenario/PanelCorazones" method="_on_Popeye_corazon_cogido"]
-[connection signal="area_entered" from="Popeye/Area2D" to="Popeye" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Popeye/CuerpoPopeye" to="Popeye" method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="Olivia" to="Olivia" method="_on_Olivia_area_entered"]
 [connection signal="timeout" from="Olivia/Timer" to="Olivia" method="_on_Timer_timeout"]
