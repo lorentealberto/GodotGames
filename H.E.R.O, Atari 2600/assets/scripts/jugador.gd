@@ -73,7 +73,7 @@ func _process(delta):
 	
 	#Saltar
 	if raycast.is_colliding():
-		en_suelo = true
+		en_suelo = true                       
 	else:
 		en_suelo = false
 	
