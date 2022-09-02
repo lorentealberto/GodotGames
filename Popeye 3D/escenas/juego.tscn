@@ -1,0 +1,617 @@
+[gd_scene load_steps=55 format=2]
+
+[ext_resource path="res://modelos/popeye/popeye.glb" type="PackedScene" id=1]
+[ext_resource path="res://modelos/level_1/level_1.glb" type="PackedScene" id=2]
+[ext_resource path="res://scripts/character_controller_brutus.gd" type="Script" id=3]
+[ext_resource path="res://modelos/olivia/olivia.glb" type="PackedScene" id=4]
+[ext_resource path="res://modelos/brutus/brutus.glb" type="PackedScene" id=5]
+[ext_resource path="res://scripts/character_controller_popeye.gd" type="Script" id=6]
+[ext_resource path="res://scripts/olivia_controller.gd" type="Script" id=7]
+[ext_resource path="res://modelos/corazon/corazon.glb" type="PackedScene" id=8]
+[ext_resource path="res://scripts/panel_corazones.gd" type="Script" id=9]
+[ext_resource path="res://modelos/espinaca/espinaca.glb" type="PackedScene" id=10]
+[ext_resource path="res://scripts/maceteros.gd" type="Script" id=11]
+[ext_resource path="res://scripts/macetero.gd" type="Script" id=12]
+
+[sub_resource type="Environment" id=1]
+background_mode = 3
+background_color = Color( 0.745098, 0.933333, 0.972549, 1 )
+tonemap_exposure = 1.62
+auto_exposure_enabled = true
+ss_reflections_enabled = true
+glow_intensity = 8.0
+adjustment_enabled = true
+adjustment_saturation = 2.23
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 8.79248, 0.197739, 1.82199 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 8.79248, 0.195259, 2.44524 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 4.19525, 0.212971, 1.0472 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 4.00616, 0.19732, 1.0472 )
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 2.2135, 0.185974, 0.351556 )
+
+[sub_resource type="BoxShape" id=41]
+extents = Vector3( 2.51924, 0.185974, 0.351556 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.49606, 1.15945, 0.706269 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.157969, 0.945196, 0.707143 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.157969, 0.649768, 0.707143 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.150665, 0.318484, 0.707143 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.49001, 1.12757, 1.41452 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.164394, 0.911468, 1.41452 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.164394, 0.592073, 1.41452 )
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 0.155922, 0.281206, 1.41452 )
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 0.505102, 1.18389, 2.15817 )
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.165919, 0.919737, 2.15817 )
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 0.165919, 0.653379, 2.15817 )
+
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 0.152116, 0.33216, 2.15817 )
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 0.498562, 1.19332, 0.709726 )
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 0.162902, 1.0059, 0.709726 )
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 0.155977, 0.625699, 0.709726 )
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 0.155977, 0.317305, 0.709726 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 0.503459, 1.15654, 1.42248 )
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 0.260214, 0.973249, 1.41356 )
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 0.228774, 0.724978, 1.432 )
+
+[sub_resource type="BoxShape" id=31]
+extents = Vector3( 0.197746, 0.302833, 1.42357 )
+
+[sub_resource type="BoxShape" id=33]
+extents = Vector3( 0.49873, 1.18309, 2.1362 )
+
+[sub_resource type="BoxShape" id=34]
+extents = Vector3( 0.165009, 0.989752, 2.1362 )
+
+[sub_resource type="BoxShape" id=35]
+extents = Vector3( 0.165009, 0.632849, 2.1362 )
+
+[sub_resource type="BoxShape" id=36]
+extents = Vector3( 0.152397, 0.329263, 2.1362 )
+
+[sub_resource type="BoxShape" id=42]
+extents = Vector3( 0.668465, 1.43542, 0.258752 )
+
+[sub_resource type="BoxShape" id=38]
+extents = Vector3( 0.312734, 0.323416, 0.346257 )
+
+[sub_resource type="BoxShape" id=39]
+extents = Vector3( 0.312561, 0.301387, 0.365424 )
+
+[sub_resource type="BoxShape" id=40]
+extents = Vector3( 9.71881, 7.20876, 1.50578 )
+
+[sub_resource type="BoxShape" id=47]
+extents = Vector3( 4.935, 0.126696, 0.333169 )
+
+[sub_resource type="BoxShape" id=46]
+extents = Vector3( 0.334569, 1, 0.394771 )
+
+[sub_resource type="PhysicsMaterial" id=32]
+friction = 0.0
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.143688, 0.757535, 0.020959 )
+
+[sub_resource type="BoxShape" id=45]
+extents = Vector3( 0.290792, 0.759247, 0.268712 )
+
+[sub_resource type="PhysicsMaterial" id=44]
+friction = 0.0
+
+[sub_resource type="BoxShape" id=43]
+extents = Vector3( 0.137311, 0.644242, 0.0760248 )
+
+[node name="Juego" type="Spatial"]
+
+[node name="Configuracion" type="Node" parent="."]
+
+[node name="Camera" type="Camera" parent="Configuracion"]
+transform = Transform( 0.999989, -0.000657271, 0.0045958, 0, 0.989928, 0.141575, -0.00464256, -0.141574, 0.989917, -0.519433, 1.58841, 20.9241 )
+current = true
+fov = 41.4
+size = 0.780465
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Configuracion"]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Configuracion"]
+transform = Transform( 1, 0, 0, 0, -0.815653, -0.578541, 0, 0.578541, -0.815653, 0, -2.6096, 25.8081 )
+light_energy = 1.197
+
+[node name="Escenario" type="Node" parent="."]
+
+[node name="Suelo" type="StaticBody" parent="Escenario"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/Suelo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.20953, 2.31286 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/Suelo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.71588, 3.06649 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/Suelo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92369, -1.72016, 1.64047 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/Suelo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70598, -1.72016, 1.64047 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Escenario/Suelo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18835, 0.77135, 0.941298 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Escenario/Suelo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47749, 0.77135, 0.941298 )
+shape = SubResource( 41 )
+
+[node name="EscalerasHorizontales" type="Node" parent="Escenario"]
+
+[node name="EscalerasHorizontales1" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.28767, -0.365346, 1.28565 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62696, -0.588298, 1.30271 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30672, -0.919394, 1.30271 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.99521, -1.21675, 1.30271 )
+shape = SubResource( 11 )
+
+[node name="EscalerasHorizontales2" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.54147, 1.43127 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.28767, -0.332206, 0.568222 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6274, -0.549992, 0.568222 )
+shape = SubResource( 16 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31333, -0.864903, 0.568222 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9972, -1.17871, 0.568222 )
+shape = SubResource( 18 )
+
+[node name="EscalerasHorizontales3" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -4.95049, 1.43127 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71574, -0.439322, 1.26781 )
+shape = SubResource( 19 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36646, -0.632606, 1.26781 )
+shape = SubResource( 20 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67571, -0.980516, 1.26781 )
+shape = SubResource( 21 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00244, -1.28984, 1.26781 )
+shape = SubResource( 22 )
+
+[node name="EscalerasHorizontales4" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.609036, -4.95049, 1.43127 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71574, -0.439322, 1.26781 )
+shape = SubResource( 19 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36646, -0.632606, 1.26781 )
+shape = SubResource( 20 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67571, -0.980516, 1.26781 )
+shape = SubResource( 21 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00244, -1.28984, 1.26781 )
+shape = SubResource( 22 )
+
+[node name="EscalerasHorizontales5" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24131, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0515318, -0.372236, 1.29536 )
+shape = SubResource( 24 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.609499, -0.653877, 1.29536 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.927853, -0.90034, 1.29536 )
+shape = SubResource( 26 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23363, -1.21376, 1.29536 )
+shape = SubResource( 27 )
+
+[node name="EscalerasHorizontales6" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24131, -1.92773, 0 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0515318, -0.932261, 1.97121 )
+shape = SubResource( 28 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.513985, -1.19756, 2.00008 )
+shape = SubResource( 29 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860992, -1.56792, 1.97121 )
+shape = SubResource( 30 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19224, -1.7763, 1.99753 )
+shape = SubResource( 31 )
+
+[node name="EscalerasHorizontales7" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19308, -5.75464, 5.41608 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0788136, 0.356877, -2.71712 )
+shape = SubResource( 33 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587623, 0.115123, -2.71712 )
+shape = SubResource( 34 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903221, -0.159134, -2.71712 )
+shape = SubResource( 35 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22442, -0.477565, -2.71712 )
+shape = SubResource( 36 )
+
+[node name="EscalerasHorizontales8" type="StaticBody" parent="Escenario/EscalerasHorizontales"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18163, -5.75464, 5.41608 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0788136, 0.356877, -2.71712 )
+shape = SubResource( 33 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587623, 0.115123, -2.71712 )
+shape = SubResource( 34 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903221, -0.159134, -2.71712 )
+shape = SubResource( 35 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/EscalerasHorizontales/EscalerasHorizontales8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22442, -0.477565, -2.71712 )
+shape = SubResource( 36 )
+
+[node name="EscaleraVertical" type="Area" parent="Escenario"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/EscaleraVertical"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2137, 1.30784 )
+shape = SubResource( 42 )
+
+[node name="Maceteros" type="Node" parent="Escenario"]
+script = ExtResource( 11 )
+
+[node name="Macetero1" type="StaticBody" parent="Escenario/Maceteros"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03558, -1.28197, 0 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/Maceteros/Macetero1"]
+transform = Transform( 1, 0, 0, 0, 0.999941, 0.0109081, 0, -0.0109081, 0.999941, -0.0576458, 0.0602984, 2.35848 )
+shape = SubResource( 38 )
+
+[node name="Model" parent="Escenario/Maceteros/Macetero1" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519558, 2.3285 )
+visible = false
+
+[node name="Macetero2" type="StaticBody" parent="Escenario/Maceteros"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/Maceteros/Macetero2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0961, -3.73821, 3.75209 )
+shape = SubResource( 39 )
+
+[node name="Model" parent="Escenario/Maceteros/Macetero2" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03558, -3.32799, 3.78602 )
+visible = false
+
+[node name="Timer" type="Timer" parent="Escenario/Maceteros"]
+autostart = true
+
+[node name="Limites" type="StaticBody" parent="Escenario"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/Limites"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.894202 )
+shape = SubResource( 40 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/Limites"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.01336 )
+shape = SubResource( 40 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Escenario/Limites"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.21306, 0, 6.02944 )
+shape = SubResource( 40 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Escenario/Limites"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20875, 0, 6.02944 )
+shape = SubResource( 40 )
+
+[node name="Tejado" type="StaticBody" parent="Escenario"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/Tejado"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.19174, 0.903337 )
+shape = SubResource( 47 )
+
+[node name="LimitesTejado" type="Area" parent="Escenario"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Escenario/LimitesTejado"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60504, 4, 0.893049 )
+shape = SubResource( 46 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Escenario/LimitesTejado"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61124, 4, 0.893049 )
+shape = SubResource( 46 )
+
+[node name="PanelCorazones" type="Node" parent="Escenario"]
+script = ExtResource( 9 )
+
+[node name="Modelo1" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.43214, 5.25563, 0.973265 )
+visible = false
+
+[node name="Modelo2" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79479, 5.25563, 0.973265 )
+visible = false
+
+[node name="Modelo3" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18252, 5.28053, 0.973265 )
+visible = false
+
+[node name="Modelo4" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55366, 5.28883, 0.973265 )
+visible = false
+
+[node name="Modelo5" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93942, 5.28883, 0.973265 )
+visible = false
+
+[node name="Modelo6" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29199, 5.28883, 0.973265 )
+visible = false
+
+[node name="Modelo7" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.43214, 4.65712, 0.973265 )
+visible = false
+
+[node name="Modelo8" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79479, 4.65712, 0.973265 )
+visible = false
+
+[node name="Modelo9" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18252, 4.68202, 0.973265 )
+visible = false
+
+[node name="Modelo10" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55366, 4.69032, 0.973265 )
+visible = false
+
+[node name="Modelo11" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93942, 4.69032, 0.973265 )
+visible = false
+
+[node name="Modelo12" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29199, 4.69032, 0.973265 )
+visible = false
+
+[node name="Modelo13" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.43214, 4.10378, 0.973265 )
+visible = false
+
+[node name="Modelo14" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79479, 4.10378, 0.973265 )
+visible = false
+
+[node name="Modelo15" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18252, 4.12868, 0.973265 )
+visible = false
+
+[node name="Modelo16" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55366, 4.13698, 0.973265 )
+visible = false
+
+[node name="Modelo17" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93942, 4.13698, 0.973265 )
+visible = false
+
+[node name="Modelo18" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29199, 4.13698, 0.973265 )
+visible = false
+
+[node name="Modelo19" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.43214, 3.50526, 0.973265 )
+visible = false
+
+[node name="Modelo20" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79479, 3.50526, 0.973265 )
+visible = false
+
+[node name="Modelo21" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18252, 3.53017, 0.973265 )
+visible = false
+
+[node name="Modelo22" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55366, 3.53847, 0.973265 )
+visible = false
+
+[node name="Modelo23" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93942, 3.53847, 0.973265 )
+visible = false
+
+[node name="Modelo24" parent="Escenario/PanelCorazones" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29199, 3.53847, 0.973265 )
+visible = false
+
+[node name="OmniLight" type="OmniLight" parent="Escenario/PanelCorazones"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82557, 4.33036, 1.62102 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+transform = Transform( 4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0 )
+
+[node name="Popeye" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18877, 1.02167, 1.04815 )
+mode = 2
+physics_material_override = SubResource( 32 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pivot" type="Spatial" parent="Popeye"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Character" parent="Popeye/Pivot" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Popeye"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785169, 0 )
+shape = SubResource( 4 )
+
+[node name="OmniLight" type="OmniLight" parent="Popeye"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04349, 0.82449 )
+
+[node name="Body" type="Area" parent="Popeye"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Popeye/Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785169, 0 )
+shape = SubResource( 4 )
+
+[node name="RayCast" type="RayCast" parent="Popeye"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
+enabled = true
+cast_to = Vector3( 0, -0.75, 0 )
+debug_shape_thickness = 4
+
+[node name="Olivia" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463166, 3.33062, 1.12317 )
+mode = 2
+script = ExtResource( 7 )
+
+[node name="Pivot" type="Spatial" parent="Olivia"]
+
+[node name="Character" parent="Olivia/Pivot" instance=ExtResource( 4 )]
+
+[node name="OmniLight" type="OmniLight" parent="Olivia"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00852895, 1.91842, 0.846752 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Olivia"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775761, 0 )
+shape = SubResource( 45 )
+
+[node name="Cuerpo" type="Area" parent="Olivia"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Olivia/Cuerpo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775761, 0 )
+shape = SubResource( 45 )
+
+[node name="Timer" type="Timer" parent="Olivia"]
+autostart = true
+
+[node name="SpawnPosition" type="Position3D" parent="Olivia"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17928, 0.331654 )
+
+[node name="Brutus" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16794, 1.00487, 1.24309 )
+mode = 2
+physics_material_override = SubResource( 44 )
+script = ExtResource( 3 )
+
+[node name="Pivot" type="Spatial" parent="Brutus"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Character" parent="Brutus/Pivot" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="Brutus"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50895, 1.29147 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Brutus"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.652417, 0 )
+shape = SubResource( 43 )
+
+[node name="CuerpoBrutus" type="Area" parent="Brutus"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Brutus/CuerpoBrutus"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.652417, 0 )
+shape = SubResource( 43 )
+
+[node name="RayCast" type="RayCast" parent="Brutus"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
+enabled = true
+cast_to = Vector3( 0, -0.75, 0 )
+
+[connection signal="timeout" from="Escenario/Maceteros/Timer" to="Escenario/Maceteros" method="_on_Timer_timeout"]
+[connection signal="corazon_cogido" from="Popeye" to="Escenario/PanelCorazones" method="_on_Popeye_corazon_cogido"]
+[connection signal="area_entered" from="Popeye/Body" to="Popeye" method="_on_Body_area_entered"]
+[connection signal="area_entered" from="Olivia/Cuerpo" to="Olivia" method="_on_Cuerpo_area_entered"]
+[connection signal="timeout" from="Olivia/Timer" to="Olivia" method="_on_Timer_timeout"]

@@ -403,7 +403,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Olivia"]
 frames = SubResource( 11 )
 animation = "andar"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Olivia"]
