@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://modelos/popeye/popeye.glb" type="PackedScene" id=1]
 [ext_resource path="res://modelos/level_1/level_1.obj" type="ArrayMesh" id=2]
@@ -36,9 +36,6 @@ extents = Vector3( 9.71881, 7.20876, 2.32911 )
 [sub_resource type="BoxShape" id=42]
 extents = Vector3( 0.668465, 1.43542, 0.258752 )
 
-[sub_resource type="BoxShape" id=46]
-extents = Vector3( 0.334569, 1, 0.394771 )
-
 [sub_resource type="BoxShape" id=38]
 extents = Vector3( 0.312734, 0.323416, 0.346257 )
 
@@ -51,14 +48,17 @@ friction = 0.0
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.143688, 0.789907, 0.020959 )
 
-[sub_resource type="BoxShape" id=45]
-extents = Vector3( 0.290792, 0.759247, 0.268712 )
-
 [sub_resource type="PhysicsMaterial" id=44]
 friction = 0.0
 
 [sub_resource type="BoxShape" id=43]
 extents = Vector3( 0.137311, 0.644242, 0.0760248 )
+
+[sub_resource type="Curve3D" id=49]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -4.93167, 4.76837e-07, 0.980265, 0, 0, 0, 0, 0, 0, -4.92411, 4.76837e-07, 0.972702, 0, 0, 0, 0, 0, 0, 4.77004, 1.19209e-06, 1.01396, 0, 0, 0, 0, 0, 0, 4.77004, 2.38419e-07, 1.00434, 0, 0, 0, 0, 0, 0, -4.92411, 4.76837e-07, 0.972702 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
 
 [node name="Juego" type="Spatial"]
 
@@ -110,17 +110,6 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.00663996, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Escenario/EscaleraVertical"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2137, 1.30784 )
 shape = SubResource( 42 )
-
-[node name="LimitesTejado" type="Area" parent="Escenario"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.00663996, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Escenario/LimitesTejado"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60504, 4, 0.893049 )
-shape = SubResource( 46 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Escenario/LimitesTejado"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61124, 4, 0.893049 )
-shape = SubResource( 46 )
 
 [node name="Maceteros" type="Node" parent="Escenario"]
 script = ExtResource( 11 )
@@ -280,34 +269,6 @@ enabled = true
 cast_to = Vector3( 0, -0.75, 0 )
 debug_shape_thickness = 4
 
-[node name="Olivia" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463166, 3.33062, 0.7195 )
-mode = 2
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Pivot" type="Spatial" parent="Olivia"]
-
-[node name="Character" parent="Olivia/Pivot" instance=ExtResource( 4 )]
-
-[node name="CollisionShape" type="CollisionShape" parent="Olivia"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775761, 0 )
-shape = SubResource( 45 )
-
-[node name="Cuerpo" type="Area" parent="Olivia"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Olivia/Cuerpo"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775761, 0 )
-shape = SubResource( 45 )
-
-[node name="Timer" type="Timer" parent="Olivia"]
-autostart = true
-
-[node name="SpawnPosition" type="Position3D" parent="Olivia"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17928, 0.331654 )
-
 [node name="Brutus" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16794, 1.00487, 0.18596 )
 mode = 2
@@ -338,8 +299,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 enabled = true
 cast_to = Vector3( 0, -0.75, 0 )
 
+[node name="Tejado" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32335, 0 )
+curve = SubResource( 49 )
+
+[node name="Olivia" type="PathFollow" parent="Tejado"]
+transform = Transform( -0.0337206, -7.09105e-08, 0.999431, 0, 1, 7.09508e-08, -0.999431, 2.3925e-09, -0.0337206, -4.93167, 4.76837e-07, 0.980265 )
+rotation_mode = 4
+cubic_interp = false
+script = ExtResource( 7 )
+
+[node name="Modelo" parent="Tejado/Olivia" instance=ExtResource( 4 )]
+
+[node name="SpawnPosition" type="Position3D" parent="Tejado/Olivia"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23191, 0 )
+
+[node name="Timer" type="Timer" parent="Tejado/Olivia"]
+autostart = true
+
 [connection signal="timeout" from="Escenario/Maceteros/Timer" to="Escenario/Maceteros" method="_on_Timer_timeout"]
 [connection signal="corazon_cogido" from="Popeye" to="Escenario/PanelCorazones" method="_on_Popeye_corazon_cogido"]
 [connection signal="area_entered" from="Popeye/Body" to="Popeye" method="_on_Body_area_entered"]
-[connection signal="area_entered" from="Olivia/Cuerpo" to="Olivia" method="_on_Cuerpo_area_entered"]
-[connection signal="timeout" from="Olivia/Timer" to="Olivia" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Tejado/Olivia/Timer" to="Tejado/Olivia" method="_on_Timer_timeout"]

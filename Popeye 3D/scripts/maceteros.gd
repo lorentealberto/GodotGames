@@ -1,6 +1,6 @@
 extends Node
 
-onready var maceteros: Array = [$Macetero1, $Macetero2]
+onready var maceteros: Array = [$MaceteroSuperior, $MaceteroInferior]
 
 func _ready() -> void:
 	randomize()

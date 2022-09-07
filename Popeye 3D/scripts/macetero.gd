@@ -7,6 +7,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if activado:
-		$Model.visible = true
+		$Modelo.visible = true
 	else:
-		$Model.visible = false
+		$Modelo.visible = false
