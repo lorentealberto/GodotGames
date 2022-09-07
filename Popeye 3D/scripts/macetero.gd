@@ -1,4 +1,4 @@
-extends StaticBody
+extends Area
 
 var activado: bool
 
