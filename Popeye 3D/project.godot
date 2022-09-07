@@ -13,7 +13,7 @@ config_version=4
 config/name="Popeye 3D"
 run/main_scene="res://escenas/intro.tscn"
 run/disable_stdout=true
-config/windows_native_icon="res://graficos/iconos/x32.ico"
+config/windows_native_icon="res://graficos/iconos/icon.ico"
 
 [display]
 
