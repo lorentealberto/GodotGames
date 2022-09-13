@@ -29,4 +29,9 @@ shape = SubResource( 1 )
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 aabb = AABB( -0.301967, -0.198907, -0.101434, 0.603934, 0.397813, 0.202868 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
