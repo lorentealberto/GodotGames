@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://graficos/miscelenea/fondo.png" type="Texture" id=1]
+[ext_resource path="res://graficos/jugador_1/andando_dos_globos.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Jugador.vs" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 54.5, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 42, 8.5 )
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.0
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "andando_dos_globos",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 4.0
+height = 6.9259
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 6.0
+
+[node name="Juego" type="Node2D"]
+
+[node name="Fondo" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Suelo" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
+position = Vector2( 128.5, 133 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Suelo"]
+position = Vector2( 42, 224.5 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Suelo"]
+position = Vector2( 214, 224 )
+shape = SubResource( 2 )
+
+[node name="Jugador" type="RigidBody2D" parent="."]
+position = Vector2( 140, 114 )
+mode = 2
+physics_material_override = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
+frames = SubResource( 9 )
+animation = "andando_dos_globos"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2( -2, 5 )
+shape = SubResource( 10 )
+
+[node name="Globos" type="Area2D" parent="Jugador"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador/Globos"]
+position = Vector2( 1, -6 )
+shape = SubResource( 11 )
