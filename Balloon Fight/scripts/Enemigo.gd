@@ -7,6 +7,10 @@ const Animaciones = {
 	CAYENDO = "cayendo"
 }
 
+const Gravedad = {
+	
+}
+
 const SALTO: int = 6    
 const VHORIZONTAL: int = 22
 
@@ -26,24 +30,15 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if activado:
-		#Movimiento horizontal
-		if sqrt(pow(punto_control_actual.x - position.x, 2)) < 10.0:
-			velocidad = 0
-		else:
-			if punto_control_actual.x < position.x:
-				velocidad = -1
-				$AnimatedSprite.flip_h = false
-			elif punto_control_actual.x > position.x:
-				velocidad = 1
-				$AnimatedSprite.flip_h = true
-		#Movimiento vertical
-		if sqrt(pow(punto_control_actual.y - position.y, 2)) > 1.0:
-			if punto_control_actual.y < position.y:
-				debe_subir = true
-			else:
-				debe_subir = false
-		if position.distance_to(punto_control_actual) < 10.0:
-			_obtener_nuevo_punto_control()
+		if $Globo.position.y < 0:
+			$Globo.position.y = 0
+			
+		if position.x < 0:
+			position.x = get_viewport_rect().size.x
+		elif position.x > get_viewport_rect().size.x:
+			position.x = 0
+		if $RayCast2D.is_colliding():
+			debe_subir = true
 	else:
 		if $RayCast2D.is_colliding():
 			if _esta_cayendo():
@@ -84,9 +79,6 @@ func _on_AnimatedSprite_animation_finished():
 			_obtener_nuevo_punto_control()
 			_aletear()
 
-func _on_Timer_timeout():
-	if activado and debe_subir and not (_en_paracaidas() or _esta_cayendo()):
-		_aletear()
 
 func _on_Globo_body_entered(body):
 	if body.name == "Jugador":
@@ -106,3 +98,23 @@ func _on_Enemigo_sin_paracaidas() -> void:
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
+
+
+func _on_Aleteo_timeout():
+	if activado and debe_subir and not (_en_paracaidas() or _esta_cayendo()):
+		_aletear()
+
+
+func _on_Accion_timeout():
+	if activado:
+		var horizontal: int = randi() % 2
+		match horizontal:
+			0:
+				velocidad = 1
+				$AnimatedSprite.flip_h = true
+			1:
+				velocidad = -1
+				$AnimatedSprite.flip_h = false
+		var vertical: int = randi() % 2
+		debe_subir = vertical == 0
+	
