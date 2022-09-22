@@ -4,7 +4,7 @@
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Jugador.gd" type="Script" id=3]
 [ext_resource path="res://graficos/enemigo_L1.png" type="Texture" id=4]
-[ext_resource path="res://scripts/Enemigo.vs" type="Script" id=5]
+[ext_resource path="res://scripts/Enemigo.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 54.5, 3.5 )
@@ -263,15 +263,19 @@ position = Vector2( 214, 224 )
 shape = SubResource( 2 )
 
 [node name="Jugador" type="RigidBody2D" parent="."]
-position = Vector2( 140, 114 )
+position = Vector2( 42, 199 )
 mode = 2
 physics_material_override = SubResource( 3 )
 gravity_scale = 0.5
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
 frames = SubResource( 9 )
 animation = "apareciendo_dos_globos"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
@@ -289,8 +293,9 @@ position = Vector2( 0, 15 )
 enabled = true
 cast_to = Vector2( 0, 2 )
 
-[node name="Enemigo" type="RigidBody2D" parent="."]
-position = Vector2( 102, 114 )
+[node name="Enemigo" type="RigidBody2D" parent="." groups=["enemigos"]]
+position = Vector2( 82, 114 )
+collision_mask = 0
 mode = 2
 gravity_scale = 0.5
 script = ExtResource( 5 )
@@ -338,6 +343,6 @@ position = Vector2( 170, 89 )
 [node name="Position2D6" type="Position2D" parent="PuntosControl"]
 position = Vector2( 220, 50 )
 
-[connection signal="punto_control_alcanzado" from="Enemigo" to="Enemigo" method="_on_Enemigo_punto_control_alcanzado"]
 [connection signal="animation_finished" from="Enemigo/AnimatedSprite" to="Enemigo" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Enemigo/Globo" to="Enemigo" method="_on_Globo_body_entered"]
 [connection signal="timeout" from="Enemigo/Timer" to="Enemigo" method="_on_Timer_timeout"]
