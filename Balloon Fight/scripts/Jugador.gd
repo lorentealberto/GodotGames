@@ -7,7 +7,7 @@ const Animaciones = {
 }
 
 const VHORIZONTAL: int = 22
-const SALTO: int = 35
+const SALTO: int = 20     
 
 var activado: bool = false
 var n_globos: String = "dos_globos"
@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 			apply_central_impulse(Vector2(0, -SALTO))
 			$AnimatedSprite.frame = 0
 		#Comprobar que se esté tocando el suelo
-		if $RayCast2D.is_colliding():
+		if $RayCast2D.is_colliding() and $RayCast2D.get_collider().name == "Suelo":
 			$AnimatedSprite.animation = Animaciones.ANDANDO + n_globos
 			$AnimatedSprite.playing = (Input.is_action_pressed("mover_derecha") or 
 										Input.is_action_pressed("mover_izquierda"))
