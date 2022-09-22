@@ -2,7 +2,7 @@
 
 [ext_resource path="res://graficos/miscelenea/fondo.png" type="Texture" id=1]
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Jugador.vs" type="Script" id=3]
+[ext_resource path="res://scripts/Jugador.gd" type="Script" id=3]
 [ext_resource path="res://graficos/enemigo_L1.png" type="Texture" id=4]
 [ext_resource path="res://scripts/Enemigo.vs" type="Script" id=5]
 
@@ -318,8 +318,26 @@ enabled = true
 cast_to = Vector2( 0, 4 )
 
 [node name="Timer" type="Timer" parent="Enemigo"]
-wait_time = 0.7
+wait_time = 0.5
 autostart = true
 
+[node name="PuntosControl" type="Node" parent="."]
+
+[node name="Position2D2" type="Position2D" parent="PuntosControl"]
+position = Vector2( 62, 52 )
+
+[node name="Position2D3" type="Position2D" parent="PuntosControl"]
+position = Vector2( 96, 90 )
+
+[node name="Position2D4" type="Position2D" parent="PuntosControl"]
+position = Vector2( 133, 49 )
+
+[node name="Position2D5" type="Position2D" parent="PuntosControl"]
+position = Vector2( 170, 89 )
+
+[node name="Position2D6" type="Position2D" parent="PuntosControl"]
+position = Vector2( 220, 50 )
+
+[connection signal="punto_control_alcanzado" from="Enemigo" to="Enemigo" method="_on_Enemigo_punto_control_alcanzado"]
 [connection signal="animation_finished" from="Enemigo/AnimatedSprite" to="Enemigo" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Enemigo/Timer" to="Enemigo" method="_on_Timer_timeout"]
