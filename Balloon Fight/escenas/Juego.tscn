@@ -215,7 +215,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
 frames = SubResource( 9 )
 animation = "apareciendo_dos_globos"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]

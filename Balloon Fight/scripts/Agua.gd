@@ -1,7 +1,8 @@
 extends Area2D
+class_name Agua
 
 func _on_Agua_body_entered(body: Node) -> void:
-	if body.name == "Jugador" or body.is_in_group("enemigos"):
+	if body is Jugador or body is Enemigo:
 		$AnimatedSprite.visible = true
 		$AnimatedSprite.frame = 0
 		$AnimatedSprite.play()

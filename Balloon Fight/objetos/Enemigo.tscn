@@ -118,7 +118,7 @@ height = 4.0
 [sub_resource type="CircleShape2D" id=52]
 radius = 5.0
 
-[node name="Enemigo" type="RigidBody2D" groups=["enemigos"]]
+[node name="Enemigo" type="RigidBody2D"]
 collision_mask = 0
 mode = 2
 gravity_scale = 0.25

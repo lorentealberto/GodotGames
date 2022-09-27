@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Jugador
 
 const Animaciones = {
 	ANDANDO = "andando_",

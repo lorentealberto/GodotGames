@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Agua",
+"language": "GDScript",
+"path": "res://scripts/Agua.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Enemigo",
+"language": "GDScript",
+"path": "res://scripts/Enemigo.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Jugador",
+"language": "GDScript",
+"path": "res://scripts/Jugador.gd"
+} ]
+_global_script_class_icons={
+"Agua": "",
+"Enemigo": "",
+"Jugador": ""
+}
+
 [application]
 
 config/name="Balloon Fight"
