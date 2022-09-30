@@ -30,12 +30,12 @@ const LimitesVelocidad: Dictionary = {
 var _activado: bool = false
 var _debe_subir: bool = false
 var _velocidad: int = 0
-
+var maquina_estados
 
 # Se ejecuta cuando el script esté preparado
 func _ready() -> void:
 	randomize() # Aplica una semilla aleatoria a la generación de números aleatorios
-	$AnimatedSprite.play(Animaciones.INFLANDO_GLOBO)
+	maquina_estados = $AnimationTree.get("parametes/playback")
 
 
 """Se ejecuta todos los frames del juego
@@ -58,7 +58,8 @@ func _process(_delta: float) -> void:
 			if _esta_cayendo():
 				queue_free()
 			elif _en_paracaidas():
-				$AnimatedSprite.play(Animaciones.INFLANDO_GLOBO)
+				pass
+				#$AnimatedSprite.play(Animaciones.INFLANDO_GLOBO)
 
 
 """Sobrescribe las físicas que controlan al objeto
@@ -83,9 +84,9 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 
 # Aplica un impulso hacía arriba
 func _aletear() -> void:
-	$AnimatedSprite.play(Animaciones.VOLANDO)
+	maquina_estados.travel("volando")
 	apply_central_impulse(Vector2(0, -Velocidades.SALTO))
-	$AnimatedSprite.frame = 0
+	#$AnimatedSprite.frame = 0
 
 
 # Devuelve si se está reproduciendo la animación de 'CAYENDO'
@@ -143,11 +144,19 @@ func _on_Accion_timeout():
 		horizontal que se realizará"""
 		if randi() % 2 == 0:
 			_velocidad = 1
-			$AnimatedSprite.flip_h = true
+			$Sprite.flip_h = true
 		else:
 			_velocidad = -1
-			$AnimatedSprite.flip_h = false
+			$Sprite.flip_h = false
 		
 		"""Se indica al objeto si debe subir o no, en función de un número aleatorio
 		entre 1 y 2"""
 		_debe_subir = randi() % 2 == 0
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	print("anim_name")
+	if anim_name == Animaciones.INFLANDO_GLOBO:
+		gravity_scale = Gravedades.NORMAL
+		_activado = true
+		_aletear()
