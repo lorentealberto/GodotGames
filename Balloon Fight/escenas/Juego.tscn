@@ -214,7 +214,7 @@ animations = [ {
 "speed": 9.0
 }, {
 "frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
-"loop": true,
+"loop": false,
 "name": "muriendo",
 "speed": 9.0
 }, {
@@ -294,6 +294,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
 frames = SubResource( 9 )
 animation = "muriendo"
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
