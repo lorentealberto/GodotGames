@@ -1,50 +1,128 @@
 extends RigidBody2D
 class_name Jugador
 
-const Animaciones = {
-	ANDANDO = "andando_",
-	VOLANDO = "volando_",
-	APARECIENDO = "apareciendo_"
+#Ajustes
+const Animaciones: Dictionary = {
+	ANDANDO = "andando",
+	VOLANDO = "volando",
+	APARECIENDO = "apareciendo",
+	FRENANDO = "frenando",
+	DERRAPANDO = "derrapando",
+	PERDIENDO_VIDA_AIRE = "perdiendo_vida_aire",
+	PERDIENDO_VIDA_SUELO = "perdiendo_vida_suelo",
+	MURIENDO = "muriendo",
 }
 
-const VHORIZONTAL: int = 22
-const SALTO: int = 20     
+const Velocidades: Dictionary = {
+	SALTO = 20.0,
+	HORIZONTAL = 0.5,
+}
 
-var activado: bool = false
-var n_globos: String = "dos_globos"
-var velocidad: int = 0
+const LimitesVelocidad: Dictionary = {
+	INFERIOR = -30.0,
+	SUPERIOR = 30.0,
+}
+
+const NGlobos: Array = ["_un_globo", "_dos_globos"]
+const SUELO: String = "Suelo"
+
+const Direcciones: Dictionary = {
+	DERECHA = 1,
+	IZQUIERDA = -1,
+}
+
+const VIDAS_MAXIMAS: int = 2
+
+# Variables necesarias para el correcto funcionamiento del script
+# NO TOCAR
+var _activado: bool = false
+var _direccion: int = 0
+var _vidas: int = 2
+var _animacion_bloqueada: bool = false
 
 
+func _ready() -> void:
+	$AnimatedSprite.play(Animaciones.APARECIENDO + _get_n_globos())
+	
 func _process(_delta: float) -> void:
-	if activado: #Se comprueba que el personaje esté activado
-		velocidad = 0
-		#Movimiento horizontal
+	if _activado:
+		# Movimiento horizontal
+		_direccion = 0
 		if Input.is_action_pressed("mover_derecha"):
-			velocidad = 1
+			_direccion = Direcciones.DERECHA
 			$AnimatedSprite.flip_h = true
 		elif Input.is_action_pressed("mover_izquierda"):
-			velocidad = -1
+			_direccion = Direcciones.IZQUIERDA
 			$AnimatedSprite.flip_h = false
-		#Aletear
+		
+		# Aleteo
 		if Input.is_action_just_pressed("aletear"):
-			$AnimatedSprite.play()
-			apply_central_impulse(Vector2(0, -SALTO))
+			if not _animacion_bloqueada:
+				$AnimatedSprite.play()
+			apply_central_impulse(Vector2(0, -Velocidades.SALTO))
 			$AnimatedSprite.frame = 0
-		#Comprobar que se esté tocando el suelo
-		if $RayCast2D.is_colliding() and $RayCast2D.get_collider().name == "Suelo":
-			$AnimatedSprite.animation = Animaciones.ANDANDO + n_globos
+
+		
+		# Está en suelo
+		if $RayCast2D.is_colliding() and $RayCast2D.get_collider().name == SUELO and not _animacion_bloqueada:
+			$AnimatedSprite.animation = Animaciones.ANDANDO + _get_n_globos()
+			
+			if floor(linear_velocity.x) != 0 and _direccion == 0:
+				$AnimatedSprite.animation = Animaciones.FRENANDO + _get_n_globos()
+			
+			if sign(linear_velocity.x) != _direccion and _direccion != 0:
+				$AnimatedSprite.animation = Animaciones.DERRAPANDO + _get_n_globos()
+			
 			$AnimatedSprite.playing = (Input.is_action_pressed("mover_derecha") or 
-										Input.is_action_pressed("mover_izquierda"))
+					Input.is_action_pressed("mover_izquierda"))
 		else:
-			$AnimatedSprite.animation = Animaciones.VOLANDO + n_globos
-	else: #Si el personaje no está activado
-		#Si alguno de los controles ha sido pulsado, se activa el personaje
-		if (Input.is_action_just_pressed("mover_derecha") or
-			Input.is_action_just_pressed("mover_izquierda") or
-			Input.is_action_just_pressed("aletear")):
-				activado = true
-		#Poner la animación de 'apareciendo'
-		$AnimatedSprite.animation = Animaciones.APARECIENDO + n_globos
+			if not _animacion_bloqueada:
+				$AnimatedSprite.animation = Animaciones.VOLANDO + _get_n_globos()
+	else:
+		_activado = (Input.is_action_just_pressed("aletear") or Input.is_action_just_pressed("mover_derecha") or
+				Input.is_action_just_pressed("mover_izquierda"))
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
-	state.set_linear_velocity(Vector2(velocidad * VHORIZONTAL, state.get_linear_velocity().y))
+	state.set_linear_velocity(Vector2(state.get_linear_velocity().x + _direccion * Velocidades.HORIZONTAL, 
+			state.get_linear_velocity().y))
+		
+	# Aplicar límites a la velocidad
+	if state.linear_velocity.x < LimitesVelocidad.INFERIOR:
+		state.linear_velocity.x = LimitesVelocidad.INFERIOR
+	elif state.linear_velocity.x > LimitesVelocidad.SUPERIOR:
+		state.linear_velocity.x = LimitesVelocidad.SUPERIOR
+
+
+func _get_n_globos() -> String:
+	return NGlobos[_vidas - 1]
+
+func _perdiendo_globo() -> bool:
+	return $AnimatedSprite.animation in [Animaciones.PERDIENDO_VIDA_AIRE, Animaciones.PERDIENDO_VIDA_SUELO]
+func _esta_muriendo() -> bool:
+	return $AnimatedSprite.animation == Animaciones.MURIENDO
+func _explotar_globo() -> String:
+	if _vidas <= 0:
+		return Animaciones.MURIENDO
+		
+	if not $RayCast2D.is_colliding():
+		return Animaciones.PERDIENDO_VIDA_AIRE
+	elif $RayCast2D.get_collider().name == SUELO:
+		return Animaciones.PERDIENDO_VIDA_SUELO
+	
+	return ""
+
+
+func _on_Globos_body_entered(body: Node) -> void:
+	if body.is_in_group("enemigos"):
+		$AnimatedSprite.play(_explotar_globo())
+		_animacion_bloqueada = true
+
+
+func _on_AnimatedSprite_animation_finished():
+	if _perdiendo_globo():
+		if _vidas > 0:
+			_vidas -= 1
+		_animacion_bloqueada = false
+	if _esta_muriendo():
+		pass
+	

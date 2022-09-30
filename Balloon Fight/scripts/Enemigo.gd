@@ -2,25 +2,25 @@ extends RigidBody2D
 class_name Enemigo
 
 # Ajustes
-const Animaciones = {
+const Animaciones: Dictionary = {
 	INFLANDO_GLOBO = "inflando_globo",
 	VOLANDO = "volando",
 	PARACAIDAS = "paracaidas",
 	CAYENDO = "cayendo",
 }
 
-const Gravedad = {
+const Gravedades: Dictionary = {
 	ALTA = 1.0,
 	NORMAL = 0.25,
 	REDUCIDA = 0.125,
 }
 
-const Velocidad = {
+const Velocidades: Dictionary = {
 	SALTO = 4,
 	HORIZONTAL = 0.5,
 }
 
-const Limites = {
+const LimitesVelocidad: Dictionary = {
 	INFERIOR = -30.0,
 	SUPERIOR = 30.0,
 }
@@ -71,20 +71,20 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 			state.linear_velocity.y = 0
 			_debe_subir = false
 		
-		state.set_linear_velocity(Vector2(state.get_linear_velocity().x + _velocidad * Velocidad.HORIZONTAL, 
+		state.set_linear_velocity(Vector2(state.get_linear_velocity().x + _velocidad * Velocidades.HORIZONTAL, 
 				state.get_linear_velocity().y))
 		
 		# Aplicar límites a la velocidad
-		if state.linear_velocity.x < Limites.INFERIOR:
-			state.linear_velocity.x = Limites.INFERIOR
-		elif state.linear_velocity.x > Limites.SUPERIOR:
-			state.linear_velocity.x = Limites.SUPERIOR
+		if state.linear_velocity.x < LimitesVelocidad.INFERIOR:
+			state.linear_velocity.x = LimitesVelocidad.INFERIOR
+		elif state.linear_velocity.x > LimitesVelocidad.SUPERIOR:
+			state.linear_velocity.x = LimitesVelocidad.SUPERIOR
 
 
 # Aplica un impulso hacía arriba
 func _aletear() -> void:
 	$AnimatedSprite.play(Animaciones.VOLANDO)
-	apply_central_impulse(Vector2(0, -Velocidad.SALTO))
+	apply_central_impulse(Vector2(0, -Velocidades.SALTO))
 	$AnimatedSprite.frame = 0
 
 
@@ -102,14 +102,14 @@ func _en_paracaidas() -> bool:
 func _on_AnimatedSprite_animation_finished():
 	match $AnimatedSprite.animation:
 		Animaciones.INFLANDO_GLOBO: # Animación cuya finalización se quiere comprobar
-			gravity_scale = Gravedad.NORMAL
+			gravity_scale = Gravedades.NORMAL
 			_activado = true
 			_aletear()
 
 
 """Recoge la señal body_entered del nodo 'Area2D' del objeto
 body: Node -> Objeto que entra dentro del área"""
-func _on_Globo_body_entered(body: Node):
+func _on_Globo_body_entered(body: Node) -> void:
 	if body is Jugador:
 		"""Se realiza una acción diferente dependiendo de la animación que se esté
 		reproduciendo actualmente"""
@@ -119,10 +119,10 @@ func _on_Globo_body_entered(body: Node):
 			Animaciones.VOLANDO:
 				$AnimatedSprite.play(Animaciones.PARACAIDAS)
 				_activado = false
-				gravity_scale = Gravedad.REDUCIDA
+				gravity_scale = Gravedades.REDUCIDA
 			Animaciones.PARACAIDAS:
 				$AnimatedSprite.play(Animaciones.CAYENDO)
-				gravity_scale = Gravedad.ALTA
+				gravity_scale = Gravedades.ALTA
 
 
 # Recoge la señal screen_exited del nodo 'VisibilityNotifier2D'

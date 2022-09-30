@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://graficos/fondo.png" type="Texture" id=1]
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
@@ -53,7 +53,7 @@ animations = [ {
 } ]
 
 [sub_resource type="PhysicsMaterial" id=3]
-friction = 0.0
+friction = 0.26
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
@@ -94,6 +94,50 @@ region = Rect2( 32, 0, 16, 32 )
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 2 )
+region = Rect2( 112, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 2 )
@@ -149,10 +193,45 @@ animations = [ {
 "name": "apareciendo_un_globo",
 "speed": 9.0
 }, {
+"frames": [ SubResource( 39 ) ],
+"loop": true,
+"name": "derrapando_dos_globos",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 40 ) ],
+"loop": true,
+"name": "derrapando_un_globo",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 41 ) ],
+"loop": false,
+"name": "frenando_dos_globos",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 42 ) ],
+"loop": false,
+"name": "frenando_un_globo",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "muriendo",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 48 ) ],
+"loop": false,
+"name": "perdiendo_vida_aire",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 49 ) ],
+"loop": false,
+"name": "perdiendo_vida_suelo",
+"speed": 9.0
+}, {
 "frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": false,
 "name": "volando_dos_globos",
-"speed": 9.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
 "loop": false,
@@ -214,7 +293,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
 frames = SubResource( 9 )
-animation = "apareciendo_dos_globos"
+animation = "muriendo"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
@@ -243,3 +322,5 @@ position = Vector2( 173, 115 )
 
 [connection signal="body_entered" from="Agua" to="Agua" method="_on_Agua_body_entered"]
 [connection signal="animation_finished" from="Agua/AnimatedSprite" to="Agua" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="Jugador/AnimatedSprite" to="Jugador" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Jugador/Globos" to="Jugador" method="_on_Globos_body_entered"]
