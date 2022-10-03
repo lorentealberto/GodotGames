@@ -79,7 +79,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=52]
 resource_name = "andando_dos_globos"
-length = 0.3
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -96,7 +96,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=55]
 resource_name = "andando_un_globo"
-length = 0.3
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -113,7 +113,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=51]
 resource_name = "apareciendo_dos_globos"
-length = 0.2
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -194,7 +194,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=62]
 resource_name = "muriendo"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -242,7 +242,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=58]
 resource_name = "planeando_dos_globos"
-length = 0.2
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -259,7 +259,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=59]
 resource_name = "planeando_un_globo"
-length = 0.2
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -276,7 +276,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=60]
 resource_name = "volando_dos_globos"
-length = 0.3
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -293,7 +293,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=61]
 resource_name = "volando_un_globo"
-length = 0.3
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -437,7 +437,8 @@ states/volando_un_globo/node = SubResource( 78 )
 states/volando_un_globo/position = Vector2( 1135.67, 333.333 )
 transitions = [ "apareciendo_dos_globos", "andando_dos_globos", SubResource( 79 ), "andando_dos_globos", "derrapando_dos_globos", SubResource( 80 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 81 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 82 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 83 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 84 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 85 ), "apareciendo_dos_globos", "volando_dos_globos", SubResource( 86 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 87 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 88 ), "perdiendo_vida_suelo", "andando_un_globo", SubResource( 89 ), "perdiendo_vida_aire", "volando_un_globo", SubResource( 90 ), "andando_un_globo", "derrapando_un_globo", SubResource( 91 ), "derrapando_un_globo", "andando_un_globo", SubResource( 92 ), "volando_un_globo", "planeando_un_globo", SubResource( 93 ), "planeando_un_globo", "volando_un_globo", SubResource( 94 ), "derrapando_un_globo", "muriendo", SubResource( 95 ), "andando_un_globo", "muriendo", SubResource( 96 ), "volando_un_globo", "muriendo", SubResource( 97 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 98 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 99 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 100 ), "andando_un_globo", "frenando_un_globo", SubResource( 101 ), "frenando_un_globo", "andando_un_globo", SubResource( 102 ), "frenando_un_globo", "muriendo", SubResource( 103 ), "planeando_un_globo", "muriendo", SubResource( 104 ) ]
 start_node = "apareciendo_dos_globos"
-graph_offset = Vector2( 402, 44 )
+end_node = "muriendo"
+graph_offset = Vector2( 402, 146.168 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=106]
 

@@ -38,11 +38,12 @@ const VIDAS_MAXIMAS: int = 2
 var _activado: bool = false
 var _direccion: int = 0
 var _vidas: int = 2
-var maquina_estados: AnimationNodeStateMachinePlayback
+var maquina_estados: AnimationTree
+var playback_maquina_estados: AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
-	maquina_estados = $AnimationTree.get("parameters/playback")
-	print(maquina_estados)
+	maquina_estados = $AnimationTree
+	playback_maquina_estados = $AnimationTree.get("parameters/playback")
 
 
 """Se ejecuta una vez cada frame del juego
@@ -66,24 +67,24 @@ func _process(_delta: float) -> void:
 		# Está en suelo
 		if $RayCast2D.is_colliding() and $RayCast2D.get_collider().name == SUELO:
 			# Si se está pulsando algún control horizontal
-			if not (Input.is_action_pressed("mover_derecha") or 
-					Input.is_action_pressed("mover_izquierda")):
-						maquina_estados.set('parameters/time_scale/scale', 0)
+			
+			#maquina_estados.active = (Input.is_action_pressed("mover_derecha") or 
+					#Input.is_action_pressed("mover_izquierda"))
 			
 			# Andando
-			maquina_estados.travel(Animaciones.ANDANDO + _get_n_globos())
+			playback_maquina_estados.travel(Animaciones.ANDANDO + _get_n_globos())
 			
 			# Frenando
 			if floor(linear_velocity.x) != 0 and _direccion == 0:
-				maquina_estados.travel(Animaciones.FRENANDO + _get_n_globos())
+				playback_maquina_estados.travel(Animaciones.FRENANDO + _get_n_globos())
 			
 			# Derrapando
 			if sign(linear_velocity.x) != _direccion and _direccion != 0:
-				maquina_estados.travel(Animaciones.DERRAPANDO + _get_n_globos())
+				playback_maquina_estados.travel(Animaciones.DERRAPANDO + _get_n_globos())
 			
 			
 		else:
-			maquina_estados.travel(Animaciones.VOLANDO + _get_n_globos())
+			playback_maquina_estados.travel(Animaciones.VOLANDO + _get_n_globos())
 	else: # En caso de que el personaje esté desactivado, activarlo al pulsar algún control
 		_activado = (Input.is_action_just_pressed("aletear") or Input.is_action_just_pressed("mover_derecha") or
 				Input.is_action_just_pressed("mover_izquierda"))
@@ -111,13 +112,13 @@ func _get_n_globos() -> String:
 """Devuelve true o false si se está reproduciendo la animación de 'perdiendo_vida'
 return si se está perdiendo una vida"""
 func _perdiendo_globo() -> bool:
-	return maquina_estados.get_current_node() in [Animaciones.PERDIENDO_VIDA_AIRE, Animaciones.PERDIENDO_VIDA_SUELO]
+	return playback_maquina_estados.get_current_node() in [Animaciones.PERDIENDO_VIDA_AIRE, Animaciones.PERDIENDO_VIDA_SUELO]
 
 
 """Devuelve true o false si se está reproduciendo la animación de muerte
 return si se está reproduciendo la animación de muerte"""
 func _esta_muriendo() -> bool:
-	return maquina_estados.get_current_node() == Animaciones.MURIENDO
+	return playback_maquina_estados.get_current_node() == Animaciones.MURIENDO
 
 
 """Devuelve la animación correspondiente en función de si el personaje está en el aire, en el suelo
@@ -141,5 +142,5 @@ func _on_Globos_body_entered(body: Node) -> void:
 	if body.is_in_group("enemigos"):
 		if _vidas > 0:
 			_vidas -= 1
-		maquina_estados.travel(_explotar_globo())
+		playback_maquina_estados.travel(_explotar_globo())
 
