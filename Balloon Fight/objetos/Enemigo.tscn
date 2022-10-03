@@ -265,7 +265,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 8
 vframes = 5
-frame = 39
+frame = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
