@@ -5,8 +5,7 @@ class_name Enemigo
 const Animaciones: Dictionary = {
 	INFLANDO_GLOBO = "inflando_globo",
 	VOLANDO = "volando",
-	ATERRIZANDO = "aterrizando",
-	PARACAIDAS = "desplegando_paracaidas",
+	PARACAIDAS = "paracaidas",
 	CAYENDO = "cayendo",
 }
 
@@ -31,12 +30,12 @@ const LimitesVelocidad: Dictionary = {
 var _activado: bool = false
 var _debe_subir: bool = false
 var _velocidad: int = 0
-var maquina_estados: AnimationNodeStateMachinePlayback
+var maquina_estados
 
 # Se ejecuta cuando el script esté preparado
 func _ready() -> void:
 	randomize() # Aplica una semilla aleatoria a la generación de números aleatorios
-	maquina_estados = $AnimationTree.get("parameters/playback")
+	maquina_estados = $AnimationTree.get("parametes/playback")
 
 
 """Se ejecuta todos los frames del juego
@@ -54,16 +53,13 @@ func _process(_delta: float) -> void:
 		if $RayCast2D.is_colliding():
 			_debe_subir = true
 	else:
-		if maquina_estados.get_current_node() == Animaciones.VOLANDO:
-			gravity_scale = Gravedades.NORMAL
-			_activado = true
-			_aletear()
 		# Si el objeto no está activado y está tocando el suelo
 		if $RayCast2D.is_colliding():
 			if _esta_cayendo():
 				queue_free()
 			elif _en_paracaidas():
-				maquina_estados.travel(Animaciones.INFLANDO_GLOBO)
+				pass
+				#$AnimatedSprite.play(Animaciones.INFLANDO_GLOBO)
 
 
 """Sobrescribe las físicas que controlan al objeto
@@ -88,17 +84,28 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 
 # Aplica un impulso hacía arriba
 func _aletear() -> void:
+	maquina_estados.travel("volando")
 	apply_central_impulse(Vector2(0, -Velocidades.SALTO))
+	#$AnimatedSprite.frame = 0
 
 
 # Devuelve si se está reproduciendo la animación de 'CAYENDO'
 func _esta_cayendo() -> bool:
-	return maquina_estados.get_current_node() == Animaciones.CAYENDO
+	return $AnimatedSprite.animation == Animaciones.CAYENDO
 
 
 # Devuelve si se está reproduciendo la animació de 'PARACAIDAS'
 func _en_paracaidas() -> bool:
-	return maquina_estados.get_current_node() == Animaciones.PARACAIDAS
+	return $AnimatedSprite.animation == Animaciones.PARACAIDAS
+
+
+# Recoge la señal animation_finished
+func _on_AnimatedSprite_animation_finished():
+	match $AnimatedSprite.animation:
+		Animaciones.INFLANDO_GLOBO: # Animación cuya finalización se quiere comprobar
+			gravity_scale = Gravedades.NORMAL
+			_activado = true
+			_aletear()
 
 
 """Recoge la señal body_entered del nodo 'Area2D' del objeto
@@ -107,15 +114,15 @@ func _on_Globo_body_entered(body: Node) -> void:
 	if body is Jugador:
 		"""Se realiza una acción diferente dependiendo de la animación que se esté
 		reproduciendo actualmente"""
-		match maquina_estados.get_current_node():
+		match $AnimatedSprite.animation:
 			Animaciones.INFLANDO_GLOBO:
 				queue_free()
 			Animaciones.VOLANDO:
-				maquina_estados.travel(Animaciones.PARACAIDAS)
+				$AnimatedSprite.play(Animaciones.PARACAIDAS)
 				_activado = false
 				gravity_scale = Gravedades.REDUCIDA
 			Animaciones.PARACAIDAS:
-				maquina_estados.travel(Animaciones.CAYENDO)
+				$AnimatedSprite.play(Animaciones.CAYENDO)
 				gravity_scale = Gravedades.ALTA
 
 
@@ -145,4 +152,11 @@ func _on_Accion_timeout():
 		"""Se indica al objeto si debe subir o no, en función de un número aleatorio
 		entre 1 y 2"""
 		_debe_subir = randi() % 2 == 0
-		maquina_estados.travel(Animaciones.VOLANDO) if _debe_subir else maquina_estados.travel(Animaciones.ATERRIZANDO)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	print("anim_name")
+	if anim_name == Animaciones.INFLANDO_GLOBO:
+		gravity_scale = Gravedades.NORMAL
+		_activado = true
+		_aletear()
