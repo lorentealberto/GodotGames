@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://graficos/fondo.png" type="Texture" id=1]
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
@@ -54,190 +54,6 @@ animations = [ {
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 0.26
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
-region = Rect2( 80, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 2 )
-region = Rect2( 144, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 2 )
-region = Rect2( 80, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 2 )
-region = Rect2( 144, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 2 )
-region = Rect2( 80, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 64, 16, 32 )
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-"loop": true,
-"name": "andando_dos_globos",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "andando_un_globo",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
-"name": "apareciendo_dos_globos",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 20 ), SubResource( 21 ) ],
-"loop": true,
-"name": "apareciendo_un_globo",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 39 ) ],
-"loop": true,
-"name": "derrapando_dos_globos",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 40 ) ],
-"loop": true,
-"name": "derrapando_un_globo",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 41 ) ],
-"loop": false,
-"name": "frenando_dos_globos",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 42 ) ],
-"loop": false,
-"name": "frenando_un_globo",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
-"loop": false,
-"name": "muriendo",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 48 ) ],
-"loop": false,
-"name": "perdiendo_vida_aire",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 49 ) ],
-"loop": false,
-"name": "perdiendo_vida_suelo",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 28 ), SubResource( 29 ) ],
-"loop": false,
-"name": "volando_dos_globos",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
-"loop": false,
-"name": "volando_un_globo",
-"speed": 9.0
-} ]
 
 [sub_resource type="CapsuleShape2D" id=10]
 radius = 4.0
@@ -492,6 +308,139 @@ tracks/0/keys = {
 "values": [ 25, 26, 27 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=65]
+animation = "andando_dos_globos"
+
+[sub_resource type="AnimationNodeAnimation" id=66]
+animation = "andando_un_globo"
+
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "apareciendo_dos_globos"
+
+[sub_resource type="AnimationNodeAnimation" id=68]
+animation = "derrapando_dos_globos"
+
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "derrapando_un_globo"
+
+[sub_resource type="AnimationNodeAnimation" id=70]
+animation = "frenando_dos_globos"
+
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "frenando_un_globo"
+
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "muriendo"
+
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "perdiendo_vida_aire"
+
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "perdiendo_vida_suelo"
+
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "planeando_dos_globos"
+
+[sub_resource type="AnimationNodeAnimation" id=76]
+animation = "planeando_un_globo"
+
+[sub_resource type="AnimationNodeAnimation" id=77]
+animation = "volando_dos_globos"
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "volando_un_globo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=89]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=90]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=92]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=95]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=96]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=100]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=103]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=104]
+
+[sub_resource type="AnimationNodeStateMachine" id=105]
+states/andando_dos_globos/node = SubResource( 65 )
+states/andando_dos_globos/position = Vector2( 553.667, 79 )
+states/andando_un_globo/node = SubResource( 66 )
+states/andando_un_globo/position = Vector2( 1149, 78.0741 )
+states/apareciendo_dos_globos/node = SubResource( 67 )
+states/apareciendo_dos_globos/position = Vector2( 180.333, 163 )
+states/derrapando_dos_globos/node = SubResource( 68 )
+states/derrapando_dos_globos/position = Vector2( 564.333, -14.3333 )
+states/derrapando_un_globo/node = SubResource( 69 )
+states/derrapando_un_globo/position = Vector2( 1162.78, -6.66667 )
+states/frenando_dos_globos/node = SubResource( 70 )
+states/frenando_dos_globos/position = Vector2( 564.111, 160.296 )
+states/frenando_un_globo/node = SubResource( 71 )
+states/frenando_un_globo/position = Vector2( 1147.74, 163.889 )
+states/muriendo/node = SubResource( 72 )
+states/muriendo/position = Vector2( 1490.33, 229.333 )
+states/perdiendo_vida_aire/node = SubResource( 73 )
+states/perdiendo_vida_aire/position = Vector2( 876.111, 314.667 )
+states/perdiendo_vida_suelo/node = SubResource( 74 )
+states/perdiendo_vida_suelo/position = Vector2( 876.667, 79.5555 )
+states/planeando_dos_globos/node = SubResource( 75 )
+states/planeando_dos_globos/position = Vector2( 553.704, 353.333 )
+states/planeando_un_globo/node = SubResource( 76 )
+states/planeando_un_globo/position = Vector2( 1142.33, 398.667 )
+states/volando_dos_globos/node = SubResource( 77 )
+states/volando_dos_globos/position = Vector2( 554.444, 273.333 )
+states/volando_un_globo/node = SubResource( 78 )
+states/volando_un_globo/position = Vector2( 1135.67, 333.333 )
+transitions = [ "apareciendo_dos_globos", "andando_dos_globos", SubResource( 79 ), "andando_dos_globos", "derrapando_dos_globos", SubResource( 80 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 81 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 82 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 83 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 84 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 85 ), "apareciendo_dos_globos", "volando_dos_globos", SubResource( 86 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 87 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 88 ), "perdiendo_vida_suelo", "andando_un_globo", SubResource( 89 ), "perdiendo_vida_aire", "volando_un_globo", SubResource( 90 ), "andando_un_globo", "derrapando_un_globo", SubResource( 91 ), "derrapando_un_globo", "andando_un_globo", SubResource( 92 ), "volando_un_globo", "planeando_un_globo", SubResource( 93 ), "planeando_un_globo", "volando_un_globo", SubResource( 94 ), "derrapando_un_globo", "muriendo", SubResource( 95 ), "andando_un_globo", "muriendo", SubResource( 96 ), "volando_un_globo", "muriendo", SubResource( 97 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 98 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 99 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 100 ), "andando_un_globo", "frenando_un_globo", SubResource( 101 ), "frenando_un_globo", "andando_un_globo", SubResource( 102 ), "frenando_un_globo", "muriendo", SubResource( 103 ), "planeando_un_globo", "muriendo", SubResource( 104 ) ]
+start_node = "apareciendo_dos_globos"
+graph_offset = Vector2( 402, 44 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=106]
+
 [node name="Juego" type="Node2D"]
 
 [node name="Fondo" type="Sprite" parent="."]
@@ -542,12 +491,6 @@ texture = ExtResource( 2 )
 hframes = 10
 vframes = 4
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Jugador"]
-frames = SubResource( 9 )
-animation = "muriendo"
-frame = 4
-playing = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
 visible = false
 position = Vector2( -2, 8 )
@@ -582,6 +525,12 @@ anims/planeando_un_globo = SubResource( 59 )
 anims/volando_dos_globos = SubResource( 60 )
 anims/volando_un_globo = SubResource( 61 )
 
+[node name="AnimationTree" type="AnimationTree" parent="Jugador"]
+tree_root = SubResource( 105 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 106 )
+
 [node name="Enemigo" parent="." instance=ExtResource( 4 )]
 position = Vector2( 82, 112 )
 
@@ -593,5 +542,4 @@ position = Vector2( 173, 115 )
 
 [connection signal="body_entered" from="Agua" to="Agua" method="_on_Agua_body_entered"]
 [connection signal="animation_finished" from="Agua/AnimatedSprite" to="Agua" method="_on_AnimatedSprite_animation_finished"]
-[connection signal="animation_finished" from="Jugador/AnimatedSprite" to="Jugador" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Jugador/Globos" to="Jugador" method="_on_Globos_body_entered"]

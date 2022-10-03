@@ -42,6 +42,7 @@ var maquina_estados: AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
 	maquina_estados = $AnimationTree.get("parameters/playback")
+	print(maquina_estados)
 
 
 """Se ejecuta una vez cada frame del juego
