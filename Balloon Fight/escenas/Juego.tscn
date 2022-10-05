@@ -1,7 +1,8 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://graficos/fondo.png" type="Texture" id=1]
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Jugador.gd" type="Script" id=3]
 [ext_resource path="res://objetos/Enemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://graficos/pez.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Agua.gd" type="Script" id=6]
@@ -340,90 +341,59 @@ tracks/0/keys = {
 "values": [ 25, 26, 27 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=65]
+[sub_resource type="AnimationNodeAnimation" id=109]
 animation = "andando_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=66]
+[sub_resource type="AnimationNodeAnimation" id=137]
 animation = "andando_un_globo"
 
 [sub_resource type="AnimationNodeAnimation" id=67]
 animation = "apareciendo_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=68]
+[sub_resource type="AnimationNodeAnimation" id=110]
 animation = "derrapando_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=69]
+[sub_resource type="AnimationNodeAnimation" id=138]
 animation = "derrapando_un_globo"
 
-[sub_resource type="AnimationNodeAnimation" id=70]
+[sub_resource type="AnimationNodeAnimation" id=111]
 animation = "frenando_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=71]
+[sub_resource type="AnimationNodeAnimation" id=139]
 animation = "frenando_un_globo"
 
-[sub_resource type="AnimationNodeAnimation" id=109]
+[sub_resource type="AnimationNodeAnimation" id=112]
 animation = "idle_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=110]
+[sub_resource type="AnimationNodeAnimation" id=140]
 animation = "idle_un_globo"
 
-[sub_resource type="AnimationNodeAnimation" id=72]
+[sub_resource type="AnimationNodeAnimation" id=141]
 animation = "muriendo"
 
-[sub_resource type="AnimationNodeAnimation" id=73]
+[sub_resource type="AnimationNodeAnimation" id=113]
 animation = "perdiendo_vida_aire"
 
-[sub_resource type="AnimationNodeAnimation" id=74]
+[sub_resource type="AnimationNodeAnimation" id=114]
 animation = "perdiendo_vida_suelo"
 
-[sub_resource type="AnimationNodeAnimation" id=75]
+[sub_resource type="AnimationNodeAnimation" id=115]
 animation = "planeando_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=76]
+[sub_resource type="AnimationNodeAnimation" id=142]
 animation = "planeando_un_globo"
 
-[sub_resource type="AnimationNodeAnimation" id=77]
+[sub_resource type="AnimationNodeAnimation" id=116]
 animation = "volando_dos_globos"
 
-[sub_resource type="AnimationNodeAnimation" id=78]
+[sub_resource type="AnimationNodeAnimation" id=143]
 animation = "volando_un_globo"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=80]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=81]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=82]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=83]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=85]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=98]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=99]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=100]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=111]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=112]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=113]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=114]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=115]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=116]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=117]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=118]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=119]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=120]
 
@@ -442,13 +412,10 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=127]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=128]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=129]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=130]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=131]
 
@@ -462,61 +429,89 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=136]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=137]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=138]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=139]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=140]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=141]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=142]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=143]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=144]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=145]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=146]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=147]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=148]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=149]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=150]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=151]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=152]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=153]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=154]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=155]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=156]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=157]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=158]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=159]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=160]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=161]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=162]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=163]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=164]
 
 [sub_resource type="AnimationNodeStateMachine" id=105]
-states/andando_dos_globos/node = SubResource( 65 )
-states/andando_dos_globos/position = Vector2( 553.667, 79 )
-states/andando_un_globo/node = SubResource( 66 )
-states/andando_un_globo/position = Vector2( 1417.54, 82.3747 )
+states/andando_dos_globos/node = SubResource( 109 )
+states/andando_dos_globos/position = Vector2( 171.569, -49.213 )
+states/andando_un_globo/node = SubResource( 137 )
+states/andando_un_globo/position = Vector2( 1121.79, -285.309 )
 states/apareciendo_dos_globos/node = SubResource( 67 )
 states/apareciendo_dos_globos/position = Vector2( -94.3337, 160.333 )
-states/derrapando_dos_globos/node = SubResource( 68 )
-states/derrapando_dos_globos/position = Vector2( 564.333, -14.3333 )
-states/derrapando_un_globo/node = SubResource( 69 )
-states/derrapando_un_globo/position = Vector2( 1419.3, -15.1111 )
-states/frenando_dos_globos/node = SubResource( 70 )
-states/frenando_dos_globos/position = Vector2( 657.444, 189.629 )
-states/frenando_un_globo/node = SubResource( 71 )
-states/frenando_un_globo/position = Vector2( 1534.41, 213.759 )
-states/idle_dos_globos/node = SubResource( 109 )
-states/idle_dos_globos/position = Vector2( 292, 78.018 )
-states/idle_un_globo/node = SubResource( 110 )
-states/idle_un_globo/position = Vector2( 1146.76, 82.9662 )
-states/muriendo/node = SubResource( 72 )
-states/muriendo/position = Vector2( 1911.66, 213.316 )
-states/perdiendo_vida_aire/node = SubResource( 73 )
-states/perdiendo_vida_aire/position = Vector2( 876.111, 314.667 )
-states/perdiendo_vida_suelo/node = SubResource( 74 )
-states/perdiendo_vida_suelo/position = Vector2( 876.667, 79.5555 )
-states/planeando_dos_globos/node = SubResource( 75 )
-states/planeando_dos_globos/position = Vector2( 553.704, 353.333 )
-states/planeando_un_globo/node = SubResource( 76 )
-states/planeando_un_globo/position = Vector2( 1399.66, 420 )
-states/volando_dos_globos/node = SubResource( 77 )
-states/volando_dos_globos/position = Vector2( 382.444, 240 )
-states/volando_un_globo/node = SubResource( 78 )
-states/volando_un_globo/position = Vector2( 1307.67, 290.666 )
-transitions = [ "andando_dos_globos", "derrapando_dos_globos", SubResource( 80 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 81 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 82 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 83 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 85 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 98 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 99 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 100 ), "apareciendo_dos_globos", "idle_dos_globos", SubResource( 111 ), "idle_dos_globos", "andando_dos_globos", SubResource( 112 ), "andando_dos_globos", "idle_dos_globos", SubResource( 113 ), "apareciendo_dos_globos", "planeando_dos_globos", SubResource( 114 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 115 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 116 ), "andando_dos_globos", "volando_dos_globos", SubResource( 117 ), "volando_dos_globos", "andando_dos_globos", SubResource( 118 ), "perdiendo_vida_suelo", "idle_un_globo", SubResource( 119 ), "idle_un_globo", "andando_un_globo", SubResource( 120 ), "andando_un_globo", "idle_un_globo", SubResource( 121 ), "andando_un_globo", "derrapando_un_globo", SubResource( 122 ), "derrapando_un_globo", "andando_un_globo", SubResource( 123 ), "frenando_un_globo", "andando_un_globo", SubResource( 124 ), "andando_un_globo", "frenando_un_globo", SubResource( 125 ), "andando_un_globo", "volando_un_globo", SubResource( 126 ), "volando_un_globo", "andando_un_globo", SubResource( 127 ), "perdiendo_vida_aire", "planeando_un_globo", SubResource( 128 ), "planeando_un_globo", "volando_un_globo", SubResource( 129 ), "volando_un_globo", "planeando_un_globo", SubResource( 130 ), "planeando_un_globo", "muriendo", SubResource( 131 ), "volando_un_globo", "muriendo", SubResource( 132 ), "frenando_un_globo", "muriendo", SubResource( 133 ), "andando_un_globo", "muriendo", SubResource( 134 ), "derrapando_un_globo", "muriendo", SubResource( 135 ), "derrapando_un_globo", "idle_un_globo", SubResource( 136 ), "frenando_un_globo", "idle_un_globo", SubResource( 137 ), "idle_un_globo", "volando_un_globo", SubResource( 138 ), "derrapando_dos_globos", "idle_dos_globos", SubResource( 139 ), "frenando_dos_globos", "idle_dos_globos", SubResource( 140 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 141 ), "derrapando_un_globo", "volando_un_globo", SubResource( 142 ), "frenando_un_globo", "volando_un_globo", SubResource( 143 ), "derrapando_dos_globos", "volando_dos_globos", SubResource( 144 ), "frenando_dos_globos", "volando_dos_globos", SubResource( 145 ) ]
+states/derrapando_dos_globos/node = SubResource( 110 )
+states/derrapando_dos_globos/position = Vector2( 600.463, 212.127 )
+states/derrapando_un_globo/node = SubResource( 138 )
+states/derrapando_un_globo/position = Vector2( 1754.71, -342.084 )
+states/frenando_dos_globos/node = SubResource( 111 )
+states/frenando_dos_globos/position = Vector2( 548.402, -115.954 )
+states/frenando_un_globo/node = SubResource( 139 )
+states/frenando_un_globo/position = Vector2( 1935.21, -190.459 )
+states/idle_dos_globos/node = SubResource( 112 )
+states/idle_dos_globos/position = Vector2( 172.317, 141.422 )
+states/idle_un_globo/node = SubResource( 140 )
+states/idle_un_globo/position = Vector2( 1185.27, 19.9808 )
+states/muriendo/node = SubResource( 141 )
+states/muriendo/position = Vector2( 1729.22, 249.091 )
+states/perdiendo_vida_aire/node = SubResource( 113 )
+states/perdiendo_vida_aire/position = Vector2( 873.659, 281.686 )
+states/perdiendo_vida_suelo/node = SubResource( 114 )
+states/perdiendo_vida_suelo/position = Vector2( 871.885, 18.4908 )
+states/planeando_dos_globos/node = SubResource( 115 )
+states/planeando_dos_globos/position = Vector2( 174.382, 281.011 )
+states/planeando_un_globo/node = SubResource( 142 )
+states/planeando_un_globo/position = Vector2( 1187.52, 278.83 )
+states/volando_dos_globos/node = SubResource( 116 )
+states/volando_dos_globos/position = Vector2( 174.382, 370.511 )
+states/volando_un_globo/node = SubResource( 143 )
+states/volando_un_globo/position = Vector2( 1186.4, 414.391 )
+transitions = [ "apareciendo_dos_globos", "idle_dos_globos", SubResource( 117 ), "idle_dos_globos", "andando_dos_globos", SubResource( 118 ), "andando_dos_globos", "idle_dos_globos", SubResource( 119 ), "idle_dos_globos", "planeando_dos_globos", SubResource( 120 ), "planeando_dos_globos", "idle_dos_globos", SubResource( 121 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 122 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 123 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 124 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 125 ), "frenando_dos_globos", "derrapando_dos_globos", SubResource( 126 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 127 ), "andando_dos_globos", "derrapando_dos_globos", SubResource( 128 ), "frenando_dos_globos", "idle_dos_globos", SubResource( 129 ), "derrapando_dos_globos", "idle_dos_globos", SubResource( 130 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 131 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 132 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 133 ), "idle_dos_globos", "perdiendo_vida_suelo", SubResource( 134 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 135 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 136 ), "perdiendo_vida_suelo", "idle_un_globo", SubResource( 144 ), "perdiendo_vida_aire", "planeando_un_globo", SubResource( 145 ), "idle_un_globo", "planeando_un_globo", SubResource( 146 ), "planeando_un_globo", "idle_un_globo", SubResource( 147 ), "idle_un_globo", "andando_un_globo", SubResource( 148 ), "andando_un_globo", "idle_un_globo", SubResource( 149 ), "andando_un_globo", "frenando_un_globo", SubResource( 150 ), "andando_un_globo", "derrapando_un_globo", SubResource( 151 ), "derrapando_un_globo", "idle_un_globo", SubResource( 152 ), "frenando_un_globo", "idle_un_globo", SubResource( 153 ), "frenando_un_globo", "derrapando_un_globo", SubResource( 154 ), "frenando_un_globo", "andando_un_globo", SubResource( 155 ), "derrapando_un_globo", "andando_un_globo", SubResource( 156 ), "volando_un_globo", "planeando_un_globo", SubResource( 157 ), "planeando_un_globo", "volando_un_globo", SubResource( 158 ), "derrapando_un_globo", "muriendo", SubResource( 159 ), "frenando_un_globo", "muriendo", SubResource( 160 ), "idle_un_globo", "muriendo", SubResource( 161 ), "andando_un_globo", "muriendo", SubResource( 162 ), "planeando_un_globo", "muriendo", SubResource( 163 ), "volando_un_globo", "muriendo", SubResource( 164 ) ]
 start_node = "apareciendo_dos_globos"
 end_node = "muriendo"
-graph_offset = Vector2( -528.411, 94.4508 )
+graph_offset = Vector2( 1217, -210.289 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=106]
 
@@ -560,6 +555,7 @@ position = Vector2( 11, 196 )
 mode = 2
 physics_material_override = SubResource( 3 )
 gravity_scale = 0.5
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -608,6 +604,7 @@ anims/volando_un_globo = SubResource( 61 )
 [node name="AnimationTree" type="AnimationTree" parent="Jugador"]
 tree_root = SubResource( 105 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 106 )
 
 [node name="Enemigo" parent="." instance=ExtResource( 4 )]

@@ -39,7 +39,7 @@ const VIDAS_MAXIMAS: int = 2
 # NO TOCAR
 var _activado: bool = false
 var _direccion: int = 0
-var _vidas: int = 1
+var _vidas: int = 2
 var _playback_maquina_estados: AnimationNodeStateMachinePlayback
 
 
