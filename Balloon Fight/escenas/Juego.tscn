@@ -1,8 +1,7 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://graficos/fondo.png" type="Texture" id=1]
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Jugador.gd" type="Script" id=3]
 [ext_resource path="res://objetos/Enemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://graficos/pez.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Agua.gd" type="Script" id=6]
@@ -79,12 +78,12 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=52]
 resource_name = "andando_dos_globos"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
@@ -96,19 +95,19 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=55]
 resource_name = "andando_un_globo"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 10, 11, 12 ]
+"update": 0,
+"values": [ 15, 16, 17 ]
 }
 
 [sub_resource type="Animation" id=51]
@@ -118,7 +117,7 @@ loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
@@ -156,7 +155,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ 14 ]
 }
 
@@ -188,58 +187,59 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ 13 ]
 }
 
 [sub_resource type="Animation" id=107]
 resource_name = "idle_dos_globos"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 30, 31, 32 ]
 }
 
 [sub_resource type="Animation" id=108]
 resource_name = "idle_un_globo"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 35, 36, 37 ]
 }
 
 [sub_resource type="Animation" id=62]
 resource_name = "muriendo"
-length = 0.6
+length = 0.3
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 35, 36, 37, 38, 39 ]
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 40, 41, 42 ]
 }
 
 [sub_resource type="Animation" id=63]
@@ -276,68 +276,67 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=58]
 resource_name = "planeando_dos_globos"
-length = 0.3
+length = 0.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 23, 24 ]
 }
 
 [sub_resource type="Animation" id=59]
 resource_name = "planeando_un_globo"
-length = 0.3
+length = 0.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 28, 29 ]
 }
 
 [sub_resource type="Animation" id=60]
 resource_name = "volando_dos_globos"
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 20, 21, 22 ]
 }
 
 [sub_resource type="Animation" id=61]
 resource_name = "volando_un_globo"
-length = 0.4
-loop = true
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 25, 26, 27 ]
 }
 
@@ -517,7 +516,7 @@ states/volando_un_globo/position = Vector2( 1307.67, 290.666 )
 transitions = [ "andando_dos_globos", "derrapando_dos_globos", SubResource( 80 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 81 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 82 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 83 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 85 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 98 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 99 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 100 ), "apareciendo_dos_globos", "idle_dos_globos", SubResource( 111 ), "idle_dos_globos", "andando_dos_globos", SubResource( 112 ), "andando_dos_globos", "idle_dos_globos", SubResource( 113 ), "apareciendo_dos_globos", "planeando_dos_globos", SubResource( 114 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 115 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 116 ), "andando_dos_globos", "volando_dos_globos", SubResource( 117 ), "volando_dos_globos", "andando_dos_globos", SubResource( 118 ), "perdiendo_vida_suelo", "idle_un_globo", SubResource( 119 ), "idle_un_globo", "andando_un_globo", SubResource( 120 ), "andando_un_globo", "idle_un_globo", SubResource( 121 ), "andando_un_globo", "derrapando_un_globo", SubResource( 122 ), "derrapando_un_globo", "andando_un_globo", SubResource( 123 ), "frenando_un_globo", "andando_un_globo", SubResource( 124 ), "andando_un_globo", "frenando_un_globo", SubResource( 125 ), "andando_un_globo", "volando_un_globo", SubResource( 126 ), "volando_un_globo", "andando_un_globo", SubResource( 127 ), "perdiendo_vida_aire", "planeando_un_globo", SubResource( 128 ), "planeando_un_globo", "volando_un_globo", SubResource( 129 ), "volando_un_globo", "planeando_un_globo", SubResource( 130 ), "planeando_un_globo", "muriendo", SubResource( 131 ), "volando_un_globo", "muriendo", SubResource( 132 ), "frenando_un_globo", "muriendo", SubResource( 133 ), "andando_un_globo", "muriendo", SubResource( 134 ), "derrapando_un_globo", "muriendo", SubResource( 135 ), "derrapando_un_globo", "idle_un_globo", SubResource( 136 ), "frenando_un_globo", "idle_un_globo", SubResource( 137 ), "idle_un_globo", "volando_un_globo", SubResource( 138 ), "derrapando_dos_globos", "idle_dos_globos", SubResource( 139 ), "frenando_dos_globos", "idle_dos_globos", SubResource( 140 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 141 ), "derrapando_un_globo", "volando_un_globo", SubResource( 142 ), "frenando_un_globo", "volando_un_globo", SubResource( 143 ), "derrapando_dos_globos", "volando_dos_globos", SubResource( 144 ), "frenando_dos_globos", "volando_dos_globos", SubResource( 145 ) ]
 start_node = "apareciendo_dos_globos"
 end_node = "muriendo"
-graph_offset = Vector2( 67.8923, -40.1892 )
+graph_offset = Vector2( -528.411, 94.4508 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=106]
 
@@ -561,7 +560,6 @@ position = Vector2( 11, 196 )
 mode = 2
 physics_material_override = SubResource( 3 )
 gravity_scale = 0.5
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -610,7 +608,6 @@ anims/volando_un_globo = SubResource( 61 )
 [node name="AnimationTree" type="AnimationTree" parent="Jugador"]
 tree_root = SubResource( 105 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 106 )
 
 [node name="Enemigo" parent="." instance=ExtResource( 4 )]
