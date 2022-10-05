@@ -67,6 +67,10 @@ aletear={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_8="suelo"
+
 [physics]
 
 common/enable_pause_aware_picking=true

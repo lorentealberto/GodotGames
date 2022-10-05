@@ -3,6 +3,7 @@ class_name Jugador
 
 #Ajustes
 const Animaciones: Dictionary = {
+	IDLE = "idle",
 	ANDANDO = "andando",
 	VOLANDO = "volando",
 	PLANEANDO = "planeando",
@@ -12,7 +13,6 @@ const Animaciones: Dictionary = {
 	PERDIENDO_VIDA_AIRE = "perdiendo_vida_aire",
 	PERDIENDO_VIDA_SUELO = "perdiendo_vida_suelo",
 	MURIENDO = "muriendo",
-	IDLE = "idle",
 }
 
 const Velocidades: Dictionary = {
@@ -26,7 +26,6 @@ const LimitesVelocidad: Dictionary = {
 }
 
 const NGlobos: Array = ["_un_globo", "_dos_globos"]
-const SUELO: String = "Suelo"
 
 const Direcciones: Dictionary = {
 	DERECHA = 1,
@@ -50,46 +49,37 @@ func _ready() -> void:
 """Se ejecuta una vez cada frame del juego
 _delta: float -> Tiempo en MS que ha transcurrido desde la última vez que se ejecutó el método"""
 func _process(_delta: float) -> void:
-	if _activado:
+	if _activado and not _esta_muriendo():
+		# -- CONTROLES --
 		# Movimiento horizontal
 		_direccion = 0
-		if not _esta_muriendo():
-			if Input.is_action_pressed("mover_derecha"):
-				_direccion = Direcciones.DERECHA
-				$Sprite.flip_h = true
-			elif Input.is_action_pressed("mover_izquierda"):
-				_direccion = Direcciones.IZQUIERDA
-				$Sprite.flip_h = false
-			
-			# Aleteo
-			if Input.is_action_just_pressed("aletear"):
-				_playback_maquina_estados.travel(Animaciones.VOLANDO + _get_n_globos())
-				apply_central_impulse(Vector2(0, -Velocidades.SALTO))
-			else:
-				_playback_maquina_estados.travel(Animaciones.PLANEANDO + _get_n_globos())
-
-		# Está en suelo
-		if $RayCast2D.is_colliding() and $RayCast2D.get_collider().name == SUELO:
-			
+		if Input.is_action_pressed("mover_derecha"):
+			_direccion = Direcciones.DERECHA
+			$Sprite.flip_h = true
+		elif Input.is_action_pressed("mover_izquierda"):
+			_direccion = Direcciones.IZQUIERDA
+			$Sprite.flip_h = false
+		# -- ANIMACIONES --
+		# Cambiar animaciones en tierra
+		if $RayCast2D.is_colliding():
 			_playback_maquina_estados.travel(Animaciones.IDLE + _get_n_globos())
-			# Si se está pulsando algún control horizontal
-			if (Input.is_action_pressed("mover_derecha") or 
-					Input.is_action_pressed("mover_izquierda")):
-				# Andando
+			if (Input.is_action_pressed("mover_derecha") or Input.is_action_pressed("mover_izquierda")):
 				_playback_maquina_estados.travel(Animaciones.ANDANDO + _get_n_globos())
-			
-			# Frenando
-			if floor(linear_velocity.x) != 0 and _direccion == 0:
+			elif floor(linear_velocity.x) != 0:
 				_playback_maquina_estados.travel(Animaciones.FRENANDO + _get_n_globos())
-			
-			# Derrapando
 			if sign(linear_velocity.x) != _direccion and _direccion != 0:
 				_playback_maquina_estados.travel(Animaciones.DERRAPANDO + _get_n_globos())
-
-	else: # En caso de que el personaje esté desactivado, activarlo al pulsar algún control
-		_activado = (Input.is_action_just_pressed("aletear") or Input.is_action_just_pressed("mover_derecha") or
+		# -- CONTROLES / ANIMACIONES --
+		# Movimiento vertical
+		if Input.is_action_just_pressed("aletear"):
+			_playback_maquina_estados.travel(Animaciones.VOLANDO + _get_n_globos())
+			apply_central_impulse(Vector2(0, -Velocidades.SALTO))
+		elif not $RayCast2D.is_colliding():
+			_playback_maquina_estados.travel(Animaciones.PLANEANDO + _get_n_globos())
+	else:
+		_activado = (Input.is_action_just_pressed("aletear") or
+				Input.is_action_just_pressed("mover_derecha") or
 				Input.is_action_just_pressed("mover_izquierda"))
-
 
 """Sobrescribe las físicas que controlan al objeto
 state: Physics2DDirectBodyState -> Objeto en sí mismo"""
@@ -131,8 +121,8 @@ func _explotar_globo() -> String:
 		
 	if not $RayCast2D.is_colliding():
 		return Animaciones.PERDIENDO_VIDA_AIRE
-	elif $RayCast2D.get_collider().name == SUELO:
-		return Animaciones.PERDIENDO_VIDA_SUELO
+	#elif $RayCast2D.get_collider().name == SUELO:
+	#	return Animaciones.PERDIENDO_VIDA_SUELO
 	
 	return ""
 
