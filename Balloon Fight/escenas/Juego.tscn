@@ -1,8 +1,9 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://graficos/fondo.png" type="Texture" id=1]
 [ext_resource path="res://graficos/jugador_1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Jugador.gd" type="Script" id=3]
+[ext_resource path="res://objetos/Enemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://graficos/pez.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Agua.gd" type="Script" id=6]
 
@@ -156,7 +157,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 14 ]
+"values": [ 19 ]
 }
 
 [sub_resource type="Animation" id=54]
@@ -188,7 +189,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 13 ]
+"values": [ 18 ]
 }
 
 [sub_resource type="Animation" id=107]
@@ -424,14 +425,6 @@ animation = "volando_un_globo"
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=145]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=146]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=147]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=148]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=149]
@@ -449,10 +442,6 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=155]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=156]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=157]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=158]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=159]
 
@@ -474,6 +463,31 @@ auto_advance = true
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=168]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=169]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=170]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=171]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=172]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=173]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=174]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=175]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=176]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=177]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=178]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=179]
 
 [sub_resource type="AnimationNodeStateMachine" id=105]
 states/andando_dos_globos/node = SubResource( 109 )
@@ -503,15 +517,15 @@ states/perdiendo_vida_suelo/position = Vector2( 871.885, 18.4908 )
 states/planeando_dos_globos/node = SubResource( 115 )
 states/planeando_dos_globos/position = Vector2( 177.382, 321.011 )
 states/planeando_un_globo/node = SubResource( 142 )
-states/planeando_un_globo/position = Vector2( 1187.52, 278.83 )
+states/planeando_un_globo/position = Vector2( 1185.41, 367.17 )
 states/volando_dos_globos/node = SubResource( 116 )
 states/volando_dos_globos/position = Vector2( 184.882, 228.011 )
 states/volando_un_globo/node = SubResource( 143 )
-states/volando_un_globo/position = Vector2( 1186.4, 414.391 )
-transitions = [ "apareciendo_dos_globos", "idle_dos_globos", SubResource( 117 ), "idle_dos_globos", "andando_dos_globos", SubResource( 118 ), "andando_dos_globos", "idle_dos_globos", SubResource( 119 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 124 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 125 ), "frenando_dos_globos", "derrapando_dos_globos", SubResource( 126 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 127 ), "andando_dos_globos", "derrapando_dos_globos", SubResource( 128 ), "frenando_dos_globos", "idle_dos_globos", SubResource( 129 ), "derrapando_dos_globos", "idle_dos_globos", SubResource( 130 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 131 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 132 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 133 ), "idle_dos_globos", "perdiendo_vida_suelo", SubResource( 134 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 135 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 136 ), "perdiendo_vida_suelo", "idle_un_globo", SubResource( 144 ), "perdiendo_vida_aire", "planeando_un_globo", SubResource( 145 ), "idle_un_globo", "planeando_un_globo", SubResource( 146 ), "planeando_un_globo", "idle_un_globo", SubResource( 147 ), "idle_un_globo", "andando_un_globo", SubResource( 148 ), "andando_un_globo", "idle_un_globo", SubResource( 149 ), "andando_un_globo", "frenando_un_globo", SubResource( 150 ), "andando_un_globo", "derrapando_un_globo", SubResource( 151 ), "derrapando_un_globo", "idle_un_globo", SubResource( 152 ), "frenando_un_globo", "idle_un_globo", SubResource( 153 ), "frenando_un_globo", "derrapando_un_globo", SubResource( 154 ), "frenando_un_globo", "andando_un_globo", SubResource( 155 ), "derrapando_un_globo", "andando_un_globo", SubResource( 156 ), "volando_un_globo", "planeando_un_globo", SubResource( 157 ), "planeando_un_globo", "volando_un_globo", SubResource( 158 ), "derrapando_un_globo", "muriendo", SubResource( 159 ), "frenando_un_globo", "muriendo", SubResource( 160 ), "idle_un_globo", "muriendo", SubResource( 161 ), "andando_un_globo", "muriendo", SubResource( 162 ), "planeando_un_globo", "muriendo", SubResource( 163 ), "volando_un_globo", "muriendo", SubResource( 164 ), "idle_dos_globos", "volando_dos_globos", SubResource( 165 ), "volando_dos_globos", "idle_dos_globos", SubResource( 166 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 167 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 168 ) ]
+states/volando_un_globo/position = Vector2( 1185.34, 283.068 )
+transitions = [ "apareciendo_dos_globos", "idle_dos_globos", SubResource( 117 ), "idle_dos_globos", "andando_dos_globos", SubResource( 118 ), "andando_dos_globos", "idle_dos_globos", SubResource( 119 ), "andando_dos_globos", "frenando_dos_globos", SubResource( 124 ), "frenando_dos_globos", "andando_dos_globos", SubResource( 125 ), "frenando_dos_globos", "derrapando_dos_globos", SubResource( 126 ), "derrapando_dos_globos", "andando_dos_globos", SubResource( 127 ), "andando_dos_globos", "derrapando_dos_globos", SubResource( 128 ), "frenando_dos_globos", "idle_dos_globos", SubResource( 129 ), "derrapando_dos_globos", "idle_dos_globos", SubResource( 130 ), "planeando_dos_globos", "perdiendo_vida_aire", SubResource( 131 ), "volando_dos_globos", "perdiendo_vida_aire", SubResource( 132 ), "andando_dos_globos", "perdiendo_vida_suelo", SubResource( 133 ), "idle_dos_globos", "perdiendo_vida_suelo", SubResource( 134 ), "derrapando_dos_globos", "perdiendo_vida_suelo", SubResource( 135 ), "frenando_dos_globos", "perdiendo_vida_suelo", SubResource( 136 ), "perdiendo_vida_suelo", "idle_un_globo", SubResource( 144 ), "idle_un_globo", "andando_un_globo", SubResource( 148 ), "andando_un_globo", "idle_un_globo", SubResource( 149 ), "andando_un_globo", "frenando_un_globo", SubResource( 150 ), "andando_un_globo", "derrapando_un_globo", SubResource( 151 ), "derrapando_un_globo", "idle_un_globo", SubResource( 152 ), "frenando_un_globo", "idle_un_globo", SubResource( 153 ), "frenando_un_globo", "derrapando_un_globo", SubResource( 154 ), "frenando_un_globo", "andando_un_globo", SubResource( 155 ), "derrapando_un_globo", "andando_un_globo", SubResource( 156 ), "derrapando_un_globo", "muriendo", SubResource( 159 ), "frenando_un_globo", "muriendo", SubResource( 160 ), "idle_un_globo", "muriendo", SubResource( 161 ), "andando_un_globo", "muriendo", SubResource( 162 ), "planeando_un_globo", "muriendo", SubResource( 163 ), "volando_un_globo", "muriendo", SubResource( 164 ), "idle_dos_globos", "volando_dos_globos", SubResource( 165 ), "volando_dos_globos", "idle_dos_globos", SubResource( 166 ), "volando_dos_globos", "planeando_dos_globos", SubResource( 167 ), "planeando_dos_globos", "volando_dos_globos", SubResource( 168 ), "andando_dos_globos", "volando_dos_globos", SubResource( 169 ), "volando_dos_globos", "andando_dos_globos", SubResource( 170 ), "frenando_dos_globos", "volando_dos_globos", SubResource( 171 ), "volando_dos_globos", "frenando_dos_globos", SubResource( 172 ), "derrapando_dos_globos", "volando_dos_globos", SubResource( 173 ), "volando_dos_globos", "derrapando_dos_globos", SubResource( 174 ), "perdiendo_vida_aire", "volando_un_globo", SubResource( 175 ), "idle_un_globo", "volando_un_globo", SubResource( 176 ), "volando_un_globo", "idle_un_globo", SubResource( 177 ), "volando_un_globo", "planeando_un_globo", SubResource( 178 ), "planeando_un_globo", "volando_un_globo", SubResource( 179 ) ]
 start_node = "apareciendo_dos_globos"
 end_node = "muriendo"
-graph_offset = Vector2( -31.075, 130.271 )
+graph_offset = Vector2( 685.129, 34.691 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=106]
 
@@ -520,9 +534,6 @@ graph_offset = Vector2( -31.075, 130.271 )
 [node name="Fondo" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Suelo" type="StaticBody2D" parent="."]
 collision_layer = 129
@@ -552,7 +563,7 @@ position = Vector2( 122, 216 )
 frames = SubResource( 38 )
 
 [node name="Jugador" type="RigidBody2D" parent="."]
-position = Vector2( 11, 196 )
+position = Vector2( 42, 198 )
 mode = 2
 physics_material_override = SubResource( 3 )
 gravity_scale = 0.5
@@ -608,6 +619,15 @@ tree_root = SubResource( 105 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 106 )
+
+[node name="Enemigo" parent="." instance=ExtResource( 4 )]
+position = Vector2( 133, 113 )
+
+[node name="Enemigo2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 79, 112 )
+
+[node name="Enemigo3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 175, 112 )
 
 [connection signal="body_entered" from="Agua" to="Agua" method="_on_Agua_body_entered"]
 [connection signal="animation_finished" from="Agua/AnimatedSprite" to="Agua" method="_on_AnimatedSprite_animation_finished"]

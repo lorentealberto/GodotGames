@@ -1,0 +1,303 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://graficos/personaje.png" type="Texture" id=1]
+[ext_resource path="res://graficos/nivel_1.png" type="Texture" id=2]
+[ext_resource path="res://scripts/personaje.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 16, 104 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 128, 8 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 32, 8 )
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "andar"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "caer"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "disparar"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 12 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "morir"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 18, 19, 20, 21, 22, 23 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "saltar"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "andar"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "caer"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "disparar"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "morir"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "saltar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachine" id=27]
+states/andar/node = SubResource( 9 )
+states/andar/position = Vector2( 303.5, 198.5 )
+states/caer/node = SubResource( 10 )
+states/caer/position = Vector2( 559, -31.75 )
+states/disparar/node = SubResource( 11 )
+states/disparar/position = Vector2( 108, 182 )
+states/idle/node = SubResource( 12 )
+states/idle/position = Vector2( 144.5, -80.75 )
+states/morir/node = SubResource( 13 )
+states/morir/position = Vector2( 475.25, 326.5 )
+states/saltar/node = SubResource( 14 )
+states/saltar/position = Vector2( 403.5, 34 )
+transitions = [ "idle", "saltar", SubResource( 15 ), "idle", "andar", SubResource( 16 ), "idle", "morir", SubResource( 17 ), "idle", "disparar", SubResource( 18 ), "disparar", "idle", SubResource( 19 ), "disparar", "morir", SubResource( 20 ), "disparar", "andar", SubResource( 21 ), "saltar", "caer", SubResource( 22 ), "caer", "morir", SubResource( 23 ), "caer", "idle", SubResource( 24 ), "saltar", "morir", SubResource( 25 ), "andar", "morir", SubResource( 26 ) ]
+start_node = "idle"
+end_node = "morir"
+graph_offset = Vector2( -94, -148 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 8, 8 )
+
+[node name="Juego" type="Node2D"]
+
+[node name="Nivel" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Nivel"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 16, 120 )
+shape = SubResource( 30 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 240, 120 )
+shape = SubResource( 30 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 128, 8 )
+shape = SubResource( 31 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 128, 232 )
+shape = SubResource( 31 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 48, 72 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 208, 168 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 208, 120 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 208, 72 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 48, 168 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 48, 120 )
+shape = SubResource( 32 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 128, 72 )
+shape = SubResource( 33 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 128, 168 )
+shape = SubResource( 33 )
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Nivel"]
+position = Vector2( 128, 120 )
+shape = SubResource( 33 )
+
+[node name="Personaje" type="RigidBody2D" parent="."]
+position = Vector2( 44, 216 )
+mode = 2
+physics_material_override = SubResource( 1 )
+gravity_scale = 0.5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Personaje"]
+texture = ExtResource( 1 )
+hframes = 6
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personaje"]
+anims/RESET = SubResource( 2 )
+anims/andar = SubResource( 3 )
+anims/caer = SubResource( 5 )
+anims/disparar = SubResource( 6 )
+anims/idle = SubResource( 4 )
+anims/morir = SubResource( 7 )
+anims/saltar = SubResource( 8 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Personaje"]
+tree_root = SubResource( 27 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 28 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje"]
+shape = SubResource( 29 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Personaje"]
+enabled = true
+cast_to = Vector2( 0, 9 )

@@ -1,115 +1,7 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/Enemigo.gd" type="Script" id=1]
 [ext_resource path="res://graficos/enemigo_L1.png" type="Texture" id=2]
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 96, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 2 )
-region = Rect2( 80, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 128, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 64, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 32, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 32, 16, 32 )
-
-[sub_resource type="SpriteFrames" id=50]
-animations = [ {
-"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
-"loop": true,
-"name": "aterrizando",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 33 ), SubResource( 34 ) ],
-"loop": true,
-"name": "cayendo",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
-"loop": false,
-"name": "inflando_globo",
-"speed": 3.0
-}, {
-"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
-"loop": false,
-"name": "paracaidas",
-"speed": 9.0
-}, {
-"frames": [ SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 47 ) ],
-"loop": false,
-"name": "volando",
-"speed": 9.0
-} ]
 
 [sub_resource type="CapsuleShape2D" id=51]
 radius = 5.0
@@ -125,13 +17,13 @@ loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0, 1, 2 ]
 }
 
@@ -142,63 +34,63 @@ loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 24, 25 ]
 }
 
 [sub_resource type="Animation" id=55]
 resource_name = "desplegando_paracaidas"
-length = 0.7
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 16, 17, 18, 19 ]
 }
 
 [sub_resource type="Animation" id=56]
 resource_name = "inflando_globo"
-length = 2.2
+length = 2.4
 step = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 32, 33, 34, 35, 36, 37, 38, 39 ]
 }
 
 [sub_resource type="Animation" id=57]
 resource_name = "volando"
 length = 0.3
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 8, 9, 10 ]
 }
 
@@ -208,7 +100,7 @@ animation = "aterrizando"
 [sub_resource type="AnimationNodeAnimation" id=64]
 animation = "cayendo"
 
-[sub_resource type="AnimationNodeAnimation" id=65]
+[sub_resource type="AnimationNodeAnimation" id=71]
 animation = "desplegando_paracaidas"
 
 [sub_resource type="AnimationNodeAnimation" id=58]
@@ -222,33 +114,33 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=66]
+switch_mode = 2
 advance_condition = "aterrizando"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=67]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=68]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=69]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=70]
 advance_condition = "volando"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
 
 [sub_resource type="AnimationNodeStateMachine" id=61]
 states/aterrizando/node = SubResource( 63 )
-states/aterrizando/position = Vector2( 645.667, 47 )
+states/aterrizando/position = Vector2( 645.667, 46.9891 )
 states/cayendo/node = SubResource( 64 )
-states/cayendo/position = Vector2( 820.333, 163 )
-states/desplegando_paracaidas/node = SubResource( 65 )
-states/desplegando_paracaidas/position = Vector2( 543, 164.333 )
+states/cayendo/position = Vector2( 820.333, 163.167 )
+states/desplegando_paracaidas/node = SubResource( 71 )
+states/desplegando_paracaidas/position = Vector2( 530.807, 158.963 )
 states/inflando_globo/node = SubResource( 58 )
-states/inflando_globo/position = Vector2( 199, 115 )
+states/inflando_globo/position = Vector2( 199.5, 115 )
 states/volando/node = SubResource( 59 )
-states/volando/position = Vector2( 436.333, 46.4074 )
-transitions = [ "inflando_globo", "volando", SubResource( 60 ), "volando", "aterrizando", SubResource( 66 ), "aterrizando", "desplegando_paracaidas", SubResource( 67 ), "volando", "desplegando_paracaidas", SubResource( 68 ), "desplegando_paracaidas", "cayendo", SubResource( 69 ), "aterrizando", "volando", SubResource( 70 ), "desplegando_paracaidas", "inflando_globo", SubResource( 71 ) ]
+states/volando/position = Vector2( 436.833, 46.9876 )
+transitions = [ "inflando_globo", "volando", SubResource( 60 ), "volando", "aterrizando", SubResource( 66 ), "aterrizando", "volando", SubResource( 70 ), "volando", "desplegando_paracaidas", SubResource( 72 ), "aterrizando", "desplegando_paracaidas", SubResource( 73 ), "desplegando_paracaidas", "inflando_globo", SubResource( 74 ) ]
 start_node = "inflando_globo"
 end_node = "cayendo"
+graph_offset = Vector2( -13.8677, -17.8575 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=62]
 
@@ -265,12 +157,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 8
 vframes = 5
-frame = 10
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
-frames = SubResource( 50 )
-animation = "inflando_globo"
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 9 )
@@ -286,6 +173,7 @@ shape = SubResource( 52 )
 position = Vector2( 0, 15 )
 enabled = true
 cast_to = Vector2( 0, 4 )
+collision_mask = 128
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 2, 9 )
@@ -313,7 +201,6 @@ parameters/playback = SubResource( 62 )
 parameters/conditions/aterrizando = false
 parameters/conditions/volando = false
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Globo" to="." method="_on_Globo_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Aleteo" to="." method="_on_Aleteo_timeout"]
