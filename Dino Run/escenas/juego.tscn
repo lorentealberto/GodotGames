@@ -1,0 +1,211 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://graficos/dino.png" type="Texture" id=1]
+[ext_resource path="res://graficos/suelo.png" type="Texture" id=2]
+[ext_resource path="res://scripts/suelo.gd" type="Script" id=3]
+[ext_resource path="res://scripts/jugador.gd" type="Script" id=4]
+[ext_resource path="res://scripts/creador_obstaculos.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 10, 1.5 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "agacharse"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "andar"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "morir"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "agacharse"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "andar"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "morir"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/agacharse/node = SubResource( 6 )
+states/agacharse/position = Vector2( 299.444, 171 )
+states/andar/node = SubResource( 7 )
+states/andar/position = Vector2( 300.333, 49.6667 )
+states/idle/node = SubResource( 8 )
+states/idle/position = Vector2( 123, 116.333 )
+states/morir/node = SubResource( 9 )
+states/morir/position = Vector2( 481.667, 115.444 )
+transitions = [ "idle", "andar", SubResource( 10 ), "idle", "agacharse", SubResource( 11 ), "andar", "agacharse", SubResource( 12 ), "agacharse", "andar", SubResource( 13 ), "andar", "morir", SubResource( 14 ), "agacharse", "morir", SubResource( 15 ) ]
+start_node = "idle"
+end_node = "morir"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 6.5, 7 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 9, 4 )
+
+[node name="Juego" type="Node2D"]
+
+[node name="Suelo" type="StaticBody2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
+position = Vector2( 49, 215 )
+shape = SubResource( 18 )
+
+[node name="Sprite" type="Sprite" parent="Suelo"]
+position = Vector2( 0, 208 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="Suelo"]
+position = Vector2( 256, 208 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Jugador" type="RigidBody2D" parent="."]
+position = Vector2( 56, 203 )
+mode = 2
+mass = 2.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Jugador"]
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Jugador"]
+anims/RESET = SubResource( 1 )
+anims/agacharse = SubResource( 2 )
+anims/andar = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/morir = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Jugador"]
+tree_root = SubResource( 16 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 17 )
+
+[node name="DePie" type="CollisionShape2D" parent="Jugador"]
+position = Vector2( -8.5, 0 )
+shape = SubResource( 19 )
+
+[node name="Tumbado" type="CollisionShape2D" parent="Jugador"]
+position = Vector2( -6, 3 )
+shape = SubResource( 20 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Jugador"]
+position = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+
+[node name="Obstaculos" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Cielo" type="Position2D" parent="Obstaculos"]
+position = Vector2( 283, 196 )
+
+[node name="Tierra" type="Position2D" parent="Obstaculos"]
+position = Vector2( 283, 208 )
+
+[node name="Timer" type="Timer" parent="Obstaculos"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Obstaculos/Timer" to="Obstaculos" method="_on_Timer_timeout"]
