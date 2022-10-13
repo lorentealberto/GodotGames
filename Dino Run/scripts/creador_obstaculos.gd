@@ -11,9 +11,9 @@ func _on_Timer_timeout() -> void:
 	
 	if randi() % 2 == 0:
 		obstaculo = pl_obstaculo.instance()
-		obstaculo.position = $Tierra.global_position
+		obstaculo.position = $Suelo.global_position
 	else:
 		obstaculo = pl_obstaculo_dinamico.instance()
-		obstaculo.position = $Cielo.global_position
+		obstaculo.position = $Aire.global_position
 	get_parent().add_child(obstaculo)
 	

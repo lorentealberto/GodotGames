@@ -186,7 +186,7 @@ parameters/playback = SubResource( 17 )
 position = Vector2( -8.5, 0 )
 shape = SubResource( 19 )
 
-[node name="Tumbado" type="CollisionShape2D" parent="Jugador"]
+[node name="Agachado" type="CollisionShape2D" parent="Jugador"]
 position = Vector2( -6, 3 )
 shape = SubResource( 20 )
 
@@ -195,17 +195,17 @@ position = Vector2( -8, 0 )
 enabled = true
 cast_to = Vector2( 0, 8 )
 
-[node name="Obstaculos" type="Node" parent="."]
+[node name="Node" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="Cielo" type="Position2D" parent="Obstaculos"]
-position = Vector2( 283, 196 )
-
-[node name="Tierra" type="Position2D" parent="Obstaculos"]
+[node name="Suelo" type="Position2D" parent="Node"]
 position = Vector2( 283, 208 )
 
-[node name="Timer" type="Timer" parent="Obstaculos"]
+[node name="Aire" type="Position2D" parent="Node"]
+position = Vector2( 283, 196 )
+
+[node name="Timer" type="Timer" parent="Node"]
 wait_time = 2.0
 autostart = true
 
-[connection signal="timeout" from="Obstaculos/Timer" to="Obstaculos" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Node/Timer" to="Node" method="_on_Timer_timeout"]

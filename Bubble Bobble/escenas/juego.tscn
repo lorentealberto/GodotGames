@@ -271,14 +271,14 @@ mode = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.5
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Personaje"]
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 4
+
+[node name="Position2D" type="Position2D" parent="Personaje/Sprite"]
+position = Vector2( 12.2867, 2.56778 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Personaje"]
 anims/RESET = SubResource( 2 )

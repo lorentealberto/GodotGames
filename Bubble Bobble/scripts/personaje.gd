@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+onready var pl_burbuja: PackedScene = preload("res://objetos/burbuja.tscn")
+
+
 # AJUSTES
 const Animaciones: Dictionary = {
 	IDLE = "idle",
@@ -37,10 +40,10 @@ func _process(_delta: float) -> void:
 	_direccion = 0
 	if Input.is_action_pressed("mover_derecha"):
 		_direccion = Direcciones.DERECHA
-		$Sprite.flip_h = false
+		$Sprite.scale.x = 1
 	elif Input.is_action_pressed("mover_izquierda"):
 		_direccion = Direcciones.IZQUIERDA
-		$Sprite.flip_h = true
+		$Sprite.scale.x = -1
 	
 	# Contro de estados IDLE / ANDAR
 	if _direccion != 0:
@@ -58,6 +61,15 @@ func _process(_delta: float) -> void:
 		_playback_maquina_estados.travel(Animaciones.CAER)
 	elif linear_velocity.y < 0:
 		_playback_maquina_estados.travel(Animaciones.SALTAR)
+	
+	
+	# Disparar
+	if Input.is_action_just_pressed("disparar"):
+		_playback_maquina_estados.travel(Animaciones.DISPARAR)
+		var burbuja: RigidBody2D = pl_burbuja.instance()
+		burbuja.establecer_direccion($Sprite.scale.x)
+		burbuja.position = $Sprite/Position2D.global_position
+		get_parent().add_child(burbuja)
 
 
 """Método propio de Godot para sobreescribir las velocidades de un objeto"""

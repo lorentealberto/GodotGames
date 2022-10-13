@@ -16,14 +16,16 @@ func _ready() -> void:
 
 """Se ejecuta de manera cíclica todos los framesd del juego.
 Parámetros:
-	delta: float -> Tiempo en MS que ha transcurrido desde la última vez que se ejecutó esté método."""
+	delta: float -> Tiempo en MS que ha transcurrido desde la última vez que se
+	ejecutó esté método."""
 func _process(delta: float) -> void:
 	for parte in _partes:
 		parte.position.x += VELOCIDAD * delta
 		_resetear(parte)
 
 
-"""Si el sprite pasado como parámetro cumple una determinada condición, éste se moverá hasta el
+"""Si el sprite pasado como parámetro cumple una determinada condición, éste se
+	moverá hasta el
 	final de la ventana de juego.
 Parámetros:
 	parte: Sprite -> Sprite que debe cumplir la condición."""

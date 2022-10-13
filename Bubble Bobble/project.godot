@@ -50,6 +50,13 @@ disparar={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Nivel"
+2d_physics/layer_2="Personaje"
+2d_physics/layer_3="Burbujas"
+2d_physics/layer_4="Enemigos"
+
 [physics]
 
 common/enable_pause_aware_picking=true

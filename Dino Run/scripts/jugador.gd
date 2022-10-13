@@ -32,10 +32,10 @@ func _process(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		_maquina_estados.travel(Animaciones.AGACHARSE)
 		$DePie.set_deferred("disabled", true)
-		$Tumbado.set_deferred("disabled", false)
+		$Agachado.set_deferred("disabled", false)
 	else:
 		$DePie.set_deferred("disabled", false)
-		$Tumbado.set_deferred("disabled", true)
+		$Agachado.set_deferred("disabled", true)
 
 
 """Controla el input del ratón.
