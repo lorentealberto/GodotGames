@@ -195,17 +195,17 @@ position = Vector2( -8, 0 )
 enabled = true
 cast_to = Vector2( 0, 8 )
 
-[node name="Node" type="Node" parent="."]
+[node name="Obstaculos" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="Suelo" type="Position2D" parent="Node"]
+[node name="Suelo" type="Position2D" parent="Obstaculos"]
 position = Vector2( 283, 208 )
 
-[node name="Aire" type="Position2D" parent="Node"]
+[node name="Aire" type="Position2D" parent="Obstaculos"]
 position = Vector2( 283, 196 )
 
-[node name="Timer" type="Timer" parent="Node"]
+[node name="Timer" type="Timer" parent="Obstaculos"]
 wait_time = 2.0
 autostart = true
 
-[connection signal="timeout" from="Node/Timer" to="Node" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Obstaculos/Timer" to="Obstaculos" method="_on_Timer_timeout"]

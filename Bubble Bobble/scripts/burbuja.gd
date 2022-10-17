@@ -7,12 +7,15 @@ const VHORIZONTAL: float = 75.0
 # VARIABLES DEL SISTEMA
 var direccion: int = 0
 
+var enemigo: RigidBody2D = null
+
 func _ready() -> void:
 	$AnimationPlayer.play("inicio")
 	gravity_scale = 0
 
 func _process(delta: float) -> void:
-	pass
+	if enemigo != null:
+		enemigo.position = position
 
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
@@ -32,3 +35,11 @@ func _on_DeadTimer_timeout():
 	$AnimationPlayer.play("explosion")
 	yield(get_tree().create_timer(0.2), "timeout")
 	queue_free()
+	if enemigo != null:
+		enemigo.queue_free()
+		enemigo = null
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("enemigos"):
+		enemigo = body
