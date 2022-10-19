@@ -310,10 +310,10 @@ enabled = true
 cast_to = Vector2( 0, 9 )
 
 [node name="Enemigo" parent="." instance=ExtResource( 4 )]
-position = Vector2( 47, 151 )
+position = Vector2( 56, 150 )
 
 [node name="Enemigo2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 130, 152 )
+position = Vector2( 128, 151 )
 
 [node name="Enemigo3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 209, 152 )
+position = Vector2( 200, 151 )

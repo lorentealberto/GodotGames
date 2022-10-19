@@ -11,6 +11,7 @@ const Velocidades: Dictionary = {
 var _direccion: int = 0
 
 func _ready() -> void:
+	randomize()
 	$AnimationPlayer.play("default")
 
 
@@ -20,18 +21,27 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 
 
 func _on_Timer_timeout():
-	var pos_jugador: Vector2 = get_node("/root/Juego/Personaje").global_position.floor()
+	var pos_jugador: Vector2 = get_node("/root/Juego/Personaje").global_position
 	
-	var dist_x: float = floor(sqrt(pow(position.x - pos_jugador.x, 2)))
-	if dist_x > 5:
-		if floor(position.x) > pos_jugador.x:
+	var dist: float = floor(position.distance_to(pos_jugador))
+	if dist < 64:
+		if position.x > pos_jugador.x:
 			_direccion = -1
 			$Sprite.flip_h = false
-		elif floor(position.x) < pos_jugador.x:
+		elif position.x < pos_jugador.x:
 			_direccion = 1
 			$Sprite.flip_h = true
 	
-	if position.y > pos_jugador.y:
-		var dist: float = floor(sqrt(pow(pos_jugador.y - global_position.y, 2)))
-		if  (dist > 25 and dist <= 64) and $RayCast2D.is_colliding():
+		if floor(position.y) > floor(pos_jugador.y) and $RayCast2D.is_colliding():
 			apply_central_impulse(Vector2(0, Velocidades.SALTO))
+	else:
+		match randi() % 3:
+			0:
+				_direccion = -1
+				$Sprite.flip_h = false
+			1:
+				_direccion = 1
+				$Sprite.flip_h = true
+			2:
+				if $RayCast2D.is_colliding():
+					apply_central_impulse(Vector2(0, Velocidades.SALTO))
