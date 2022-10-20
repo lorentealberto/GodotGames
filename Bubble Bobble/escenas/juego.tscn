@@ -205,6 +205,10 @@ extents = Vector2( 8, 8 )
 [node name="Juego" type="Node2D"]
 
 [node name="Nivel" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Nivel"]
 texture = ExtResource( 2 )
@@ -309,11 +313,5 @@ shape = SubResource( 29 )
 enabled = true
 cast_to = Vector2( 0, 9 )
 
-[node name="Enemigo" parent="." instance=ExtResource( 4 )]
-position = Vector2( 56, 150 )
-
-[node name="Enemigo2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 128, 151 )
-
 [node name="Enemigo3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 200, 151 )
+position = Vector2( 128, 151 )

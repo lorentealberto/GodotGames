@@ -23,6 +23,8 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 		state.linear_velocity.x = VHORIZONTAL * direccion
 	else:
 		state.linear_velocity.x = 0
+	
+	
 
 func _on_Timer_timeout():
 	gravity_scale = -1

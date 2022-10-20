@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://graficos/enemigos.png" type="Texture" id=1]
-[ext_resource path="res://scripts/visualscript/enemigo.vs" type="Script" id=2]
+[ext_resource path="res://scripts/visualscripts/enemigo.vs" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=4]
 friction = 0.0
@@ -46,8 +46,8 @@ mode = 2
 physics_material_override = SubResource( 4 )
 gravity_scale = 0.5
 script = ExtResource( 2 )
-potencia_salto = -85.0
 velocidad_horizontal = 40.0
+potencia_salto = -85.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
