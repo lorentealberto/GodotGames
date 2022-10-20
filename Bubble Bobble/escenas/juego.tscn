@@ -2,7 +2,7 @@
 
 [ext_resource path="res://graficos/personaje.png" type="Texture" id=1]
 [ext_resource path="res://graficos/nivel_1.png" type="Texture" id=2]
-[ext_resource path="res://scripts/personaje.gd" type="Script" id=3]
+[ext_resource path="res://scripts/visualscripts/personaje.vs" type="Script" id=3]
 [ext_resource path="res://objetos/enemigo.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=30]
@@ -282,11 +282,14 @@ mode = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.5
 script = ExtResource( 3 )
+velocidad_horizontal = 50.0
+potencia_salto = -85.0
 
 [node name="Sprite" type="Sprite" parent="Personaje"]
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 4
+frame = 1
 
 [node name="Position2D" type="Position2D" parent="Personaje/Sprite"]
 position = Vector2( 12.2867, 2.56778 )
