@@ -11,13 +11,18 @@ config_version=4
 [application]
 
 config/name="Flappy Bird"
-run/main_scene="res://scenes/states/Game.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=144
 window/size/height=256
+window/size/test_width=288
+window/size/test_height=512
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
 
 [physics]
 
