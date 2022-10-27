@@ -1,10 +1,84 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://graficos/edificio.png" type="Texture" id=1]
 [ext_resource path="res://objetos/ventana.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graficos/ralph.png" type="Texture" id=3]
+[ext_resource path="res://scripts/ralph.vs" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 94, 2 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "andar"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "cabreado"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 2, 3 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "andar"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "cabreado"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/andar/node = SubResource( 5 )
+states/andar/position = Vector2( 133, 73 )
+states/cabreado/node = SubResource( 6 )
+states/cabreado/position = Vector2( 330, 84 )
+transitions = [ "andar", "cabreado", SubResource( 7 ), "cabreado", "andar", SubResource( 8 ) ]
+start_node = "andar"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+
+[sub_resource type="RectangleShape2D" id=11]
 
 [node name="Juego" type="Node2D"]
 
@@ -31,3 +105,40 @@ position = Vector2( 2, 15 )
 
 [node name="Ventana3" parent="Edificio" instance=ExtResource( 2 )]
 position = Vector2( 61, 15 )
+
+[node name="Ralph" type="Area2D" parent="."]
+position = Vector2( 121, 39 )
+script = ExtResource( 4 )
+velocidad = 30.0
+
+[node name="Sprite" type="Sprite" parent="Ralph"]
+texture = ExtResource( 3 )
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ralph"]
+anims/RESET = SubResource( 2 )
+anims/andar = SubResource( 3 )
+anims/cabreado = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Ralph"]
+tree_root = SubResource( 9 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ralph"]
+shape = SubResource( 11 )
+
+[node name="Puntos" type="Node" parent="Ralph"]
+
+[node name="Position2D" type="Position2D" parent="Ralph/Puntos"]
+position = Vector2( 67, 64 )
+
+[node name="Position2D2" type="Position2D" parent="Ralph/Puntos"]
+position = Vector2( 253, 62 )
+
+[node name="Timer" type="Timer" parent="Ralph"]
+autostart = true
+
+[connection signal="timeout" from="Ralph/Timer" to="Ralph" method="_on_Timer_timeout"]
