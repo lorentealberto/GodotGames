@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://graficos/edificio.png" type="Texture" id=1]
 [ext_resource path="res://objetos/ventana.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graficos/ralph.png" type="Texture" id=3]
 [ext_resource path="res://scripts/ralph.vs" type="Script" id=4]
+[ext_resource path="res://graficos/felix.png" type="Texture" id=5]
+[ext_resource path="res://scripts/felix.vs" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 94, 2 )
@@ -80,6 +82,111 @@ start_node = "andar"
 
 [sub_resource type="RectangleShape2D" id=11]
 
+[sub_resource type="Animation" id=28]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "arreglar"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "correr"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "arreglar"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "correr"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachine" id=35]
+states/arreglar/node = SubResource( 31 )
+states/arreglar/position = Vector2( 436.5, 79 )
+states/correr/node = SubResource( 32 )
+states/correr/position = Vector2( 199.5, 180 )
+states/idle/node = SubResource( 39 )
+states/idle/position = Vector2( -27.5401, 92 )
+transitions = [ "correr", "arreglar", SubResource( 33 ), "arreglar", "correr", SubResource( 34 ), "idle", "correr", SubResource( 40 ), "correr", "idle", SubResource( 41 ), "arreglar", "idle", SubResource( 42 ), "idle", "arreglar", SubResource( 43 ) ]
+start_node = "idle"
+graph_offset = Vector2( -188.55, 12.72 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 11, 17 )
+
 [node name="Juego" type="Node2D"]
 
 [node name="Edificio" type="Sprite" parent="."]
@@ -110,8 +217,8 @@ position = Vector2( 61, 15 )
 position = Vector2( 121, 39 )
 script = ExtResource( 4 )
 velocidad = 30.0
-tiempo_max = 3
 tiempo_min = 1
+tiempo_max = 3
 
 [node name="Sprite" type="Sprite" parent="Ralph"]
 texture = ExtResource( 3 )
@@ -141,5 +248,48 @@ position = Vector2( 67, 64 )
 position = Vector2( 253, 62 )
 
 [node name="Timer" type="Timer" parent="Ralph"]
+
+[node name="Felix" type="RigidBody2D" parent="."]
+position = Vector2( 85, 207 )
+mode = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+potencia_salto = 125.0
+velocidad_horizontal = 75.0
+
+[node name="Sprite" type="Sprite" parent="Felix"]
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Felix"]
+anims/RESET = SubResource( 28 )
+anims/arreglar = SubResource( 29 )
+anims/correr = SubResource( 30 )
+anims/idle = SubResource( 38 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Felix"]
+tree_root = SubResource( 35 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Felix"]
+position = Vector2( -0.5, 16 )
+shape = SubResource( 37 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Felix"]
+position = Vector2( 0, 31 )
+enabled = true
+cast_to = Vector2( 0, 2 )
+
+[node name="Area2D" type="Area2D" parent="Felix"]
+position = Vector2( -85, -207 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Felix/Area2D"]
+position = Vector2( 84, 223 )
+shape = SubResource( 37 )
 
 [connection signal="timeout" from="Ralph/Timer" to="Ralph" method="_on_Timer_timeout"]
