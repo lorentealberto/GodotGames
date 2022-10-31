@@ -110,6 +110,8 @@ position = Vector2( 61, 15 )
 position = Vector2( 121, 39 )
 script = ExtResource( 4 )
 velocidad = 30.0
+tiempo_max = 3
+tiempo_min = 1
 
 [node name="Sprite" type="Sprite" parent="Ralph"]
 texture = ExtResource( 3 )
@@ -139,6 +141,5 @@ position = Vector2( 67, 64 )
 position = Vector2( 253, 62 )
 
 [node name="Timer" type="Timer" parent="Ralph"]
-autostart = true
 
 [connection signal="timeout" from="Ralph/Timer" to="Ralph" method="_on_Timer_timeout"]
