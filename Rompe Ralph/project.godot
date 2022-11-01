@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Ventana",
+"language": "GDScript",
+"path": "res://scripts/gdscript/ventana.gd"
+} ]
+_global_script_class_icons={
+"Ventana": ""
+}
+
 [application]
 
 config/name="Rompe Ralph"

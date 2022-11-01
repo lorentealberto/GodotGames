@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name Ventana
 #Inicializa el script
 func _ready() -> void:
 	$Ventana.frame = 1
