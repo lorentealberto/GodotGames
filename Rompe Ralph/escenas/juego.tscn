@@ -1,11 +1,11 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://graficos/edificio.png" type="Texture" id=1]
 [ext_resource path="res://objetos/ventana.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graficos/ralph.png" type="Texture" id=3]
 [ext_resource path="res://scripts/gdscript/ralph.gd" type="Script" id=4]
 [ext_resource path="res://graficos/felix.png" type="Texture" id=5]
-[ext_resource path="res://scripts/gdscript/felix.gd" type="Script" id=6]
+[ext_resource path="res://scripts/felix.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 94, 2 )
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0 ]
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=29]
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id=31]
 resource_name = "idle"
 length = 0.1
 tracks/0/type = "value"
@@ -146,46 +146,48 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "arreglar"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "correr"
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=34]
 animation = "idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=40]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
-
-[sub_resource type="AnimationNodeStateMachine" id=35]
-states/arreglar/node = SubResource( 31 )
-states/arreglar/position = Vector2( 436.5, 79 )
-states/correr/node = SubResource( 32 )
-states/correr/position = Vector2( 199.5, 180 )
-states/idle/node = SubResource( 39 )
-states/idle/position = Vector2( -27.5401, 92 )
-transitions = [ "correr", "arreglar", SubResource( 33 ), "arreglar", "correr", SubResource( 34 ), "idle", "correr", SubResource( 40 ), "correr", "idle", SubResource( 41 ), "arreglar", "idle", SubResource( 42 ), "idle", "arreglar", SubResource( 43 ) ]
+[sub_resource type="AnimationNodeStateMachine" id=41]
+states/arreglar/node = SubResource( 32 )
+states/arreglar/position = Vector2( 538.5, 112.5 )
+states/correr/node = SubResource( 33 )
+states/correr/position = Vector2( 210.5, 181.5 )
+states/idle/node = SubResource( 34 )
+states/idle/position = Vector2( 163, 53 )
+transitions = [ "idle", "arreglar", SubResource( 35 ), "arreglar", "idle", SubResource( 36 ), "idle", "correr", SubResource( 37 ), "correr", "idle", SubResource( 38 ), "correr", "arreglar", SubResource( 39 ), "arreglar", "correr", SubResource( 40 ) ]
 start_node = "idle"
-graph_offset = Vector2( -188.55, 12.72 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=42]
 
-[sub_resource type="RectangleShape2D" id=37]
-extents = Vector2( 11, 17 )
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 4.5, 14 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 10, 21 )
 
 [node name="Juego" type="Node2D"]
 
@@ -216,7 +218,7 @@ position = Vector2( 61, 15 )
 [node name="Ralph" type="Area2D" parent="."]
 position = Vector2( 121, 39 )
 script = ExtResource( 4 )
-velocidad = 35.0
+velocidad = 30.0
 
 [node name="Sprite" type="Sprite" parent="Ralph"]
 texture = ExtResource( 3 )
@@ -248,7 +250,7 @@ position = Vector2( 253, 62 )
 [node name="Timer" type="Timer" parent="Ralph"]
 
 [node name="Felix" type="RigidBody2D" parent="."]
-position = Vector2( 85, 207 )
+position = Vector2( 82, 208 )
 mode = 2
 script = ExtResource( 6 )
 __meta__ = {
@@ -267,28 +269,27 @@ frame = 1
 anims/RESET = SubResource( 28 )
 anims/arreglar = SubResource( 29 )
 anims/correr = SubResource( 30 )
-anims/idle = SubResource( 38 )
+anims/idle = SubResource( 31 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Felix"]
-tree_root = SubResource( 35 )
+tree_root = SubResource( 41 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 36 )
+parameters/playback = SubResource( 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Felix"]
-position = Vector2( -0.5, 16 )
-shape = SubResource( 37 )
+position = Vector2( 0.5, 18 )
+shape = SubResource( 43 )
+
+[node name="Area2D" type="Area2D" parent="Felix"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Felix/Area2D"]
+position = Vector2( 0, 11 )
+shape = SubResource( 44 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Felix"]
 position = Vector2( 0, 31 )
 enabled = true
 cast_to = Vector2( 0, 2 )
-
-[node name="Area2D" type="Area2D" parent="Felix"]
-position = Vector2( -85, -207 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Felix/Area2D"]
-position = Vector2( 84, 223 )
-shape = SubResource( 37 )
 
 [connection signal="timeout" from="Ralph/Timer" to="Ralph" method="_on_Timer_timeout"]

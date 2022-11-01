@@ -1,21 +1,18 @@
 extends RigidBody2D
 
-
 export var velocidad_horizontal: float
 export var potencia_salto: float
 
-var playback: AnimationNodeStateMachinePlayback
 var direccion: int
+var playback: AnimationNodeStateMachinePlayback
 
-func _ready() -> void:
+func _ready():
 	playback = $AnimationTree.get("parameters/playback")
 
-
-func _integrate_forces(state: Physics2DDirectBodyState) -> void:
+func _integrate_forces(state):
 	state.linear_velocity.x = direccion * velocidad_horizontal
-
-
-func _process(delta: float) -> void:
+	
+func _process(delta):
 	if linear_velocity.x != 0:
 		playback.travel("correr")
 	else:
@@ -38,7 +35,7 @@ func _process(delta: float) -> void:
 		apply_central_impulse(Vector2(0, -potencia_salto))
 	
 	if Input.is_action_just_pressed("reparar"):
-		playback	.travel("arreglar")
+		playback.travel("arreglar")
 		for area in $Area2D.get_overlapping_areas():
 			if area is Ventana:
 				area.reparar()

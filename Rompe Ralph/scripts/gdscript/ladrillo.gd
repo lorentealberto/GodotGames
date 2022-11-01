@@ -15,7 +15,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 
-func _on_Area2D_area_entered(area: Area2D):
+func _on_Area2D_area_entered(area):
 	if area.get_parent().name == "Felix":
 		area.get_parent().queue_free()
 		queue_free()
