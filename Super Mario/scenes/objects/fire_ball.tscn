@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmjd3mfw3oo55"]
+
+[ext_resource type="Script" path="res://scripts/fire_ball.gd" id="1_cm6m2"]
+[ext_resource type="Texture2D" uid="uid://djpmo31xbwm8d" path="res://assets/graphics/fireball/fireball.png" id="1_oar0l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhuvq"]
+atlas = ExtResource("1_oar0l")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv1hr"]
+atlas = ExtResource("1_oar0l")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qrpf"]
+atlas = ExtResource("1_oar0l")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io52l"]
+atlas = ExtResource("1_oar0l")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_um52c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhuvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv1hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qrpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io52l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uh88"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fgyj"]
+radius = 6.08276
+
+[node name="FireBall" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_cm6m2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_um52c")
+autoplay = "default"
+frame_progress = 0.48773
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1uh88")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6fgyj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

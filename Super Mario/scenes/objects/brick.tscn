@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://csce7fnlit74h"]
+
+[ext_resource type="Script" path="res://scripts/brick.gd" id="1_hubhm"]
+[ext_resource type="Texture2D" uid="uid://b4b5gpk1ic8tg" path="res://assets/graphics/tileset.png" id="1_v3xev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hefw"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_344lo"]
+size = Vector2(16, 2)
+
+[node name="Brick" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_hubhm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v3xev")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1hefw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_344lo")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

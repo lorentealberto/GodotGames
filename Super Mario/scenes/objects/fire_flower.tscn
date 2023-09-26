@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://p36iv1i2vdv6"]
+
+[ext_resource type="Texture2D" uid="uid://iklsqb6ospmm" path="res://assets/graphics/objects.png" id="1_1jtje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfk80"]
+atlas = ExtResource("1_1jtje")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kh3p"]
+atlas = ExtResource("1_1jtje")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdtie"]
+atlas = ExtResource("1_1jtje")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iet5"]
+atlas = ExtResource("1_1jtje")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1g5u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfk80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kh3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdtie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iet5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3bsk"]
+
+[node name="FireFlower" type="Area2D" groups=["flowers"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c1g5u")
+autoplay = "default"
+frame_progress = 0.875715
+offset = Vector2(2.08165e-12, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_h3bsk")

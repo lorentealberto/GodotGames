@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://di5ifkqmurn6l"]
+
+[ext_resource type="PackedScene" uid="uid://bo8xsxxj485jj" path="res://assets/models/watercraftPack_027.gltf" id="1_daxya"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5n2l"]
+radius = 0.577117
+height = 1.99616
+
+[node name="Checkpoint" type="Node3D" groups=["checkpoints"]]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="watercraftPack_027" parent="." instance=ExtResource("1_daxya")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.924991, 0)
+shape = SubResource("CapsuleShape3D_i5n2l")

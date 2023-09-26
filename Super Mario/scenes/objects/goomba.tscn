@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://cftu31gb65wf8"]
+
+[ext_resource type="Texture2D" uid="uid://ndx6nbbkqcvo" path="res://assets/graphics/enemies.png" id="1_621m3"]
+[ext_resource type="Script" path="res://scripts/goomba.gd" id="1_oc5y1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_140gi"]
+atlas = ExtResource("1_621m3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikn1u"]
+atlas = ExtResource("1_621m3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13ac4"]
+atlas = ExtResource("1_621m3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rj4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_140gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikn1u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13ac4")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gbjs"]
+size = Vector2(18, 15)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ao1q"]
+
+[node name="Goomba" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_oc5y1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1rj4x")
+autoplay = "default"
+frame_progress = 0.152652
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_4gbjs")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5ao1q")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

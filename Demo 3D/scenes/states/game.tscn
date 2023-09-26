@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwthq5mkbc8qo"]
+
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_uj7a4"]
+[ext_resource type="Script" path="res://scripts/boat.gd" id="2_0gg42"]
+[ext_resource type="PackedScene" uid="uid://o2vhwfd5amh0" path="res://assets/models/watercraftPack_017.gltf" id="2_lneu0"]
+[ext_resource type="Script" path="res://scripts/checkpoints.gd" id="4_wbtyd"]
+[ext_resource type="PackedScene" uid="uid://di5ifkqmurn6l" path="res://scenes/objects/checkpoint.tscn" id="4_xkuue"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4mt5"]
+
+[sub_resource type="Sky" id="Sky_t5pv6"]
+sky_material = SubResource("ProceduralSkyMaterial_b4mt5")
+
+[sub_resource type="Environment" id="Environment_5aqq8"]
+background_mode = 2
+sky = SubResource("Sky_t5pv6")
+adjustment_enabled = true
+adjustment_saturation = 2.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upuga"]
+render_priority = 0
+shader = ExtResource("1_uj7a4")
+shader_parameter/out_color = Color(0.1, 0.5, 1, 1)
+shader_parameter/amount = 0.8
+shader_parameter/beer_factor = 0.2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h0nxj"]
+material = SubResource("ShaderMaterial_upuga")
+size = Vector2(1000, 1000)
+subdivide_width = 50
+subdivide_depth = 50
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u1ifb"]
+radius = 0.959286
+height = 3.46641
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5aqq8")
+
+[node name="Water" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_h0nxj")
+
+[node name="Boat" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.321198, 0)
+script = ExtResource("2_0gg42")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boat"]
+transform = Transform3D(1, 0, 0, 0, 3.47302e-08, -1, 0, 1, 2.3859e-08, 0, 1.19975, 0.634813)
+shape = SubResource("CapsuleShape3D_u1ifb")
+
+[node name="Pivot" type="Node3D" parent="Boat"]
+
+[node name="Model" parent="Boat/Pivot" instance=ExtResource("2_lneu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377714, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Boat"]
+transform = Transform3D(-1, 7.01609e-08, -5.21555e-08, 3.7133e-08, 0.880982, 0.473151, 7.91447e-08, 0.473151, -0.880982, 0, 7.44616, -7.18251)
+
+[node name="HitBox" type="Area3D" parent="Boat"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boat/HitBox"]
+transform = Transform3D(1, 0, 0, 0, 3.47302e-08, -1, 0, 1, 2.3859e-08, 0, 1.19975, 0.634813)
+shape = SubResource("CapsuleShape3D_u1ifb")
+
+[node name="Checkpoints" type="Node" parent="."]
+script = ExtResource("4_wbtyd")
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("4_xkuue")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 1.84214, 0, 288.197)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("4_xkuue")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 214.986, 0, 288.197)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("4_xkuue")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 95.3923, 0, 385.381)
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("4_xkuue")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 95.3923, 0, -354.217)
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("4_xkuue")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -353.052, 0, -354.217)
+
+[connection signal="area_entered" from="Boat/HitBox" to="Boat" method="_on_hit_box_area_entered"]
