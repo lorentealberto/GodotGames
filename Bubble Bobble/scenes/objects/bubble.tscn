@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://25pvqk6bdob7"]
+
+[ext_resource type="Texture2D" uid="uid://xq1om7aodgw" path="res://assets/graphics/bubble.png" id="1_h76cr"]
+[ext_resource type="Script" path="res://scripts/bubble.gd" id="1_unvqm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwon2"]
+atlas = ExtResource("1_h76cr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soev2"]
+atlas = ExtResource("1_h76cr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hstr3"]
+atlas = ExtResource("1_h76cr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv5q0"]
+atlas = ExtResource("1_h76cr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud404"]
+atlas = ExtResource("1_h76cr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo7qr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwon2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soev2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hstr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv5q0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud404")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3nmi"]
+radius = 8.0
+
+[node name="Bubble" type="Area2D"]
+collision_layer = 0
+collision_mask = 21
+script = ExtResource("1_unvqm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jo7qr")
+animation = &"explosion"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k3nmi")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

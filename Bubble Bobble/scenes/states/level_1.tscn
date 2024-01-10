@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm8cgcqgddx4c"]
+
+[ext_resource type="PackedScene" uid="uid://iju4f1nr0emt" path="res://scenes/objects/enemy_1.tscn" id="1_umhwk"]
+[ext_resource type="Texture2D" uid="uid://cnhl3iqreetd1" path="res://assets/graphics/level_template.png" id="1_vleta"]
+[ext_resource type="PackedScene" uid="uid://bykp1g022ubsp" path="res://scenes/objects/player.tscn" id="2_k4jph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yfvd"]
+size = Vector2(32, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3r7b"]
+size = Vector2(192, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0uov"]
+size = Vector2(32, 16.0722)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll8l5"]
+size = Vector2(64, 16.0722)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a08a5"]
+size = Vector2(192, 2)
+
+[node name="Level_1" type="Node"]
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="Left" type="Marker2D" parent="Markers" groups=["marker"]]
+position = Vector2(48, 17)
+
+[node name="Middle" type="Marker2D" parent="Markers" groups=["marker"]]
+position = Vector2(128, 17)
+
+[node name="Right" type="Marker2D" parent="Markers" groups=["marker"]]
+position = Vector2(208, 17)
+
+[node name="Bubbles" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy_1" parent="Enemies" instance=ExtResource("1_umhwk")]
+position = Vector2(128, 80)
+
+[node name="LevelLayout" type="StaticBody2D" parent="."]
+z_index = -1
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelLayout"]
+texture = ExtResource("1_vleta")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(16, 120)
+shape = SubResource("RectangleShape2D_8yfvd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(240, 120)
+shape = SubResource("RectangleShape2D_8yfvd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(128, 8)
+shape = SubResource("RectangleShape2D_u3r7b")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(128, 232)
+shape = SubResource("RectangleShape2D_u3r7b")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(48, 88.0361)
+shape = SubResource("RectangleShape2D_q0uov")
+one_way_collision = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(48, 136.036)
+shape = SubResource("RectangleShape2D_q0uov")
+one_way_collision = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(48, 184.036)
+shape = SubResource("RectangleShape2D_q0uov")
+one_way_collision = true
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(208, 88.0361)
+shape = SubResource("RectangleShape2D_q0uov")
+one_way_collision = true
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(208, 136.036)
+shape = SubResource("RectangleShape2D_q0uov")
+one_way_collision = true
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(208, 184.036)
+shape = SubResource("RectangleShape2D_q0uov")
+one_way_collision = true
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(128, 184.036)
+shape = SubResource("RectangleShape2D_ll8l5")
+one_way_collision = true
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(128, 136.036)
+shape = SubResource("RectangleShape2D_ll8l5")
+one_way_collision = true
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="LevelLayout"]
+position = Vector2(128, 88.0361)
+shape = SubResource("RectangleShape2D_ll8l5")
+one_way_collision = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("bubbles_group") instance=ExtResource("2_k4jph")]
+position = Vector2(42, 216)
+bubbles_group = NodePath("../Bubbles")
+
+[node name="Roof" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(128, 17)
+shape = SubResource("RectangleShape2D_a08a5")
+debug_color = Color(0.976471, 0, 0.419608, 0.419608)

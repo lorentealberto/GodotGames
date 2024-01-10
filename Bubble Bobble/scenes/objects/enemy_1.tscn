@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://iju4f1nr0emt"]
+
+[ext_resource type="Texture2D" uid="uid://ckgdt8u44gkj3" path="res://assets/graphics/enemy_1.png" id="1_6ow5o"]
+[ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_e5s6f"]
+[ext_resource type="Script" path="res://scripts/basic_brain.gd" id="2_xwllt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjhur"]
+atlas = ExtResource("1_6ow5o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0ef8"]
+atlas = ExtResource("1_6ow5o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mv1nt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjhur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0ef8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu1ka"]
+size = Vector2(14, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0huvd"]
+
+[node name="Enemy_1" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_e5s6f")
+
+[node name="BasicBrain" type="Node" parent="."]
+script = ExtResource("2_xwllt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, 17)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_mv1nt")
+autoplay = "default"
+frame_progress = 0.530631
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_pu1ka")
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_0huvd")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
