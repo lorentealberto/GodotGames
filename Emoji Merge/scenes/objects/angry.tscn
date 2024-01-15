@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx8q5vmijb1e2"]
+
+[ext_resource type="PackedScene" uid="uid://tk1gsuvberag" path="res://scenes/objects/emoji.tscn" id="1_f8no2"]
+[ext_resource type="Texture2D" uid="uid://v4p0veeqs2te" path="res://assets/graphics/angry.png" id="2_6m4ua"]
+[ext_resource type="PackedScene" uid="uid://dyabxexdk81i5" path="res://scenes/objects/relieved.tscn" id="2_chnul"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b43tc"]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cnqsn"]
+radius = 36.0555
+
+[node name="Angry" instance=ExtResource("1_f8no2")]
+merge_result = ExtResource("2_chnul")
+emoji_id = 5
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("2_6m4ua")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_b43tc")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_cnqsn")

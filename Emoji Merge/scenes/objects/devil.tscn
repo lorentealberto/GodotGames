@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://brng4n4qe6qcq"]
+
+[ext_resource type="PackedScene" uid="uid://tk1gsuvberag" path="res://scenes/objects/emoji.tscn" id="1_ch0fv"]
+[ext_resource type="Texture2D" uid="uid://bpryft1qhu27i" path="res://assets/graphics/devil.png" id="2_7qbqc"]
+[ext_resource type="PackedScene" uid="uid://bx8q5vmijb1e2" path="res://scenes/objects/angry.tscn" id="2_di087"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8r63e"]
+radius = 30.0666
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgtll"]
+radius = 31.257
+
+[node name="Devil" instance=ExtResource("1_ch0fv")]
+merge_result = ExtResource("2_di087")
+emoji_id = 4
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("2_7qbqc")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_8r63e")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_sgtll")

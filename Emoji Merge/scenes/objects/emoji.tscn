@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://tk1gsuvberag"]
+
+[ext_resource type="Script" path="res://scripts/emoji.gd" id="1_p08qr"]
+
+[node name="Emoji" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+freeze = true
+script = ExtResource("1_p08qr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+debug_color = Color(0.960784, 0.176471, 0.270588, 0.419608)
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyabxexdk81i5"]
+
+[ext_resource type="PackedScene" uid="uid://tk1gsuvberag" path="res://scenes/objects/emoji.tscn" id="1_offvk"]
+[ext_resource type="Texture2D" uid="uid://dtbvkri1xt7vs" path="res://assets/graphics/relieved.png" id="2_bplnt"]
+[ext_resource type="PackedScene" uid="uid://8ml8cyilpoul" path="res://scenes/objects/yum.tscn" id="2_qvbu6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s16v1"]
+radius = 40.3113
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8b85"]
+radius = 41.0488
+
+[node name="Relieved" instance=ExtResource("1_offvk")]
+merge_result = ExtResource("2_qvbu6")
+emoji_id = 6
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("2_bplnt")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_s16v1")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_q8b85")

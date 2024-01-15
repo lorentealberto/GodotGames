@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr43rfqhonteq"]
+
+[ext_resource type="PackedScene" uid="uid://tk1gsuvberag" path="res://scenes/objects/emoji.tscn" id="1_xdf2k"]
+[ext_resource type="PackedScene" uid="uid://ptw0d03wrt8k" path="res://scenes/objects/sob.tscn" id="2_cpxyp"]
+[ext_resource type="Texture2D" uid="uid://dxlk7x08wryg7" path="res://assets/graphics/joy.png" id="2_ej3bd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wv52i"]
+radius = 50.0899
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrf4y"]
+radius = 51.0392
+
+[node name="Joy" instance=ExtResource("1_xdf2k")]
+merge_result = ExtResource("2_cpxyp")
+emoji_id = 8
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("2_ej3bd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_wv52i")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_xrf4y")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0yjhc6o2obnc"]
+
+[ext_resource type="PackedScene" uid="uid://tk1gsuvberag" path="res://scenes/objects/emoji.tscn" id="1_gnu6e"]
+[ext_resource type="Texture2D" uid="uid://cyt6f7ed3cl5g" path="res://assets/graphics/sunglasses.png" id="2_e8nfd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrvt0"]
+radius = 66.0303
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f777u"]
+radius = 67.3647
+
+[node name="Sunglasses" instance=ExtResource("1_gnu6e")]
+emoji_id = 11
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("2_e8nfd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_jrvt0")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_f777u")

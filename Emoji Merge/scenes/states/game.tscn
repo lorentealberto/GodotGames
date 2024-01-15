@@ -1,0 +1,14 @@
+[gd_scene load_steps=7 format=3 uid="uid://djsq3iol77gmv"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_7xmpp"]
+[ext_resource type="PackedScene" uid="uid://dj4jn5rxvkytw" path="res://scenes/objects/container.tscn" id="1_cuuob"]
+[ext_resource type="PackedScene" uid="uid://vxtidh5pln6b" path="res://scenes/objects/slight_smile.tscn" id="2_bfs74"]
+[ext_resource type="PackedScene" uid="uid://eixa6mwj0a86" path="res://scenes/objects/blush.tscn" id="3_uj0h3"]
+[ext_resource type="PackedScene" uid="uid://cydd5cynrd62j" path="res://scenes/objects/thinking.tscn" id="4_t565i"]
+[ext_resource type="PackedScene" uid="uid://brng4n4qe6qcq" path="res://scenes/objects/devil.tscn" id="5_eeere"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_7xmpp")
+emojis = Array[PackedScene]([ExtResource("2_bfs74"), ExtResource("3_uj0h3"), ExtResource("4_t565i"), ExtResource("5_eeere")])
+
+[node name="Container" parent="." instance=ExtResource("1_cuuob")]

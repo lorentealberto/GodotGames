@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cydd5cynrd62j"]
+
+[ext_resource type="PackedScene" uid="uid://tk1gsuvberag" path="res://scenes/objects/emoji.tscn" id="1_anely"]
+[ext_resource type="Texture2D" uid="uid://leupa1as60px" path="res://assets/graphics/thinking.png" id="2_8vlca"]
+[ext_resource type="PackedScene" uid="uid://brng4n4qe6qcq" path="res://scenes/objects/devil.tscn" id="2_lqcq5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0bi6"]
+radius = 23.0868
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkryq"]
+radius = 25.0
+
+[node name="Thinking" instance=ExtResource("1_anely")]
+merge_result = ExtResource("2_lqcq5")
+emoji_id = 3
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("2_8vlca")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_j0bi6")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_xkryq")
